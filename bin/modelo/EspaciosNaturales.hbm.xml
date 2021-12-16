@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 16 dic 2021 18:38:56 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="euskalmet" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.EspaciosNaturales" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="espacios_naturales">
+        <id name="codEspacio" type="int">
+            <column name="CodEspacio"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="Nombre" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="descripcion" optimistic-lock="true" type="string" unique="false">
+            <column length="500" name="Descripcion" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="municipioses" optimistic-lock="true" sort="unsorted" table="esta_en">
+            <key on-delete="noaction">
+                <column name="CodEspacio" not-null="true"/>
+            </key>
+            <many-to-many embed-xml="true" entity-name="modelo.Municipios" not-found="exception" unique="false">
+                <column name="CodMunicipio" not-null="true"/>
+            </many-to-many>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="usuarioses" optimistic-lock="true" sort="unsorted" table="favoritos_espacios">
+            <key on-delete="noaction">
+                <column name="CodEspacio" not-null="true"/>
+            </key>
+            <many-to-many embed-xml="true" entity-name="modelo.Usuarios" not-found="exception" unique="false">
+                <column name="CodUsuario" not-null="true"/>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
