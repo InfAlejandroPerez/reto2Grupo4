@@ -1,5 +1,5 @@
 package modelo;
-// Generated 17 dic 2021 16:02:15 by Hibernate Tools 5.5.7.Final
+// Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,8 +14,8 @@ public class Municipios implements java.io.Serializable {
 	private String nombre;
 	private String descripcion;
 	private Set estacioneses = new HashSet(0);
-	private Set espaciosNaturaleses = new HashSet(0);
-	private Set usuarioses = new HashSet(0);
+	private Set estaEns = new HashSet(0);
+	private Set favoritosMunicipioses = new HashSet(0);
 
 	public Municipios() {
 	}
@@ -28,14 +28,14 @@ public class Municipios implements java.io.Serializable {
 	}
 
 	public Municipios(int codMunicipio, Provincia provincia, String nombre, String descripcion, Set estacioneses,
-			Set espaciosNaturaleses, Set usuarioses) {
+			Set estaEns, Set favoritosMunicipioses) {
 		this.codMunicipio = codMunicipio;
 		this.provincia = provincia;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.estacioneses = estacioneses;
-		this.espaciosNaturaleses = espaciosNaturaleses;
-		this.usuarioses = usuarioses;
+		this.estaEns = estaEns;
+		this.favoritosMunicipioses = favoritosMunicipioses;
 	}
 
 	public int getCodMunicipio() {
@@ -78,20 +78,20 @@ public class Municipios implements java.io.Serializable {
 		this.estacioneses = estacioneses;
 	}
 
-	public Set getEspaciosNaturaleses() {
-		return this.espaciosNaturaleses;
+	public Set getEstaEns() {
+		return this.estaEns;
 	}
 
-	public void setEspaciosNaturaleses(Set espaciosNaturaleses) {
-		this.espaciosNaturaleses = espaciosNaturaleses;
+	public void setEstaEns(Set estaEns) {
+		this.estaEns = estaEns;
 	}
 
-	public Set getUsuarioses() {
-		return this.usuarioses;
+	public Set getFavoritosMunicipioses() {
+		return this.favoritosMunicipioses;
 	}
 
-	public void setUsuarioses(Set usuarioses) {
-		this.usuarioses = usuarioses;
+	public void setFavoritosMunicipioses(Set favoritosMunicipioses) {
+		this.favoritosMunicipioses = favoritosMunicipioses;
 	}
 
 }

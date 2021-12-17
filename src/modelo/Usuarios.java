@@ -1,5 +1,5 @@
 package modelo;
-// Generated 17 dic 2021 16:02:15 by Hibernate Tools 5.5.7.Final
+// Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,8 +12,8 @@ public class Usuarios implements java.io.Serializable {
 	private int codUsuario;
 	private String nombre;
 	private String contraseña;
-	private Set municipioses = new HashSet(0);
-	private Set espaciosNaturaleses = new HashSet(0);
+	private Set favoritosMunicipioses = new HashSet(0);
+	private Set favoritosEspacioses = new HashSet(0);
 
 	public Usuarios() {
 	}
@@ -24,12 +24,13 @@ public class Usuarios implements java.io.Serializable {
 		this.contraseña = contraseña;
 	}
 
-	public Usuarios(int codUsuario, String nombre, String contraseña, Set municipioses, Set espaciosNaturaleses) {
+	public Usuarios(int codUsuario, String nombre, String contraseña, Set favoritosMunicipioses,
+			Set favoritosEspacioses) {
 		this.codUsuario = codUsuario;
 		this.nombre = nombre;
 		this.contraseña = contraseña;
-		this.municipioses = municipioses;
-		this.espaciosNaturaleses = espaciosNaturaleses;
+		this.favoritosMunicipioses = favoritosMunicipioses;
+		this.favoritosEspacioses = favoritosEspacioses;
 	}
 
 	public int getCodUsuario() {
@@ -56,20 +57,20 @@ public class Usuarios implements java.io.Serializable {
 		this.contraseña = contraseña;
 	}
 
-	public Set getMunicipioses() {
-		return this.municipioses;
+	public Set getFavoritosMunicipioses() {
+		return this.favoritosMunicipioses;
 	}
 
-	public void setMunicipioses(Set municipioses) {
-		this.municipioses = municipioses;
+	public void setFavoritosMunicipioses(Set favoritosMunicipioses) {
+		this.favoritosMunicipioses = favoritosMunicipioses;
 	}
 
-	public Set getEspaciosNaturaleses() {
-		return this.espaciosNaturaleses;
+	public Set getFavoritosEspacioses() {
+		return this.favoritosEspacioses;
 	}
 
-	public void setEspaciosNaturaleses(Set espaciosNaturaleses) {
-		this.espaciosNaturaleses = espaciosNaturaleses;
+	public void setFavoritosEspacioses(Set favoritosEspacioses) {
+		this.favoritosEspacioses = favoritosEspacioses;
 	}
 
 }

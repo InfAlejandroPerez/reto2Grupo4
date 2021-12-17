@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 17 dic 2021 16:02:16 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="euskalmet" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.Municipios" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="municipios">
         <id name="codMunicipio" type="int">
@@ -21,21 +21,17 @@
             </key>
             <one-to-many class="modelo.Estaciones" embed-xml="true" not-found="exception"/>
         </set>
-        <set embed-xml="true" fetch="select" inverse="false" lazy="true" mutable="true" name="espaciosNaturaleses" optimistic-lock="true" sort="unsorted" table="esta_en">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="estaEns" optimistic-lock="true" sort="unsorted" table="esta_en">
             <key on-delete="noaction">
                 <column name="CodMunicipio" not-null="true"/>
             </key>
-            <many-to-many embed-xml="true" entity-name="modelo.EspaciosNaturales" not-found="exception" unique="false">
-                <column name="CodEspacio" not-null="true"/>
-            </many-to-many>
+            <one-to-many class="modelo.EstaEn" embed-xml="true" not-found="exception"/>
         </set>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="usuarioses" optimistic-lock="true" sort="unsorted" table="favoritos_municipios">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="favoritosMunicipioses" optimistic-lock="true" sort="unsorted" table="favoritos_municipios">
             <key on-delete="noaction">
                 <column name="CodMunicipio" not-null="true"/>
             </key>
-            <many-to-many embed-xml="true" entity-name="modelo.Usuarios" not-found="exception" unique="false">
-                <column name="CodUsuario" not-null="true"/>
-            </many-to-many>
+            <one-to-many class="modelo.FavoritosMunicipios" embed-xml="true" not-found="exception"/>
         </set>
     </class>
 </hibernate-mapping>
