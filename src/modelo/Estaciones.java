@@ -1,5 +1,5 @@
 package modelo;
-// Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final
+// Generated 20 dic 2021 19:20:11 by Hibernate Tools 5.5.7.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,26 +10,33 @@ import java.util.Set;
 public class Estaciones implements java.io.Serializable {
 
 	private int codEstacion;
-	private Municipios municipios;
+	private Municipiospueblos municipiospueblos;
+	private int nombre;
 	private double coordenadaX;
 	private double coordenadaY;
+	private Integer codLocalidad;
 	private Set datoses = new HashSet(0);
 
 	public Estaciones() {
 	}
 
-	public Estaciones(int codEstacion, Municipios municipios, double coordenadaX, double coordenadaY) {
+	public Estaciones(int codEstacion, Municipiospueblos municipiospueblos, int nombre, double coordenadaX,
+			double coordenadaY) {
 		this.codEstacion = codEstacion;
-		this.municipios = municipios;
+		this.municipiospueblos = municipiospueblos;
+		this.nombre = nombre;
 		this.coordenadaX = coordenadaX;
 		this.coordenadaY = coordenadaY;
 	}
 
-	public Estaciones(int codEstacion, Municipios municipios, double coordenadaX, double coordenadaY, Set datoses) {
+	public Estaciones(int codEstacion, Municipiospueblos municipiospueblos, int nombre, double coordenadaX,
+			double coordenadaY, Integer codLocalidad, Set datoses) {
 		this.codEstacion = codEstacion;
-		this.municipios = municipios;
+		this.municipiospueblos = municipiospueblos;
+		this.nombre = nombre;
 		this.coordenadaX = coordenadaX;
 		this.coordenadaY = coordenadaY;
+		this.codLocalidad = codLocalidad;
 		this.datoses = datoses;
 	}
 
@@ -41,12 +48,20 @@ public class Estaciones implements java.io.Serializable {
 		this.codEstacion = codEstacion;
 	}
 
-	public Municipios getMunicipios() {
-		return this.municipios;
+	public Municipiospueblos getMunicipiospueblos() {
+		return this.municipiospueblos;
 	}
 
-	public void setMunicipios(Municipios municipios) {
-		this.municipios = municipios;
+	public void setMunicipiospueblos(Municipiospueblos municipiospueblos) {
+		this.municipiospueblos = municipiospueblos;
+	}
+
+	public int getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(int nombre) {
+		this.nombre = nombre;
 	}
 
 	public double getCoordenadaX() {
@@ -63,6 +78,14 @@ public class Estaciones implements java.io.Serializable {
 
 	public void setCoordenadaY(double coordenadaY) {
 		this.coordenadaY = coordenadaY;
+	}
+
+	public Integer getCodLocalidad() {
+		return this.codLocalidad;
+	}
+
+	public void setCodLocalidad(Integer codLocalidad) {
+		this.codLocalidad = codLocalidad;
 	}
 
 	public Set getDatoses() {

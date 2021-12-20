@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 dic 2021 19:20:11 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="euskalmet" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.Estaciones" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="estaciones">
         <id name="codEstacion" type="int">
             <column name="CodEstacion"/>
             <generator class="assigned"/>
         </id>
-        <many-to-one class="modelo.Municipios" embed-xml="true" fetch="select" insert="true" name="municipios" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <many-to-one class="modelo.Municipiospueblos" embed-xml="true" fetch="select" insert="true" name="municipiospueblos" not-found="exception" optimistic-lock="true" unique="false" update="true">
             <column name="CodMunicipio" not-null="true"/>
         </many-to-one>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="int" unique="false">
+            <column name="Nombre" not-null="true"/>
+        </property>
         <property generated="never" lazy="false" name="coordenadaX" optimistic-lock="true" type="double" unique="false">
             <column name="CoordenadaX" not-null="true" precision="22" scale="0"/>
         </property>
         <property generated="never" lazy="false" name="coordenadaY" optimistic-lock="true" type="double" unique="false">
             <column name="CoordenadaY" not-null="true" precision="22" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="codLocalidad" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="CodLocalidad"/>
         </property>
         <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="datoses" optimistic-lock="true" sort="unsorted" table="datos">
             <key on-delete="noaction">

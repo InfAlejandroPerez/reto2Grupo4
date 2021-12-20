@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 dic 2021 19:20:11 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="euskalmet" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.Municipios" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="municipios">
+    <class catalog="euskalmet" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.Municipiospueblos" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="municipiospueblos">
         <id name="codMunicipio" type="int">
             <column name="CodMunicipio"/>
             <generator class="assigned"/>
@@ -15,23 +15,29 @@
         <property generated="never" lazy="false" name="descripcion" optimistic-lock="true" type="string" unique="false">
             <column length="500" name="Descripcion" not-null="true"/>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="estacioneses" optimistic-lock="true" sort="unsorted" table="estaciones">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="espaciosNaturaleses" optimistic-lock="true" sort="unsorted" table="espacios_naturales">
             <key on-delete="noaction">
-                <column name="CodMunicipio" not-null="true"/>
+                <column name="CodMunicipio"/>
             </key>
-            <one-to-many class="modelo.Estaciones" embed-xml="true" not-found="exception"/>
+            <one-to-many class="modelo.EspaciosNaturales" embed-xml="true" not-found="exception"/>
         </set>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="estaEns" optimistic-lock="true" sort="unsorted" table="esta_en">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="localidads" optimistic-lock="true" sort="unsorted" table="localidad">
             <key on-delete="noaction">
                 <column name="CodMunicipio" not-null="true"/>
             </key>
-            <one-to-many class="modelo.EstaEn" embed-xml="true" not-found="exception"/>
+            <one-to-many class="modelo.Localidad" embed-xml="true" not-found="exception"/>
         </set>
         <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="favoritosMunicipioses" optimistic-lock="true" sort="unsorted" table="favoritos_municipios">
             <key on-delete="noaction">
                 <column name="CodMunicipio" not-null="true"/>
             </key>
             <one-to-many class="modelo.FavoritosMunicipios" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="estacioneses" optimistic-lock="true" sort="unsorted" table="estaciones">
+            <key on-delete="noaction">
+                <column name="CodMunicipio" not-null="true"/>
+            </key>
+            <one-to-many class="modelo.Estaciones" embed-xml="true" not-found="exception"/>
         </set>
     </class>
 </hibernate-mapping>

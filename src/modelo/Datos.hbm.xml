@@ -1,26 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 dic 2021 19:20:11 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="euskalmet" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.Datos" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="datos">
-        <composite-id class="modelo.DatosId" mapped="false" name="id" unsaved-value="undefined">
-            <key-many-to-one class="modelo.Estaciones" name="estaciones">
-                <column name="CodEstacion"/>
-            </key-many-to-one>
-            <key-property name="fecha" type="date">
-                <column length="10" name="Fecha"/>
-            </key-property>
-            <key-property name="hora" type="time">
-                <column length="8" name="Hora"/>
-            </key-property>
-        </composite-id>
+        <id name="direccion" type="string">
+            <column length="50" name="DIRECCION"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="modelo.Estaciones" embed-xml="true" fetch="select" insert="true" name="estaciones" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="CodEstacion" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="fecha" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="Fecha"/>
+        </property>
+        <property generated="never" lazy="false" name="hora" optimistic-lock="true" type="time" unique="false">
+            <column length="8" name="Hora"/>
+        </property>
         <property generated="never" lazy="false" name="precipitaciones" optimistic-lock="true" type="string" unique="false">
-            <column length="50" name="Precipitaciones" not-null="true"/>
+            <column length="50" name="Precipitaciones"/>
         </property>
-        <property generated="never" lazy="false" name="temperatura" optimistic-lock="true" type="big_decimal" unique="false">
-            <column name="Temperatura" not-null="true" precision="2"/>
+        <property generated="never" lazy="false" name="temperatura" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="Temperatura"/>
         </property>
-        <property generated="never" lazy="false" name="velocidadViento" optimistic-lock="true" type="big_decimal" unique="false">
-            <column name="`Velocidad viento`" not-null="true" precision="3"/>
+        <property generated="never" lazy="false" name="velocidadViento" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="`Velocidad viento`"/>
+        </property>
+        <property generated="never" lazy="false" name="comgm3" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="COmgm3" precision="10" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="comgm8" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="COmgm8" precision="10" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="nogm3" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="NOgm3"/>
+        </property>
+        <property generated="never" lazy="false" name="no2gm3" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="NO2gm3"/>
+        </property>
+        <property generated="never" lazy="false" name="noxgm3" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="NOXgm3"/>
+        </property>
+        <property generated="never" lazy="false" name="pm10gm3" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="PM10gm3"/>
+        </property>
+        <property generated="never" lazy="false" name="pm25gm3" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="PM25gm3"/>
+        </property>
+        <property generated="never" lazy="false" name="so2gm3" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="SO2gm3"/>
         </property>
     </class>
 </hibernate-mapping>

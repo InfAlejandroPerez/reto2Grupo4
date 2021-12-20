@@ -1,5 +1,5 @@
 package modelo;
-// Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final
+// Generated 20 dic 2021 19:20:11 by Hibernate Tools 5.5.7.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,9 +10,10 @@ import java.util.Set;
 public class EspaciosNaturales implements java.io.Serializable {
 
 	private int codEspacio;
+	private Municipiospueblos municipiospueblos;
 	private String nombre;
 	private String descripcion;
-	private Set estaEns = new HashSet(0);
+	private Integer codLocalidad;
 	private Set favoritosEspacioses = new HashSet(0);
 
 	public EspaciosNaturales() {
@@ -24,11 +25,13 @@ public class EspaciosNaturales implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public EspaciosNaturales(int codEspacio, String nombre, String descripcion, Set estaEns, Set favoritosEspacioses) {
+	public EspaciosNaturales(int codEspacio, Municipiospueblos municipiospueblos, String nombre, String descripcion,
+			Integer codLocalidad, Set favoritosEspacioses) {
 		this.codEspacio = codEspacio;
+		this.municipiospueblos = municipiospueblos;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.estaEns = estaEns;
+		this.codLocalidad = codLocalidad;
 		this.favoritosEspacioses = favoritosEspacioses;
 	}
 
@@ -38,6 +41,14 @@ public class EspaciosNaturales implements java.io.Serializable {
 
 	public void setCodEspacio(int codEspacio) {
 		this.codEspacio = codEspacio;
+	}
+
+	public Municipiospueblos getMunicipiospueblos() {
+		return this.municipiospueblos;
+	}
+
+	public void setMunicipiospueblos(Municipiospueblos municipiospueblos) {
+		this.municipiospueblos = municipiospueblos;
 	}
 
 	public String getNombre() {
@@ -56,12 +67,12 @@ public class EspaciosNaturales implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Set getEstaEns() {
-		return this.estaEns;
+	public Integer getCodLocalidad() {
+		return this.codLocalidad;
 	}
 
-	public void setEstaEns(Set estaEns) {
-		this.estaEns = estaEns;
+	public void setCodLocalidad(Integer codLocalidad) {
+		this.codLocalidad = codLocalidad;
 	}
 
 	public Set getFavoritosEspacioses() {

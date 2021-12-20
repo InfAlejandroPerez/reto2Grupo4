@@ -1,7 +1,6 @@
 package modelo;
-// Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final
+// Generated 20 dic 2021 19:20:11 by Hibernate Tools 5.5.7.Final
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -9,27 +8,68 @@ import java.util.Date;
  */
 public class Datos implements java.io.Serializable {
 
-	private int Datosid;
-	private String precipitaciones;
+	private String direccion;
+	private Estaciones estaciones;
 	private Date fecha;
 	private Date hora;
-	private BigDecimal temperatura;
-	private BigDecimal velocidadViento;
+	private String precipitaciones;
+	private Integer temperatura;
+	private Integer velocidadViento;
+	private Long comgm3;
+	private Long comgm8;
+	private Integer nogm3;
+	private Integer no2gm3;
+	private Integer noxgm3;
+	private Integer pm10gm3;
+	private Integer pm25gm3;
+	private Integer so2gm3;
 
 	public Datos() {
 	}
 
-	public Datos(int Datosid, String precipitaciones, Date fecha, Date hora, BigDecimal temperatura, BigDecimal velocidadViento) {
-		this.Datosid = Datosid;
-		this.precipitaciones = precipitaciones;
-		this.hora = hora;
+	public Datos(String direccion, Estaciones estaciones) {
+		this.direccion = direccion;
+		this.estaciones = estaciones;
+	}
+
+	public Datos(String direccion, Estaciones estaciones, Date fecha, Date hora, String precipitaciones,
+			Integer temperatura, Integer velocidadViento, Long comgm3, Long comgm8, Integer nogm3, Integer no2gm3,
+			Integer noxgm3, Integer pm10gm3, Integer pm25gm3, Integer so2gm3) {
+		this.direccion = direccion;
+		this.estaciones = estaciones;
 		this.fecha = fecha;
+		this.hora = hora;
+		this.precipitaciones = precipitaciones;
 		this.temperatura = temperatura;
 		this.velocidadViento = velocidadViento;
+		this.comgm3 = comgm3;
+		this.comgm8 = comgm8;
+		this.nogm3 = nogm3;
+		this.no2gm3 = no2gm3;
+		this.noxgm3 = noxgm3;
+		this.pm10gm3 = pm10gm3;
+		this.pm25gm3 = pm25gm3;
+		this.so2gm3 = so2gm3;
+	}
+
+	public String getDireccion() {
+		return this.direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public Estaciones getEstaciones() {
+		return this.estaciones;
+	}
+
+	public void setEstaciones(Estaciones estaciones) {
+		this.estaciones = estaciones;
 	}
 
 	public Date getFecha() {
-		return fecha;
+		return this.fecha;
 	}
 
 	public void setFecha(Date fecha) {
@@ -37,19 +77,11 @@ public class Datos implements java.io.Serializable {
 	}
 
 	public Date getHora() {
-		return hora;
+		return this.hora;
 	}
 
 	public void setHora(Date hora) {
 		this.hora = hora;
-	}
-
-	public int getId() {
-		return this.Datosid;
-	}
-
-	public void setId(int Datosid) {
-		this.Datosid = Datosid;
 	}
 
 	public String getPrecipitaciones() {
@@ -60,20 +92,84 @@ public class Datos implements java.io.Serializable {
 		this.precipitaciones = precipitaciones;
 	}
 
-	public BigDecimal getTemperatura() {
+	public Integer getTemperatura() {
 		return this.temperatura;
 	}
 
-	public void setTemperatura(BigDecimal temperatura) {
+	public void setTemperatura(Integer temperatura) {
 		this.temperatura = temperatura;
 	}
 
-	public BigDecimal getVelocidadViento() {
+	public Integer getVelocidadViento() {
 		return this.velocidadViento;
 	}
 
-	public void setVelocidadViento(BigDecimal velocidadViento) {
+	public void setVelocidadViento(Integer velocidadViento) {
 		this.velocidadViento = velocidadViento;
+	}
+
+	public Long getComgm3() {
+		return this.comgm3;
+	}
+
+	public void setComgm3(Long comgm3) {
+		this.comgm3 = comgm3;
+	}
+
+	public Long getComgm8() {
+		return this.comgm8;
+	}
+
+	public void setComgm8(Long comgm8) {
+		this.comgm8 = comgm8;
+	}
+
+	public Integer getNogm3() {
+		return this.nogm3;
+	}
+
+	public void setNogm3(Integer nogm3) {
+		this.nogm3 = nogm3;
+	}
+
+	public Integer getNo2gm3() {
+		return this.no2gm3;
+	}
+
+	public void setNo2gm3(Integer no2gm3) {
+		this.no2gm3 = no2gm3;
+	}
+
+	public Integer getNoxgm3() {
+		return this.noxgm3;
+	}
+
+	public void setNoxgm3(Integer noxgm3) {
+		this.noxgm3 = noxgm3;
+	}
+
+	public Integer getPm10gm3() {
+		return this.pm10gm3;
+	}
+
+	public void setPm10gm3(Integer pm10gm3) {
+		this.pm10gm3 = pm10gm3;
+	}
+
+	public Integer getPm25gm3() {
+		return this.pm25gm3;
+	}
+
+	public void setPm25gm3(Integer pm25gm3) {
+		this.pm25gm3 = pm25gm3;
+	}
+
+	public Integer getSo2gm3() {
+		return this.so2gm3;
+	}
+
+	public void setSo2gm3(Integer so2gm3) {
+		this.so2gm3 = so2gm3;
 	}
 
 }
