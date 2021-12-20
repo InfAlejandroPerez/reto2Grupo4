@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="euskalmet" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.FavoritosEspacios" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="favoritos_espacios">
+        <composite-id class="modelo.FavoritosEspaciosId" mapped="false" name="id" unsaved-value="undefined">
+            <key-many-to-one class="modelo.Usuarios" name="usuarios">
+                <column name="CodUsuario"/>
+            </key-many-to-one>
+            <key-many-to-one class="modelo.EspaciosNaturales" name="espaciosNaturales">
+                <column name="CodEspacio"/>
+            </key-many-to-one>
+        </composite-id>
+    </class>
+</hibernate-mapping>

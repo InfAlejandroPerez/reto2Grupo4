@@ -1,5 +1,5 @@
 package modelo;
-// Generated 16 dic 2021 18:38:55 by Hibernate Tools 5.5.7.Final
+// Generated 17 dic 2021 16:17:04 by Hibernate Tools 5.5.7.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,8 +12,8 @@ public class EspaciosNaturales implements java.io.Serializable {
 	private int codEspacio;
 	private String nombre;
 	private String descripcion;
-	private Set municipioses = new HashSet(0);
-	private Set usuarioses = new HashSet(0);
+	private Set estaEns = new HashSet(0);
+	private Set favoritosEspacioses = new HashSet(0);
 
 	public EspaciosNaturales() {
 	}
@@ -24,12 +24,12 @@ public class EspaciosNaturales implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public EspaciosNaturales(int codEspacio, String nombre, String descripcion, Set municipioses, Set usuarioses) {
+	public EspaciosNaturales(int codEspacio, String nombre, String descripcion, Set estaEns, Set favoritosEspacioses) {
 		this.codEspacio = codEspacio;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.municipioses = municipioses;
-		this.usuarioses = usuarioses;
+		this.estaEns = estaEns;
+		this.favoritosEspacioses = favoritosEspacioses;
 	}
 
 	public int getCodEspacio() {
@@ -56,20 +56,20 @@ public class EspaciosNaturales implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Set getMunicipioses() {
-		return this.municipioses;
+	public Set getEstaEns() {
+		return this.estaEns;
 	}
 
-	public void setMunicipioses(Set municipioses) {
-		this.municipioses = municipioses;
+	public void setEstaEns(Set estaEns) {
+		this.estaEns = estaEns;
 	}
 
-	public Set getUsuarioses() {
-		return this.usuarioses;
+	public Set getFavoritosEspacioses() {
+		return this.favoritosEspacioses;
 	}
 
-	public void setUsuarioses(Set usuarioses) {
-		this.usuarioses = usuarioses;
+	public void setFavoritosEspacioses(Set favoritosEspacioses) {
+		this.favoritosEspacioses = favoritosEspacioses;
 	}
 
 }
