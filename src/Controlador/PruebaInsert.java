@@ -1,7 +1,7 @@
 package Controlador;
 
 
-import HibernateUtil.HibernateUtil;
+//import HibernateUtil;
 
 import java.math.BigDecimal;
 import java.util.Date;
