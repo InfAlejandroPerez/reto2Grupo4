@@ -15,28 +15,27 @@ public class Servidor {
 		ServerSocket servidor = null;
 		// punto de comunicacion del cliente
 		Socket cliente = null;
-		while (clientes < 10) {
-			try {
 
-				servidor = new ServerSocket(PUERTO);
+		try {
 
-				System.out.println("Servicio iniciado| Esperando clientes...");
+			servidor = new ServerSocket(PUERTO);
 
-				cliente = servidor.accept();
+			System.out.println("Servicio iniciado| Esperando clientes...");
 
-				System.out.println("Cliente aceptado");
-				clientes++;
-				System.out.println("Número de clientes: " + clientes);
+			cliente = servidor.accept();
 
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			System.out.println("Cliente aceptado");
+			clientes++;
+			System.out.println("Número de clientes: " + clientes);
 
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 
-			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
 		}
 
 	}
