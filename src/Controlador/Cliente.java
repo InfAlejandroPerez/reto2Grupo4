@@ -19,8 +19,8 @@ public class Cliente {
 
 			System.out.println("Conexión establecida con el servidor");
 
-			// salida = new ObjectOutputStream(cliente.getOutputStream());
-			// entrada = new ObjectInputStream(cliente.getInputStream());
+			//salida = new ObjectOutputStream(cliente.getOutputStream());
+			//entrada = new ObjectInputStream(cliente.getInputStream());
 
 		} catch (Exception e) {
 			e.printStackTrace();
