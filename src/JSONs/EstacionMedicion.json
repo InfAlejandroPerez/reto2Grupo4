@@ -1,0 +1,532 @@
+jsonCallback([ {
+  "Name" : "3 DE MARZO",
+  "Province" : "Araba/Álava",
+  "Town" : "Vitoria-Gasteiz",
+  "Address" : "Plaza Tres de Marzo, s/n",
+  "CoordenatesXETRS89" : "527141,4365",
+  "CoordenatesYETRS89" : "4744882,8893",
+  "Latitude" : "42,85604797053618",
+  "Longitude" : "-2,667784994714487"
+}, {
+  "Name" : "ABANTO",
+  "Province" : "Bizkaia",
+  "Town" : "Abanto y Ciérvana-Abanto Zierbena",
+  "Address" : "Avda. del Minero, 2. Ayuntamiento",
+  "CoordenatesXETRS89" : "493987,175",
+  "CoordenatesYETRS89" : "4796406,558",
+  "Latitude" : "43,32047399433485",
+  "Longitude" : "-3,0741559961978044"
+}, {
+  "Name" : "AGURAIN",
+  "Province" : "Araba/Álava",
+  "Town" : "Agurain/Salvatierra",
+  "Address" : "C/ Fueros, 11. Subcomisaría de la Ertzaintza.",
+  "CoordenatesXETRS89" : "549539,1393",
+  "CoordenatesYETRS89" : "4744226,3688",
+  "Latitude" : "42,84901250588428",
+  "Longitude" : "-2,3937033896081683"
+}, {
+  "Name" : "ALGORTA (BBIZI2)",
+  "Province" : "Bizkaia",
+  "Town" : "Getxo",
+  "Address" : "Carretera de Galea, s/n ",
+  "CoordenatesXETRS89" : "498154",
+  "CoordenatesYETRS89" : "4801022",
+  "Latitude" : "43,362055748944286",
+  "Longitude" : "-3,0227822073211765"
+}, {
+  "Name" : "ALONSOTEGI",
+  "Province" : "Bizkaia",
+  "Town" : "Alonsotegi",
+  "Address" : "C/ Baztieta, s/n. Bº Irauregi",
+  "CoordenatesXETRS89" : "500972,2158",
+  "CoordenatesYETRS89" : "4788307,4677",
+  "Latitude" : "43,247567997964374",
+  "Longitude" : "-2,988024000380936"
+}, {
+  "Name" : "ANDOAIN",
+  "Province" : "Gipuzkoa",
+  "Town" : "Andoain",
+  "Address" : "Ikastola Aita larramendi",
+  "CoordenatesXETRS89" : "579321",
+  "CoordenatesYETRS89" : "4785862",
+  "Latitude" : "43,22137866586519",
+  "Longitude" : "-2,02332524753123"
+}, {
+  "Name" : "ARRAIZ (Monte)",
+  "Province" : "Bizkaia",
+  "Town" : "Bilbao",
+  "Address" : "Camino de Arraiz, s/n",
+  "CoordenatesXETRS89" : "503208,6894",
+  "CoordenatesYETRS89" : "4788084,4656",
+  "Latitude" : "43,245553729819484",
+  "Longitude" : "-2,960475856567045"
+}, {
+  "Name" : "ATEGORRIETA",
+  "Province" : "Gipuzkoa",
+  "Town" : "Donostia / San Sebastián",
+  "Address" : "Avda. Ategorrieta, 71",
+  "CoordenatesXETRS89" : "584272,2271",
+  "CoordenatesYETRS89" : "4797096,9139",
+  "Latitude" : "43,32199194732484",
+  "Longitude" : "-1,960650618338729"
+}, {
+  "Name" : "AV. GASTEIZ",
+  "Province" : "Araba/Álava",
+  "Town" : "Vitoria-Gasteiz",
+  "Address" : "Avda. Gasteiz, 97",
+  "CoordenatesXETRS89" : "526086,031",
+  "CoordenatesYETRS89" : "4744738,1348",
+  "Latitude" : "42,85478118366939",
+  "Longitude" : "-2,6807098224581067"
+}, {
+  "Name" : "AVDA. TOLOSA",
+  "Province" : "Gipuzkoa",
+  "Town" : "Donostia / San Sebastián",
+  "Address" : "C/ Andrestegi, 2 ",
+  "CoordenatesXETRS89" : "580211,325",
+  "CoordenatesYETRS89" : "4795650,4773",
+  "Latitude" : "43,30941344063433",
+  "Longitude" : "-2,010938423674493"
+}, {
+  "Name" : "AZPEITIA",
+  "Province" : "Gipuzkoa",
+  "Town" : "Azpeitia",
+  "Address" : "C/ Perdillegi, s/n",
+  "CoordenatesXETRS89" : "559472,3",
+  "CoordenatesYETRS89" : "4781104,8",
+  "Latitude" : "43,180370053194196",
+  "Longitude" : "-2,2682104189344456"
+}, {
+  "Name" : "AÑORGA",
+  "Province" : "Gipuzkoa",
+  "Town" : "Donostia / San Sebastián",
+  "Address" : "Avda. de Añorga, 12 (Añorga Txiki)",
+  "CoordenatesXETRS89" : "581469,0172",
+  "CoordenatesYETRS89" : "4793568,2345",
+  "Latitude" : "43,29053138556358",
+  "Longitude" : "-1,9957411467011474"
+}, {
+  "Name" : "BANDERAS (meteo)",
+  "Province" : "Bizkaia",
+  "Town" : "Bilbao",
+  "Address" : "Monte Banderas, s/n",
+  "CoordenatesXETRS89" : "503790,8",
+  "CoordenatesYETRS89" : "4792020,1",
+  "Latitude" : "43,28099012364825",
+  "Longitude" : "-2,953278416670214"
+}, {
+  "Name" : "BARAKALDO",
+  "Province" : "Bizkaia",
+  "Town" : "Barakaldo",
+  "Address" : "C/ Hogar propio, 7. CIFP Nicolás Larburu",
+  "CoordenatesXETRS89" : "501043,6789",
+  "CoordenatesYETRS89" : "4793950,2238",
+  "Latitude" : "43,298378997955",
+  "Longitude" : "-2,987132999827669"
+}, {
+  "Name" : "BASAURI",
+  "Province" : "Bizkaia",
+  "Town" : "Basauri",
+  "Address" : "C/ Uribarri, 5. CEIP Bizkotxalde.",
+  "CoordenatesXETRS89" : "509437,3144",
+  "CoordenatesYETRS89" : "4787599,1408",
+  "Latitude" : "43,24113129588412",
+  "Longitude" : "-2,8837610228035238"
+}, {
+  "Name" : "BEASAIN",
+  "Province" : "Gipuzkoa",
+  "Town" : "Beasain",
+  "Address" : "Plaza Gipuzkoa, 1",
+  "CoordenatesXETRS89" : "565857,9851",
+  "CoordenatesYETRS89" : "4766472,8521",
+  "Latitude" : "43,04809432240711",
+  "Longitude" : "-2,191380269702985"
+}, {
+  "Name" : "BOROA METEO",
+  "Province" : "Bizkaia",
+  "Town" : "Amorebieta-Etxano",
+  "Address" : "Parque Empresarial Boroa, s/n",
+  "CoordenatesXETRS89" : "520243,146",
+  "CoordenatesYETRS89" : "4787042,3114",
+  "Latitude" : "43,23590459584916",
+  "Longitude" : "-2,7506874305174405"
+}, {
+  "Name" : "CASTREJANA",
+  "Province" : "Bizkaia",
+  "Town" : "Barakaldo",
+  "Address" : "C/ Larrazabal, 1. Bº Castrejana",
+  "CoordenatesXETRS89" : "502154,4326",
+  "CoordenatesYETRS89" : "4789475,0682",
+  "Latitude" : "43,25807942736176",
+  "Longitude" : "-2,973456590856772"
+}, {
+  "Name" : "DURANGO",
+  "Province" : "Bizkaia",
+  "Town" : "Durango",
+  "Address" : "C/ San Roque, 20 bajo. E.S. Roque",
+  "CoordenatesXETRS89" : "529428,7974",
+  "CoordenatesYETRS89" : "4779566,5562",
+  "Latitude" : "43,168285997690994",
+  "Longitude" : "-2,6379580009450136"
+}, {
+  "Name" : "EASO",
+  "Province" : "Gipuzkoa",
+  "Town" : "Donostia / San Sebastián",
+  "Address" : "Plaza del Centenario, s/n",
+  "CoordenatesXETRS89" : "582643,6267",
+  "CoordenatesYETRS89" : "4795983,9845",
+  "Latitude" : "43,31215280742268",
+  "Longitude" : "-1,9809008637096939"
+}, {
+  "Name" : "ELCIEGO",
+  "Province" : "Araba/Álava",
+  "Town" : "Elciego",
+  "Address" : "C/ Gabriel Celaya, 8",
+  "CoordenatesXETRS89" : "531257,1773",
+  "CoordenatesYETRS89" : "4707389,4714",
+  "Latitude" : "42,51824807424149",
+  "Longitude" : "-2,61947521199466"
+}, {
+  "Name" : "ERANDIO",
+  "Province" : "Bizkaia",
+  "Town" : "Erandio",
+  "Address" : "Avda. José Luis Goyoaga, s/n (Pasaje de Altzaga)",
+  "CoordenatesXETRS89" : "501846",
+  "CoordenatesYETRS89" : "4794425",
+  "Latitude" : "43,3026526345891",
+  "Longitude" : "-2,9772399863752486"
+}, {
+  "Name" : "EUROPA",
+  "Province" : "Bizkaia",
+  "Town" : "Bilbao",
+  "Address" : "Parque Europa. Bº Txurdinaga",
+  "CoordenatesXETRS89" : "507924,189",
+  "CoordenatesYETRS89" : "4789127,4396",
+  "Latitude" : "43,25491056506432",
+  "Longitude" : "-2,902376115931137"
+}, {
+  "Name" : "FARMACIA",
+  "Province" : "Araba/Álava",
+  "Town" : "Vitoria-Gasteiz",
+  "Address" : "Paseo Universidad, 7. Fac. Farmacia UPV",
+  "CoordenatesXETRS89" : "526757,9486",
+  "CoordenatesYETRS89" : "4743110,3681",
+  "Latitude" : "42,840099615592926",
+  "Longitude" : "-2,672563184280286"
+}, {
+  "Name" : "FERIA (meteo)",
+  "Province" : "Bizkaia",
+  "Town" : "Bilbao",
+  "Address" : "C/ Rafael Moreno Pitxitxi, s/n",
+  "CoordenatesXETRS89" : "504257,1663",
+  "CoordenatesYETRS89" : "4790269,2685",
+  "Latitude" : "43,26522199716327",
+  "Longitude" : "-2,9475439999557134"
+}, {
+  "Name" : "HERNANI",
+  "Province" : "Gipuzkoa",
+  "Town" : "Hernani",
+  "Address" : "C/ Aristizabal, s/n. Centro de salud Hernani.",
+  "CoordenatesXETRS89" : "582962,7015",
+  "CoordenatesYETRS89" : "4791020,6066",
+  "Latitude" : "43,26743142273141",
+  "Longitude" : "-1,977715640356133"
+}, {
+  "Name" : "JAIZKIBEL",
+  "Province" : "Gipuzkoa",
+  "Town" : "Hondarribia",
+  "Address" : "Monte Jaizkibel, s/n",
+  "CoordenatesXETRS89" : "592449,2822",
+  "CoordenatesYETRS89" : "4799512,1706",
+  "Latitude" : "43,342775184321106",
+  "Longitude" : "-1,8594129027945114"
+}, {
+  "Name" : "LARRABETZU",
+  "Province" : "Bizkaia",
+  "Town" : "Larrabetzu",
+  "Address" : "Barrio Berrezoaga, 3",
+  "CoordenatesXETRS89" : "516281,215",
+  "CoordenatesYETRS89" : "4789843,71",
+  "Latitude" : "43,261226121618066",
+  "Longitude" : "-2,799399084312731"
+}, {
+  "Name" : "LAS CARRERAS",
+  "Province" : "Bizkaia",
+  "Town" : "Abanto y Ciérvana-Abanto Zierbena",
+  "Address" : "Plaza Trinidad, s/n. Bº Las Carreras",
+  "CoordenatesXETRS89" : "492102,56",
+  "CoordenatesYETRS89" : "4796311,78",
+  "Latitude" : "43,31960312849335",
+  "Longitude" : "-3,0973975060209376"
+}, {
+  "Name" : "LASARTE-ORIA",
+  "Province" : "Gipuzkoa",
+  "Town" : "Lasarte-Oria",
+  "Address" : "Parque Tximistarreta",
+  "CoordenatesXETRS89" : "579600,13",
+  "CoordenatesYETRS89" : "4791121,24",
+  "Latitude" : "43,26870022418793",
+  "Longitude" : "-2,0191293415933154"
+}, {
+  "Name" : "LEZO",
+  "Province" : "Gipuzkoa",
+  "Town" : "Lezo",
+  "Address" : "Plaza Polantzarene, s/n",
+  "CoordenatesXETRS89" : "589179,9795",
+  "CoordenatesYETRS89" : "4797107,63",
+  "Latitude" : "43,32152243586307",
+  "Longitude" : "-1,900131049811533"
+}, {
+  "Name" : "LLODIO",
+  "Province" : "Araba/Álava",
+  "Town" : "Laudio/Llodio",
+  "Address" : "C/ Lamuza, s/n",
+  "CoordenatesXETRS89" : "502977,4251",
+  "CoordenatesYETRS89" : "4776809,8177",
+  "Latitude" : "43,1440289422417",
+  "Longitude" : "-2,9633852821260223"
+}, {
+  "Name" : "LOS HERRAN",
+  "Province" : "Araba/Álava",
+  "Town" : "Vitoria-Gasteiz",
+  "Address" : "Parque Judizmendi. Bº Judizmendi",
+  "CoordenatesXETRS89" : "527682,4365",
+  "CoordenatesYETRS89" : "4743514,1634",
+  "Latitude" : "42,84370295644861",
+  "Longitude" : "-2,661230556636825"
+}, {
+  "Name" : "MAZARREDO",
+  "Province" : "Bizkaia",
+  "Town" : "Bilbao",
+  "Address" : "C/ Alameda Mazarredo, s/n (Guggenheim)",
+  "CoordenatesXETRS89" : "505259,7354",
+  "CoordenatesYETRS89" : "4790523,5641",
+  "Latitude" : "43,26750551179745",
+  "Longitude" : "-2,935188110338201"
+}, {
+  "Name" : "MONDRAGON",
+  "Province" : "Gipuzkoa",
+  "Town" : "Arrasate/Mondragón",
+  "Address" : "Plaza Jose María Arizmendiarrieta, s/n",
+  "CoordenatesXETRS89" : "541493,746",
+  "CoordenatesYETRS89" : "4768061,3417",
+  "Latitude" : "43,06412079434686",
+  "Longitude" : "-2,4903966831445423"
+}, {
+  "Name" : "MONTORRA",
+  "Province" : "Bizkaia",
+  "Town" : "Amorebieta-Etxano",
+  "Address" : "Barrio Montorra fte. nº5",
+  "CoordenatesXETRS89" : "523021,9544",
+  "CoordenatesYETRS89" : "4784064,8793",
+  "Latitude" : "43,209014222504145",
+  "Longitude" : "-2,7165885073623226"
+}, {
+  "Name" : "MUNDAKA",
+  "Province" : "Bizkaia",
+  "Town" : "Mundaka",
+  "Address" : "Camino Goitiz, s/n. Depósito de Agua",
+  "CoordenatesXETRS89" : "524035,1288",
+  "CoordenatesYETRS89" : "4805932,4502",
+  "Latitude" : "43,40588884294258",
+  "Longitude" : "-2,7031593675211343"
+}, {
+  "Name" : "MUNOA",
+  "Province" : "Bizkaia",
+  "Town" : "Barakaldo",
+  "Address" : "C/ Llano, 55. CEP Munoa. Bº Lutxana",
+  "CoordenatesXETRS89" : "501728,39",
+  "CoordenatesYETRS89" : "4792529,8721",
+  "Latitude" : "43,28558799716144",
+  "Longitude" : "-2,978696000976749"
+}, {
+  "Name" : "MUSKIZ",
+  "Province" : "Bizkaia",
+  "Town" : "Muskiz",
+  "Address" : "C/ Giba Fregenal, s/n. Estación de Renfe",
+  "CoordenatesXETRS89" : "490860,6099",
+  "CoordenatesYETRS89" : "4796436,6121",
+  "Latitude" : "43,32071311956527",
+  "Longitude" : "-3,1127162723783197"
+}, {
+  "Name" : "Mª DIAZ HARO",
+  "Province" : "Bizkaia",
+  "Town" : "Bilbao",
+  "Address" : "C/ Mª Díaz de Haro, 60",
+  "CoordenatesXETRS89" : "504410,8",
+  "CoordenatesYETRS89" : "4789556,5",
+  "Latitude" : "43,25880286639215",
+  "Longitude" : "-2,945656664175787"
+}, {
+  "Name" : "NAUTICA",
+  "Province" : "Bizkaia",
+  "Town" : "Portugalete",
+  "Address" : "C/ Mª Díaz de Haro, 68 (Esc. Náutica)",
+  "CoordenatesXETRS89" : "498108,2533",
+  "CoordenatesYETRS89" : "4797122,7258",
+  "Latitude" : "43,32694444265417",
+  "Longitude" : "-3,023333333735672"
+}, {
+  "Name" : "PAGOETA",
+  "Province" : "Gipuzkoa",
+  "Town" : "Aia",
+  "Address" : "Jardín Botánico de Iturraran. Parque Natural de Pagoeta. ",
+  "CoordenatesXETRS89" : "568603,2817",
+  "CoordenatesYETRS89" : "4788991,3758",
+  "Latitude" : "43,25060521979407",
+  "Longitude" : "-2,1548873966664503"
+}, {
+  "Name" : "PUYO",
+  "Province" : "Gipuzkoa",
+  "Town" : "Donostia / San Sebastián",
+  "Address" : "Camino de Puyo, 14",
+  "CoordenatesXETRS89" : "582404,0515",
+  "CoordenatesYETRS89" : "4794939,6966",
+  "Latitude" : "43,302777170621106",
+  "Longitude" : "-1,9840112864449164"
+}, {
+  "Name" : "SAN JULIAN",
+  "Province" : "Bizkaia",
+  "Town" : "Muskiz",
+  "Address" : "Camino a Valles, s/n. Bº San Julian",
+  "CoordenatesXETRS89" : "490839,8223",
+  "CoordenatesYETRS89" : "4797762,3066",
+  "Latitude" : "43,33265015831669",
+  "Longitude" : "-3,112994770178107"
+}, {
+  "Name" : "SAN MIGUEL",
+  "Province" : "Bizkaia",
+  "Town" : "Basauri",
+  "Address" : "Parque pinceles. Bº San Miguel",
+  "CoordenatesXETRS89" : "509217,21",
+  "CoordenatesYETRS89" : "4785388,01",
+  "Latitude" : "43,2212234317361",
+  "Longitude" : "-2,886508983250916"
+}, {
+  "Name" : "SANGRONIZ",
+  "Province" : "Bizkaia",
+  "Town" : "Sondika",
+  "Address" : "C/ Iturrikosolo, s/n",
+  "CoordenatesXETRS89" : "505646,6",
+  "CoordenatesYETRS89" : "4793957,2",
+  "Latitude" : "43,29842135635236",
+  "Longitude" : "-2,93038581833024"
+}, {
+  "Name" : "SANTURCE",
+  "Province" : "Bizkaia",
+  "Town" : "Santurtzi",
+  "Address" : "C/ Vista Alegre, 29 ",
+  "CoordenatesXETRS89" : "496549,7975",
+  "CoordenatesYETRS89" : "4797797,1715",
+  "Latitude" : "43,33301199742545",
+  "Longitude" : "-3,042560000349237"
+}, {
+  "Name" : "SERANTES",
+  "Province" : "Bizkaia",
+  "Town" : "Santurtzi",
+  "Address" : "Camino Serantes igoera, s/n",
+  "CoordenatesXETRS89" : "494893,6762",
+  "CoordenatesYETRS89" : "4797956,4394",
+  "Latitude" : "43,3344367083824",
+  "Longitude" : "-3,0629905698856272"
+}, {
+  "Name" : "SESTAO",
+  "Province" : "Bizkaia",
+  "Town" : "Sestao",
+  "Address" : "Parque Portopin",
+  "CoordenatesXETRS89" : "500328,4875",
+  "CoordenatesYETRS89" : "4794988,1863",
+  "Latitude" : "43,307726099387494",
+  "Longitude" : "-2,9959496198447484"
+}, {
+  "Name" : "TOLOSA",
+  "Province" : "Gipuzkoa",
+  "Town" : "Tolosa",
+  "Address" : "Avda. Martin Jose Iraola, 23",
+  "CoordenatesXETRS89" : "574991,16",
+  "CoordenatesYETRS89" : "4775750,46",
+  "Latitude" : "43,13078067861342",
+  "Longitude" : "-2,078002156707588"
+}, {
+  "Name" : "URKIOLA",
+  "Province" : "Bizkaia",
+  "Town" : "Abadiño",
+  "Address" : "Urkiola auzoa, 8",
+  "CoordenatesXETRS89" : "528410,62",
+  "CoordenatesYETRS89" : "4772028",
+  "Latitude" : "43,100442429429606",
+  "Longitude" : "-2,6508700717196243"
+}, {
+  "Name" : "USURBIL",
+  "Province" : "Gipuzkoa",
+  "Town" : "Usurbil",
+  "Address" : "San Inazio",
+  "CoordenatesXETRS89" : "577047",
+  "CoordenatesYETRS89" : "4791656",
+  "Latitude" : "43,27378032307657",
+  "Longitude" : "-2,0505110667115676"
+}, {
+  "Name" : "VALDEREJO",
+  "Province" : "Araba/Álava",
+  "Town" : "Valdegovía/Gaubea",
+  "Address" : "Ctro. de Interpretación. Parque Natural de Valderejo",
+  "CoordenatesXETRS89" : "481073,6693",
+  "CoordenatesYETRS89" : "4746978,5075",
+  "Latitude" : "42,87516709375477",
+  "Longitude" : "-3,231732505322038"
+}, {
+  "Name" : "ZALLA",
+  "Province" : "Bizkaia",
+  "Town" : "Zalla",
+  "Address" : "Avda. Kosme Bibanko Etxebarria, 2",
+  "CoordenatesXETRS89" : "489078,1917",
+  "CoordenatesYETRS89" : "4784461,4469",
+  "Latitude" : "43,2128572411877",
+  "Longitude" : "-3,134461258966499"
+}, {
+  "Name" : "ZELAIETA PARQUE",
+  "Province" : "Bizkaia",
+  "Town" : "Amorebieta-Etxano",
+  "Address" : "Parque Zelaieta ",
+  "CoordenatesXETRS89" : "521563,7353",
+  "CoordenatesYETRS89" : "4785158,5803",
+  "Latitude" : "43,21890568490462",
+  "Longitude" : "-2,7344969803118295"
+}, {
+  "Name" : "ZIERBENA (Puerto)",
+  "Province" : "Bizkaia",
+  "Town" : "Zierbena",
+  "Address" : "Puerto de Zierbena, s/n. Bº El Puerto",
+  "CoordenatesXETRS89" : "493436,7",
+  "CoordenatesYETRS89" : "4800025,4",
+  "Latitude" : "43,35305543364201",
+  "Longitude" : "-3,080988277376953"
+}, {
+  "Name" : "ZUBIETA",
+  "Province" : "Gipuzkoa",
+  "Town" : "Donostia / San Sebastián",
+  "Address" : "URIBITARTE IBILBIDEA",
+  "CoordenatesXETRS89" : "578604",
+  "CoordenatesYETRS89" : "4791483",
+  "Latitude" : "43,272061873363164",
+  "Longitude" : "-2,0313507420960284"
+}, {
+  "Name" : "ZUBIETA METEO",
+  "Province" : "Gipuzkoa",
+  "Town" : "Donostia / San Sebastián",
+  "Address" : "ZUBIETA",
+  "CoordenatesXETRS89" : "578595",
+  "CoordenatesYETRS89" : "4789696",
+  "Latitude" : "43,25597376352475",
+  "Longitude" : "-2,0317166856330036"
+}, {
+  "Name" : "ZUMARRAGA",
+  "Province" : "Gipuzkoa",
+  "Town" : "Zumarraga",
+  "Address" : "Grupo Izazpi 3, 6 ",
+  "CoordenatesXETRS89" : "555656,194",
+  "CoordenatesYETRS89" : "4770489,269",
+  "Latitude" : "43,08507598449891",
+  "Longitude" : "-2,316228856182885"
+} ]);

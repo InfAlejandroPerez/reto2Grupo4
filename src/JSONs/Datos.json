@@ -1,0 +1,905 @@
+{
+  "lastUpdateDate": "Mon Nov 01 06:00:02 CET 2021",
+  "aggregated": [
+    {
+      "format": "JSON",
+      "name": "3_DE_MARZO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/3_DE_MARZO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "3_DE_MARZO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/3_DE_MARZO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "3_DE_MARZO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/3_DE_MARZO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ABANTO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ABANTO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ABANTO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ABANTO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ABANTO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ABANTO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AGURAIN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/AGURAIN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AGURAIN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/AGURAIN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AGURAIN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/AGURAIN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ALGORTA_BBIZI2",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ALGORTA_BBIZI2.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ALGORTA_BBIZI2",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ALGORTA_BBIZI2.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ALGORTA_BBIZI2",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ALGORTA_BBIZI2.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ALONSOTEGI",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ALONSOTEGI.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ALONSOTEGI",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ALONSOTEGI.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ALONSOTEGI",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ALONSOTEGI.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ANDOAIN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ANDOAIN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ANDOAIN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ANDOAIN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ANDOAIN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ANDOAIN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ARRAIZ_Monte",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ARRAIZ_Monte.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ARRAIZ_Monte",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ARRAIZ_Monte.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ARRAIZ_Monte",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ARRAIZ_Monte.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ATEGORRIETA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ATEGORRIETA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ATEGORRIETA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ATEGORRIETA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ATEGORRIETA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ATEGORRIETA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AV_GASTEIZ",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/AV_GASTEIZ.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AV_GASTEIZ",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/AV_GASTEIZ.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AV_GASTEIZ",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/AV_GASTEIZ.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AVDA_TOLOSA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/AVDA_TOLOSA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AVDA_TOLOSA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/AVDA_TOLOSA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AVDA_TOLOSA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/AVDA_TOLOSA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AZPEITIA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/AZPEITIA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AZPEITIA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/AZPEITIA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "AZPEITIA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/AZPEITIA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ANORGA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ANORGA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ANORGA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ANORGA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ANORGA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ANORGA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BANDERAS_meteo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/BANDERAS_meteo.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BANDERAS_meteo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/BANDERAS_meteo.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BANDERAS_meteo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/BANDERAS_meteo.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BARAKALDO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/BARAKALDO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BARAKALDO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/BARAKALDO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BARAKALDO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/BARAKALDO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BASAURI",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/BASAURI.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BASAURI",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/BASAURI.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BASAURI",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/BASAURI.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BEASAIN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/BEASAIN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BEASAIN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/BEASAIN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BEASAIN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/BEASAIN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BOROA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/BOROA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BOROA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/BOROA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "BOROA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/BOROA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "CASTREJANA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/CASTREJANA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "CASTREJANA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/CASTREJANA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "CASTREJANA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/CASTREJANA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "DURANGO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/DURANGO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "DURANGO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/DURANGO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "DURANGO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/DURANGO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "EASO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/EASO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "EASO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/EASO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "EASO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/EASO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ELCIEGO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ELCIEGO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ELCIEGO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ELCIEGO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ELCIEGO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ELCIEGO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ERANDIO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ERANDIO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ERANDIO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ERANDIO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ERANDIO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ERANDIO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "EUROPA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/EUROPA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "EUROPA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/EUROPA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "EUROPA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/EUROPA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "FARMACIA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/FARMACIA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "FARMACIA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/FARMACIA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "FARMACIA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/FARMACIA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "FERIA_meteo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/FERIA_meteo.json"
+    },
+    {
+      "format": "JSON",
+      "name": "FERIA_meteo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/FERIA_meteo.json"
+    },
+    {
+      "format": "JSON",
+      "name": "FERIA_meteo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/FERIA_meteo.json"
+    },
+    {
+      "format": "JSON",
+      "name": "HERNANI",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/HERNANI.json"
+    },
+    {
+      "format": "JSON",
+      "name": "HERNANI",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/HERNANI.json"
+    },
+    {
+      "format": "JSON",
+      "name": "HERNANI",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/HERNANI.json"
+    },
+    {
+      "format": "JSON",
+      "name": "JAIZKIBEL",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/JAIZKIBEL.json"
+    },
+    {
+      "format": "JSON",
+      "name": "JAIZKIBEL",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/JAIZKIBEL.json"
+    },
+    {
+      "format": "JSON",
+      "name": "JAIZKIBEL",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/JAIZKIBEL.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LARRABETZU",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/LARRABETZU.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LARRABETZU",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/LARRABETZU.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LARRABETZU",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/LARRABETZU.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LAS_CARRERAS",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/LAS_CARRERAS.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LAS_CARRERAS",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/LAS_CARRERAS.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LAS_CARRERAS",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/LAS_CARRERAS.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LASARTE-ORIA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/LASARTE-ORIA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LASARTE-ORIA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/LASARTE-ORIA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LASARTE-ORIA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/LASARTE-ORIA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LEMONA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/LEMONA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LEMONA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/LEMONA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LEMONA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/LEMONA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LEZO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/LEZO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LEZO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/LEZO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LEZO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/LEZO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LLODIO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/LLODIO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LLODIO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/LLODIO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LLODIO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/LLODIO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LOS_HERRAN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/LOS_HERRAN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LOS_HERRAN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/LOS_HERRAN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "LOS_HERRAN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/LOS_HERRAN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MAZARREDO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/MAZARREDO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MAZARREDO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/MAZARREDO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MAZARREDO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/MAZARREDO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MONDRAGON",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/MONDRAGON.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MONDRAGON",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/MONDRAGON.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MONDRAGON",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/MONDRAGON.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MONTORRA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/MONTORRA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MONTORRA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/MONTORRA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MONTORRA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/MONTORRA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MUNDAKA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/MUNDAKA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MUNDAKA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/MUNDAKA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MUNDAKA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/MUNDAKA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MUNOA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/MUNOA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MUNOA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/MUNOA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MUNOA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/MUNOA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MUSKIZ",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/MUSKIZ.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MUSKIZ",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/MUSKIZ.json"
+    },
+    {
+      "format": "JSON",
+      "name": "MUSKIZ",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/MUSKIZ.json"
+    },
+    {
+      "format": "JSON",
+      "name": "M_DIAZ_HARO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/M_DIAZ_HARO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "M_DIAZ_HARO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/M_DIAZ_HARO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "M_DIAZ_HARO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/M_DIAZ_HARO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "NAUTICA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/NAUTICA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "NAUTICA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/NAUTICA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "NAUTICA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/NAUTICA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "PAGOETA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/PAGOETA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "PAGOETA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/PAGOETA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "PAGOETA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/PAGOETA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "PUYO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/PUYO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "PUYO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/PUYO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "PUYO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/PUYO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SAN_JULIAN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/SAN_JULIAN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SAN_JULIAN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/SAN_JULIAN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SAN_JULIAN",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/SAN_JULIAN.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SAN_MIGUEL",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/SAN_MIGUEL.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SAN_MIGUEL",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/SAN_MIGUEL.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SAN_MIGUEL",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/SAN_MIGUEL.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SANGRONIZ",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/SANGRONIZ.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SANGRONIZ",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/SANGRONIZ.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SANGRONIZ",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/SANGRONIZ.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SANTURCE",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/SANTURCE.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SANTURCE",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/SANTURCE.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SANTURCE",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/SANTURCE.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SERANTES",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/SERANTES.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SERANTES",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/SERANTES.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SERANTES",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/SERANTES.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SESTAO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/SESTAO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SESTAO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/SESTAO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "SESTAO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/SESTAO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "TOLOSA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/TOLOSA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "TOLOSA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/TOLOSA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "TOLOSA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/TOLOSA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "URKIOLA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/URKIOLA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "URKIOLA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/URKIOLA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "URKIOLA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/URKIOLA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "USURBIL",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/USURBIL.json"
+    },
+    {
+      "format": "JSON",
+      "name": "USURBIL",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/USURBIL.json"
+    },
+    {
+      "format": "JSON",
+      "name": "USURBIL",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/USURBIL.json"
+    },
+    {
+      "format": "JSON",
+      "name": "VALDEREJO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/VALDEREJO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "VALDEREJO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/VALDEREJO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "VALDEREJO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/VALDEREJO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZALLA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ZALLA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZALLA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ZALLA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZALLA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ZALLA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZELAIETA_PARQUE",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ZELAIETA_PARQUE.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZELAIETA_PARQUE",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ZELAIETA_PARQUE.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZELAIETA_PARQUE",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ZELAIETA_PARQUE.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZIERBENA_Puerto",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ZIERBENA_Puerto.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZIERBENA_Puerto",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ZIERBENA_Puerto.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZIERBENA_Puerto",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ZIERBENA_Puerto.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZUBIETA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ZUBIETA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZUBIETA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ZUBIETA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZUBIETA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ZUBIETA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZUBIETA_METEO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ZUBIETA_METEO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZUBIETA_METEO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ZUBIETA_METEO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZUBIETA_METEO",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ZUBIETA_METEO.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZUMARRAGA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_horarios/ZUMARRAGA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZUMARRAGA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_diarios/ZUMARRAGA.json"
+    },
+    {
+      "format": "JSON",
+      "name": "ZUMARRAGA",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/datos_indice/ZUMARRAGA.json"
+    }
+  ]
+}
