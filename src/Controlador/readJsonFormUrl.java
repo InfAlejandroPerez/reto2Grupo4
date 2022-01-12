@@ -11,84 +11,80 @@ import org.json.JSONObject;
 
 public class readJsonFormUrl {
 
-	public static void main(String args[]) {
-		
+	public static String readData(String url) {
+
 		httpCertifi.validCert();
-		
-		String euskalmetAdjuntos = "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/index.json";
+
+		String euskalmetAdjuntos = url;
 		String json = readJsonFromUrl(euskalmetAdjuntos);
-		
+
 		System.out.println(json);
-		
+		return json;
+	}
+
+	public static String readJsonFromUrl(String url) {
+		InputStream is = null;
+
+		try {
+
+			is = new URL(url).openStream();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+
 		}
 
-		public static String readJsonFromUrl(String url) {
-		InputStream is = null;
-		
+		try {
+
+			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+			String jsonText = null;
+
 			try {
-			
-				is = new URL(url).openStream();
-		
+
+				jsonText = readAll(rd);
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-			
+
 				e.printStackTrace();
-		
+
 			}
-		
+			return jsonText;
+
+		} finally {
+
 			try {
-			
-				BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-				String jsonText = null;
-		
-				try {
-			
-					jsonText = readAll(rd);
-		
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-			
-					e.printStackTrace();
-		
-				}
-				return jsonText;
-		
-			} finally {
-			
-				try {
-			
-					is.close();
-		
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-			
-					e.printStackTrace();
-		
-				}
+
+				is.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+
+				e.printStackTrace();
+
 			}
+		}
+	}
+
+	private static String readAll(Reader rd) throws IOException {
+
+		StringBuilder sb = new StringBuilder();
+		int cp;
+
+		while ((cp = rd.read()) != -1) {
+
+			sb.append((char) cp);
+
 		}
 
-		private static String readAll(Reader rd) throws IOException {
-			
-			StringBuilder sb = new StringBuilder();
-			int cp;
-		
-			while ((cp = rd.read()) != -1) {
-			
-				sb.append((char) cp);
-		
-			}
-		
-			return sb.toString();
-		
-		}
-		
-		private static void LeerJson(String json) {
-			
-			
-			
-			
-			
-		}
-	
+		return sb.toString();
+
+	}
+
+	private static void LeerJson(String json) {
+
+	}
+
 }
