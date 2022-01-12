@@ -15,6 +15,9 @@ import modelo.Municipiospueblos;
 import modelo.Provincia;
 import modelo.Usuarios;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class inserts {
 	public void insertUsuarios(int code, String nombre, int clave) {
 		Usuarios us = new Usuarios();
@@ -32,10 +35,13 @@ public class inserts {
 		s.save(us);
 		// Actualizar información en la base de datos
 		tx.commit();
-		/*
-		 * //TODO if (s.isConnected()) s.close(); if (!sesion.isClosed())
-		 * sesion.close();
-		 */
+
+		// TODO
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertUsuarios(Usuarios us) {
@@ -49,10 +55,12 @@ public class inserts {
 		s.save(us);
 		// Actualizar información en la base de datos
 		tx.commit();
-		/*
-		 * //TODO if (s.isConnected()) s.close(); if (!sesion.isClosed())
-		 * sesion.close();
-		 */
+		// TODO
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertProvincia(int code, String nombre) {
@@ -69,9 +77,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertProvincia(Provincia pv) {
@@ -85,12 +96,16 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
-	public void insertMunicipio(int code, String nombre, String descripcion, Localidad localidad, Provincia provincia) {
+	public void insertMunicipio(int code, String nombre, String descripcion, Set localidad, Provincia provincia,
+			Set espaciosNaturaleses, Set estacioneses, Set favoritosMunicipioses) {
 		Municipiospueblos mun = new Municipiospueblos();
 		mun.setCodMunicipio(code);
 		mun.setNombre(nombre);
@@ -112,9 +127,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertMunicipio(Municipiospueblos mun) {
@@ -128,9 +146,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertLocalidad(int code, String nombre, String descripcion, Municipiospueblos municipiospueblos) {
@@ -150,9 +171,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertLocalidad(Localidad loc) {
@@ -166,9 +190,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertFavoritosMunicipios() {
@@ -185,9 +212,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertFavoritosEspacios() {
@@ -204,9 +234,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertEstaciones() {
@@ -223,9 +256,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertEspaciosNaturales() {
@@ -242,9 +278,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertDatos() {
@@ -261,9 +300,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 
 	public void insertObjeto(Object obj) {
@@ -277,8 +319,11 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+
+		if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+
 	}
 }
