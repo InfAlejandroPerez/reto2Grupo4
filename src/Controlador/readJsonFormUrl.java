@@ -14,15 +14,15 @@ public class readJsonFormUrl {
 	public static void main(String args[]) {
 		
 		httpCertifi.validCert();
-		String euskalmetAdjuntos = "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/index.json";
-		JSONObject json = readJsonFromUrl(euskalmetAdjuntos);
 		
-		System.out.println(json.toString());
-	    System.out.println(json.get("id"));
+		String euskalmetAdjuntos = "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/index.json";
+		String json = readJsonFromUrl(euskalmetAdjuntos);
+		
+		System.out.println(json);
 		
 		}
 
-		public static JSONObject readJsonFromUrl(String url) {
+		public static String readJsonFromUrl(String url) {
 		InputStream is = null;
 		
 			try {
@@ -51,9 +51,7 @@ public class readJsonFormUrl {
 					e.printStackTrace();
 		
 				}
-		
-				JSONObject json = new JSONObject(jsonText);
-				return json;
+				return jsonText;
 		
 			} finally {
 			
@@ -83,6 +81,14 @@ public class readJsonFormUrl {
 		
 			return sb.toString();
 		
+		}
+		
+		private static void LeerJson(String json) {
+			
+			
+			
+			
+			
 		}
 	
 }
