@@ -18,7 +18,7 @@ public class readJsonFormUrl {
 		String euskalmetAdjuntos = url;
 		String json = readJsonFromUrl(euskalmetAdjuntos);
 
-		System.out.println(json);
+		//System.out.println(json);
 		return json;
 	}
 
