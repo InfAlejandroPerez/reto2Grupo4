@@ -42,7 +42,7 @@ public class leerPueblos {
 		//s.iniciar();
 		
 		JsonParser parser = new JsonParser();
-		final String url = "C:\\Users\\in2dam-b\\eclipse-workspace\\reto2Grupo4\\src\\JSONs\\pueblos1.json";
+		final String url = "src/JSONs/pueblos1.json";
 		
 
 		try {
@@ -210,11 +210,11 @@ public class leerPueblos {
 				
 				for(int i = 0; i < Municipios.size(); i++){
 				
-				if(m1.getCodMunicipio() == (Municipios.get(i).getCodMunicipio())) {
+					if(m1.getCodMunicipio() == (Municipios.get(i).getCodMunicipio())) {
 					
-					codAlreadyExist = true;
+						codAlreadyExist = true;
 					
-				}
+					}
 					
 				}
 				

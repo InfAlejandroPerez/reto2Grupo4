@@ -26,6 +26,8 @@ public class LeerEspaciosNaturales {
 
 	static ArrayList<EspaciosNaturales> espaciosNaturales = new ArrayList<EspaciosNaturales>();
 	
+	static int codEspacios = 0;
+	
 	public static void Espacios() {
 		
 		espaciosNaturales.clear();
@@ -43,7 +45,7 @@ public class LeerEspaciosNaturales {
 		//s.iniciar();
 		
 		JsonParser parser = new JsonParser();
-		final String url = "C:\\Users\\in2dam-b\\eclipse-workspace\\reto2Grupo4\\src\\JSONs\\espacios_naturales.json";
+		final String url = "src/JSONs/espacios_naturales1.json";
 		
 
 		try {
@@ -140,6 +142,8 @@ public class LeerEspaciosNaturales {
 					
 					codMunicipio = valor3.getAsInt();
 					
+					System.out.println("Cod MUNICIPIO: " + codMunicipio);
+					
 				}
 			
 				iter2.next();
@@ -153,15 +157,39 @@ public class LeerEspaciosNaturales {
 				
 				for(int i = 0; i < leerPueblos.Municipios.size(); i++) {
 					
-					if(leerPueblos.Municipios.get(i).getNombre().equals(nombreMunicipio));
+					if(leerPueblos.Municipios.get(i).getNombre().equalsIgnoreCase(nombreMunicipio)) {
+						
+						System.out.println(nombreMunicipio);
+						
+						p1 =  leerPueblos.Municipios.get(i);
+						
+					}else {
+						
+						
+						
+					}
 					
-					p1 =  leerPueblos.Municipios.get(i);
+					
 					
 				}
 				
 				int codLocalidad = 0;
 				
 				Municipiospueblos m1 = null;
+				
+				Localidad l1 = null;
+				
+				for(int x = 0; x < leerPueblos.Municipios.size(); x++) {
+					
+					if(leerPueblos.Municipios.get(x).getCodMunicipio() == (codMunicipio)) {
+						
+						m1 = leerPueblos.Municipios.get(x);
+						
+						System.out.println(m1.getCodMunicipio());
+						
+					}
+			
+				}
 				
 				if(noLocalidad == false) {
 				
@@ -171,34 +199,25 @@ public class LeerEspaciosNaturales {
 					
 						SessionFactory sesion = HibernateUtil.getSessionFactory();
 						Session session = sesion.openSession();
-						// Visualiza los datos del departamento 30
-						String hql = "from localidad where nombre = '" + localdadNombre + "'";
+						
+						String hql = "from Localidad where Nombre = '" + localdadNombre + "'";
 						Query q = session.createQuery(hql);
+						q.setMaxResults(1).uniqueResult();
 						Localidad loc = (Localidad) q.uniqueResult();
 					
 						codLocalidad = loc.getCodLocalidad();
 						
 						System.out.println(codLocalidad);
+						
+						session.close();
 					
 					}else {
 						
-						for(int x = 0; x < leerPueblos.Municipios.size(); x++) {
-						
-							if(leerPueblos.Municipios.get(x).getCodMunicipio() == (codMunicipio)) {
-								
-								m1 = leerPueblos.Municipios.get(x);
-								
-							}
-						
-						}
+						l1 = new Localidad(m1, localdadNombre);
 						
 					}
 					
 				}
-				
-				
-				
-				Localidad l1 = new Localidad(m1, localdadNombre);
 				
 				leerPueblos.localidad.add(l1);
 				
@@ -214,13 +233,15 @@ public class LeerEspaciosNaturales {
 					
 				}
 				
-				System.out.println(p1 + documentName + turism + codLocalidad);
+				System.out.println(m1 + documentName + turism + codLocalidad);
 				
-				EspaciosNaturales e1 = new EspaciosNaturales(p1, documentName, turism, codLocalidad);
+				EspaciosNaturales e1 = new EspaciosNaturales(codEspacios, p1, documentName, turism, codLocalidad);
 				
 				inserts.insertEspaciosNaturales(e1);
 				
 				espaciosNaturales.add(e1);
+				
+				codEspacios++;
 				
 			}
 
