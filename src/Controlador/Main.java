@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import baseDeDatos.LectorEstaciones;
 import baseDeDatos.LectorJsonData;
 import modelo.Estaciones;
 
@@ -14,7 +15,13 @@ public class Main {
 		System.setProperty("file.encoding", "UTF-8");
 
 		try {
-			LectorJsonData.guardarDatosMetereologicos();
+			
+			leerPueblos.LeerPueblos();
+			
+			LectorEstaciones.guardarDatosEstaciones();
+			
+			//LectorJsonData.guardarDatosMetereologicos();
+			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -24,6 +31,5 @@ public class Main {
 		s.iniciar();
 
 	}
-
 	
 }

@@ -33,7 +33,7 @@ public class LectorEstaciones {
 			} else if (estacion[i].equalsIgnoreCase("Province")) {
 				//p.setNombre(estacion[i + 2]);
 			} else if (estacion[i].equalsIgnoreCase("Town")) {
-				nombre = estacion[i + 2];
+				//nombre = estacion[i + 2];
 			} else if (estacion[i].equalsIgnoreCase("Address")) {
 				// data.add(estacion[i + 2]);
 			} else if (estacion[i].equalsIgnoreCase("Latitude")) {
@@ -44,6 +44,9 @@ public class LectorEstaciones {
 				e.setCodEstacion(codEstacion);
 				e.setNombre(nombre);
 				inserts.insertEstaciones(e);
+				
+				codEstacion++;
+				
 			}
 		}
 

@@ -29,7 +29,7 @@ public class leerPueblos {
 	
 	int codLocalidad = 1;
 	
-	public static void main(String[] args) {
+	public static void LeerPueblos() {
 		
 		Provincias.clear();
 		

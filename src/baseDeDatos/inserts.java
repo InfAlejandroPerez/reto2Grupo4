@@ -109,7 +109,6 @@ public class inserts {
 		mun.setProvincia(provincia);
 		// mun.setEspaciosNaturaleses(espaciosNaturaleses);
 		mun.setEstacioneses(estacioneses);
-		mun.setFavoritosMunicipioses(favoritosMunicipioses);
 
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();

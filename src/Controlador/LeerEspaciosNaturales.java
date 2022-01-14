@@ -235,7 +235,7 @@ public class LeerEspaciosNaturales {
 				
 				System.out.println(m1 + documentName + turism + codLocalidad);
 				
-				EspaciosNaturales e1 = new EspaciosNaturales(codEspacios, p1, documentName, turism, codLocalidad);
+				EspaciosNaturales e1 = new EspaciosNaturales(codEspacios, documentName, turism, codMunicipio, codLocalidad);
 				
 				inserts.insertEspaciosNaturales(e1);
 				
