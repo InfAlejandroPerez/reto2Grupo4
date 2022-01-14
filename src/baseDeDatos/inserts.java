@@ -19,7 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class inserts {
-	public void insertUsuarios(int code, String nombre, int clave) {
+	public static void insertUsuarios(int code, String nombre, int clave) {
 		Usuarios us = new Usuarios();
 		us.setCodUsuario(code);
 		// TODO
@@ -37,14 +37,13 @@ public class inserts {
 		tx.commit();
 
 		// TODO
-		if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 
 	}
 
-	public void insertUsuarios(Usuarios us) {
+	public static void insertUsuarios(Usuarios us) {
 
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
@@ -56,14 +55,13 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-		if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 
 	}
 
-	public void insertProvincia(int code, String nombre) {
+	public static void insertProvincia(int code, String nombre) {
 		Provincia pv = new Provincia();
 		pv.setCodProvincia(code);
 		pv.setNombre(nombre);
@@ -77,12 +75,9 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-
-		if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
-
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 	}
 
 	public static void insertProvincia(Provincia pv) {
@@ -97,14 +92,13 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		/*if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();*/
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 
 	}
 
-	public void insertMunicipio(int code, String nombre, String descripcion, Set localidad, Provincia provincia,
+	public static void insertMunicipio(int code, String nombre, String descripcion, Set localidad, Provincia provincia,
 			Set espaciosNaturaleses, Set estacioneses, Set favoritosMunicipioses) {
 		Municipiospueblos mun = new Municipiospueblos();
 		mun.setCodMunicipio(code);
@@ -113,7 +107,7 @@ public class inserts {
 		// TODO
 		mun.setLocalidads(localidad);
 		mun.setProvincia(provincia);
-		//mun.setEspaciosNaturaleses(espaciosNaturaleses);
+		// mun.setEspaciosNaturaleses(espaciosNaturaleses);
 		mun.setEstacioneses(estacioneses);
 		mun.setFavoritosMunicipioses(favoritosMunicipioses);
 
@@ -127,12 +121,9 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-
-		if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
-
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 	}
 
 	public static void insertMunicipio(Municipiospueblos mun) {
@@ -147,18 +138,17 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		/*if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();*/
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 
 	}
 
-	public void insertLocalidad(int code, String nombre, String descripcion, Municipiospueblos municipiospueblos) {
+	public static void insertLocalidad(int code, String nombre, String descripcion, Municipiospueblos municipiospueblos) {
 		Localidad loc = new Localidad();
 		loc.setCodLocalidad(code);
 		loc.setNombre(nombre);
-		//loc.setDescripcion(descripcion);
+		// loc.setDescripcion(descripcion);
 		loc.setMunicipiospueblos(municipiospueblos);
 
 		Transaction tx;
@@ -171,12 +161,9 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-
-		if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
-
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 	}
 
 	public static void insertLocalidad(Localidad loc) {
@@ -191,17 +178,16 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		/*if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();*/
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 
 	}
 
-	public void insertFavoritosMunicipios() {
+	public static void insertFavoritosMunicipios() {
 	}
 
-	public void insertFavoritosMunicipios(FavoritosMunicipios fav) {
+	public static void insertFavoritosMunicipios(FavoritosMunicipios fav) {
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session s = sesion.openSession();
@@ -212,18 +198,15 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-
-		if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
-
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 	}
 
-	public void insertFavoritosEspacios() {
+	public static void insertFavoritosEspacios() {
 	}
 
-	public void insertFavoritosEspacios(FavoritosEspacios fav) {
+	public static void insertFavoritosEspacios(FavoritosEspacios fav) {
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session s = sesion.openSession();
@@ -234,18 +217,15 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-
-		if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
-
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 	}
 
-	public void insertEstaciones() {
+	public static void insertEstaciones() {
 	}
 
-	public void insertEstaciones(Estaciones est) {
+	public static void insertEstaciones(Estaciones est) {
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session s = sesion.openSession();
@@ -256,15 +236,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-
-		if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
-
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 	}
 
-	public void insertEspaciosNaturales() {
+	public static void insertEspaciosNaturales() {
 	}
 
 	public static void insertEspaciosNaturales(EspaciosNaturales esp) {
@@ -279,14 +256,13 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		/*if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();*/
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 
 	}
 
-	public void insertDatos(Datos datos) {
+	public static void insertDatos(Datos datos) {
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session s = sesion.openSession();
@@ -297,15 +273,12 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-
-		if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
-
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 	}
 
-	public void insertObjeto(Object obj) {
+	public static void insertObjeto(Object obj) {
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session s = sesion.openSession();
@@ -316,11 +289,8 @@ public class inserts {
 		// Actualizar información en la base de datos
 		tx.commit();
 		// TODO
-
-		if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
-
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 	}
 }
