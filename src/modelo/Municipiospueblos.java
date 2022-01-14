@@ -1,5 +1,5 @@
 package modelo;
-// Generated 20 dic 2021 19:20:11 by Hibernate Tools 5.5.7.Final
+// Generated 13 ene 2022 21:43:38 by Hibernate Tools 5.5.7.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +13,6 @@ public class Municipiospueblos implements java.io.Serializable {
 	private Provincia provincia;
 	private String nombre;
 	private String descripcion;
-	private Set espaciosNaturaleses = new HashSet(0);
 	private Set localidads = new HashSet(0);
 	private Set favoritosMunicipioses = new HashSet(0);
 	private Set estacioneses = new HashSet(0);
@@ -21,20 +20,25 @@ public class Municipiospueblos implements java.io.Serializable {
 	public Municipiospueblos() {
 	}
 
+	public Municipiospueblos(int codMunicipio) {
+		this.codMunicipio = codMunicipio;
+	}
+	
 	public Municipiospueblos(int codMunicipio, Provincia provincia, String nombre, String descripcion) {
+		
 		this.codMunicipio = codMunicipio;
 		this.provincia = provincia;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		
 	}
 
-	public Municipiospueblos(int codMunicipio, Provincia provincia, String nombre, String descripcion,
-			Set espaciosNaturaleses, Set localidads, Set favoritosMunicipioses, Set estacioneses) {
+	public Municipiospueblos(int codMunicipio, Provincia provincia, String nombre, String descripcion, Set localidads,
+			Set favoritosMunicipioses, Set estacioneses) {
 		this.codMunicipio = codMunicipio;
 		this.provincia = provincia;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.espaciosNaturaleses = espaciosNaturaleses;
 		this.localidads = localidads;
 		this.favoritosMunicipioses = favoritosMunicipioses;
 		this.estacioneses = estacioneses;
@@ -70,14 +74,6 @@ public class Municipiospueblos implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public Set getEspaciosNaturaleses() {
-		return this.espaciosNaturaleses;
-	}
-
-	public void setEspaciosNaturaleses(Set espaciosNaturaleses) {
-		this.espaciosNaturaleses = espaciosNaturaleses;
 	}
 
 	public Set getLocalidads() {

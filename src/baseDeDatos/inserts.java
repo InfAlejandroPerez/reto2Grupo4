@@ -85,7 +85,7 @@ public class inserts {
 
 	}
 
-	public void insertProvincia(Provincia pv) {
+	public static void insertProvincia(Provincia pv) {
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session s = sesion.openSession();
@@ -97,10 +97,10 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		if (s.isConnected())
+		/*if (s.isConnected())
 			s.close();
 		if (!sesion.isClosed())
-			sesion.close();
+			sesion.close();*/
 
 	}
 
@@ -113,7 +113,7 @@ public class inserts {
 		// TODO
 		mun.setLocalidads(localidad);
 		mun.setProvincia(provincia);
-		mun.setEspaciosNaturaleses(espaciosNaturaleses);
+		//mun.setEspaciosNaturaleses(espaciosNaturaleses);
 		mun.setEstacioneses(estacioneses);
 		mun.setFavoritosMunicipioses(favoritosMunicipioses);
 
@@ -135,7 +135,7 @@ public class inserts {
 
 	}
 
-	public void insertMunicipio(Municipiospueblos mun) {
+	public static void insertMunicipio(Municipiospueblos mun) {
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session s = sesion.openSession();
@@ -147,10 +147,10 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		if (s.isConnected())
+		/*if (s.isConnected())
 			s.close();
 		if (!sesion.isClosed())
-			sesion.close();
+			sesion.close();*/
 
 	}
 
@@ -158,7 +158,7 @@ public class inserts {
 		Localidad loc = new Localidad();
 		loc.setCodLocalidad(code);
 		loc.setNombre(nombre);
-		loc.setDescripcion(descripcion);
+		//loc.setDescripcion(descripcion);
 		loc.setMunicipiospueblos(municipiospueblos);
 
 		Transaction tx;
@@ -179,7 +179,7 @@ public class inserts {
 
 	}
 
-	public void insertLocalidad(Localidad loc) {
+	public static void insertLocalidad(Localidad loc) {
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session s = sesion.openSession();
@@ -191,10 +191,10 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		if (s.isConnected())
+		/*if (s.isConnected())
 			s.close();
 		if (!sesion.isClosed())
-			sesion.close();
+			sesion.close();*/
 
 	}
 
@@ -267,7 +267,7 @@ public class inserts {
 	public void insertEspaciosNaturales() {
 	}
 
-	public void insertEspaciosNaturales(EspaciosNaturales esp) {
+	public static void insertEspaciosNaturales(EspaciosNaturales esp) {
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session s = sesion.openSession();
@@ -279,14 +279,11 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		if (s.isConnected())
+		/*if (s.isConnected())
 			s.close();
 		if (!sesion.isClosed())
-			sesion.close();
+			sesion.close();*/
 
-	}
-
-	public void insertDatos() {
 	}
 
 	public void insertDatos(Datos datos) {

@@ -1,5 +1,5 @@
 package modelo;
-// Generated 20 dic 2021 19:20:11 by Hibernate Tools 5.5.7.Final
+// Generated 13 ene 2022 21:43:38 by Hibernate Tools 5.5.7.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,27 +10,36 @@ import java.util.Set;
 public class EspaciosNaturales implements java.io.Serializable {
 
 	private int codEspacio;
-	private Municipiospueblos municipiospueblos;
 	private String nombre;
 	private String descripcion;
+	private Integer codMunicipio;
 	private Integer codLocalidad;
 	private Set favoritosEspacioses = new HashSet(0);
 
 	public EspaciosNaturales() {
 	}
 
-	public EspaciosNaturales(int codEspacio, String nombre, String descripcion) {
+	public EspaciosNaturales(int codEspacio) {
+		this.codEspacio = codEspacio;
+	}
+	
+	public EspaciosNaturales(int codEspacio, Municipiospueblos Municipiospueblos, String nombre, String descripcion, Integer codLocalidad) {
+		
 		this.codEspacio = codEspacio;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.codMunicipio = codMunicipio;
+		this.codLocalidad = codLocalidad;
+		
 	}
 
-	public EspaciosNaturales(int codEspacio, Municipiospueblos municipiospueblos, String nombre, String descripcion,
+
+	public EspaciosNaturales(int codEspacio, String nombre, String descripcion, Integer codMunicipio,
 			Integer codLocalidad, Set favoritosEspacioses) {
 		this.codEspacio = codEspacio;
-		this.municipiospueblos = municipiospueblos;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.codMunicipio = codMunicipio;
 		this.codLocalidad = codLocalidad;
 		this.favoritosEspacioses = favoritosEspacioses;
 	}
@@ -41,14 +50,6 @@ public class EspaciosNaturales implements java.io.Serializable {
 
 	public void setCodEspacio(int codEspacio) {
 		this.codEspacio = codEspacio;
-	}
-
-	public Municipiospueblos getMunicipiospueblos() {
-		return this.municipiospueblos;
-	}
-
-	public void setMunicipiospueblos(Municipiospueblos municipiospueblos) {
-		this.municipiospueblos = municipiospueblos;
 	}
 
 	public String getNombre() {
@@ -65,6 +66,14 @@ public class EspaciosNaturales implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public Integer getCodMunicipio() {
+		return this.codMunicipio;
+	}
+
+	public void setCodMunicipio(Integer codMunicipio) {
+		this.codMunicipio = codMunicipio;
 	}
 
 	public Integer getCodLocalidad() {

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -13,36 +17,35 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
 import baseDeDatos.inserts;
+import modelo.EspaciosNaturales;
 import modelo.Localidad;
 import modelo.Municipiospueblos;
 import modelo.Provincia;
 
-public class leerPueblos {
+public class LeerEspaciosNaturales {
 
-	private static final String DATOSMETEOROLICOS = "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/index.json";
-
-	public static ArrayList<Provincia> Provincias = new ArrayList<Provincia>();
+	static ArrayList<EspaciosNaturales> espaciosNaturales = new ArrayList<EspaciosNaturales>();
 	
-	public static ArrayList<Municipiospueblos> Municipios = new ArrayList<Municipiospueblos>();
+	static int codEspacios = 0;
 	
-	public static ArrayList<Localidad> localidad = new ArrayList<Localidad>();
-	
-	int codLocalidad = 1;
-	
-	public static void main(String[] args) {
+	public static void Espacios() {
 		
-		Provincias.clear();
+		espaciosNaturales.clear();
 		
-		Municipios.clear();
+		System.out.println(leerPueblos.localidad.size());
 		
-		localidad.clear();
+		System.out.println(leerPueblos.Municipios.size());
+		
+		System.out.println(leerPueblos.Provincias.size());
+		
+		espaciosNaturales.clear();
 		
 		System.setProperty("file.encoding", "UTF-8");
 		//Servidor s = new Servidor();
 		//s.iniciar();
 		
 		JsonParser parser = new JsonParser();
-		final String url = "src/JSONs/pueblos1.json";
+		final String url = "src/JSONs/espacios_naturales1.json";
 		
 
 		try {
@@ -89,11 +92,26 @@ public class leerPueblos {
 				
 				localdadNombre = localdadNombre.substring(1, localdadNombre.length() -1);
 				
-				for(int i = 0; i < 45; i++) {
+				boolean noLocalidad = false;
+				
+				if(localdadNombre.equals("")) {
+					
+					noLocalidad = true;
+					
+				}
+				
+				for(int i = 0; i < 28; i++) {
 					
 					iter2.next();
 					
 				}
+				
+				JsonPrimitive valor7 = iter2.next().getValue().getAsJsonPrimitive();
+				System.out.println(valor7.getAsString());
+				
+				String nombreMunicipio = valor7.getAsString();
+			
+				nombreMunicipio = nombreMunicipio.substring(1, nombreMunicipio.length() -1);
 				
 				JsonPrimitive valor3 = iter2.next().getValue().getAsJsonPrimitive();
 				System.out.println(valor3.getAsString());
@@ -124,6 +142,8 @@ public class leerPueblos {
 					
 					codMunicipio = valor3.getAsInt();
 					
+					System.out.println("Cod MUNICIPIO: " + codMunicipio);
+					
 				}
 			
 				iter2.next();
@@ -132,121 +152,96 @@ public class leerPueblos {
 				System.out.println(valor5.getAsString());
 				
 				String territory = null;
+				
+				Municipiospueblos p1 = new Municipiospueblos();
+				
+				for(int i = 0; i < leerPueblos.Municipios.size(); i++) {
+					
+					if(leerPueblos.Municipios.get(i).getNombre().equalsIgnoreCase(nombreMunicipio)) {
+						
+						System.out.println(nombreMunicipio);
+						
+						p1 =  leerPueblos.Municipios.get(i);
+						
+					}else {
+						
+						
+						
+					}
+					
+					
+					
+				}
+				
+				int codLocalidad = 0;
+				
+				Municipiospueblos m1 = null;
+				
+				Localidad l1 = null;
+				
+				for(int x = 0; x < leerPueblos.Municipios.size(); x++) {
+					
+					if(leerPueblos.Municipios.get(x).getCodMunicipio() == (codMunicipio)) {
+						
+						m1 = leerPueblos.Municipios.get(x);
+						
+						System.out.println(m1.getCodMunicipio());
+						
+					}
 			
-				if(valor5.toString().contains(" ")) {
-					
-					territory = valor5.toString().split(" ")[0];
-					
-					territory = territory.substring(1, territory.length());
-					
-				}else {
-					
-					territory = valor5.toString();
-					
-					territory = territory.substring(1, territory.length() -1);
-					
 				}
 				
-				JsonPrimitive valor6 = iter2.next().getValue().getAsJsonPrimitive();
-				System.out.println(valor6.getAsString());
+				if(noLocalidad == false) {
 				
-				int codProvincia = 0;
-				
-				if(valor6.toString().contains(" ")) {
+				for(int i = 0; i < leerPueblos.localidad.size(); i++) {
 					
-					String codProvinciaS = valor6.toString();
+					if(leerPueblos.localidad.get(i).getNombre().equalsIgnoreCase(localdadNombre)) {
 					
-					System.out.println(codProvinciaS.split(" ")[0]);
-					
-					codProvinciaS = codProvinciaS.split(" ")[0];
-					
-					char comilla = codProvinciaS.charAt(0);
-					
-					char blanco = 0;
-					
-					codProvinciaS = codProvinciaS.replace(comilla, blanco);
-					
-					codProvinciaS = codProvinciaS.substring(1, codProvinciaS.length());
-					
-					System.out.println(codProvinciaS);
-					
-					codProvincia = Integer.parseInt(codProvinciaS);
-					
-				}else {
-					
-					codProvincia = valor6.getAsInt();
-					
-				}
-				
-				boolean alredyExistP = false;
-				
-				for(int i = 0; i < Provincias.size(); i++) {
-					
-					if(Provincias.get(i).getCodProvincia() == codProvincia) {
+						SessionFactory sesion = HibernateUtil.getSessionFactory();
+						Session session = sesion.openSession();
 						
-						alredyExistP = true;
+						String hql = "from Localidad where Nombre = '" + localdadNombre + "'";
+						Query q = session.createQuery(hql);
+						q.setMaxResults(1).uniqueResult();
+						Localidad loc = (Localidad) q.uniqueResult();
+					
+						codLocalidad = loc.getCodLocalidad();
+						
+						System.out.println(codLocalidad);
+						
+						session.close();
+					
+					}else {
+						
+						l1 = new Localidad(m1, localdadNombre);
 						
 					}
 					
 				}
 				
-				Provincia p1 = new Provincia(codProvincia, territory);
+				leerPueblos.localidad.add(l1);
 				
-				if(alredyExistP != true) {
+				System.out.println(l1.getNombre() + l1.getCodLocalidad());
 				
-					Provincias.add(p1);
-					
-					inserts.insertProvincia(p1);
-					
-				}else {
-				
-				alredyExistP = false;
+				inserts.insertLocalidad(l1);
 				
 				}
 				
-				boolean codAlreadyExist = false;
-				
-				Municipiospueblos m1 = new Municipiospueblos(codMunicipio, p1, documentName , turism);
-				
-				for(int i = 0; i < Municipios.size(); i++){
-				
-					if(m1.getCodMunicipio() == (Municipios.get(i).getCodMunicipio())) {
+				if(noLocalidad == true) {
 					
-						codAlreadyExist = true;
-					
-					}
+					codLocalidad = 0;
 					
 				}
 				
-				if(codAlreadyExist == false) {
-					
-					inserts.insertMunicipio(m1);
-					
-					Municipios.add(m1);
-					
-				}
+				System.out.println(m1 + documentName + turism + codLocalidad);
 				
-				boolean localExist = false;
+				EspaciosNaturales e1 = new EspaciosNaturales(codEspacios, p1, documentName, turism, codLocalidad);
 				
-				Localidad l1 = new Localidad(m1, localdadNombre);
+				inserts.insertEspaciosNaturales(e1);
 				
-				for(int i = 0; i < localidad.size(); i++) {
-					
-					if(l1.getNombre().equals(localidad.get(i).getNombre())) {
-						
-						localExist = true;
-						
-					}
-					
-				}
+				espaciosNaturales.add(e1);
 				
-				if(localExist == false) {
-					
-					localidad.add(l1);
-				
-					inserts.insertLocalidad(l1);
-					
-				}	
+				codEspacios++;
 				
 			}
 
@@ -255,13 +250,6 @@ public class leerPueblos {
 			e.printStackTrace();
 		}
 		
-		LeerEspaciosNaturales.Espacios();
-		
-	}
-
-	private static void leerDatosMetereologicos() {
-		String jsonData = readJsonFormUrl.readData(DATOSMETEOROLICOS);
-
 	}
 	
 }
