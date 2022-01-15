@@ -41,6 +41,7 @@ public class LectorJsonData {
 		Estaciones estaciones = new Estaciones();
 		estaciones.setNombre("3_DE_MARZO");
 		estaciones.setCodEstacion(1);
+		
 		Date fecha = null;
 		Date hora = null;
 		String comgm3 = null;
@@ -55,12 +56,14 @@ public class LectorJsonData {
 		String so2 = null;
 		String so2ica = null;
 		String icaestacion = null;
-
+		
 		for (int i = 0; i < readedData.length; i++) {
 			System.out.println(readedData[i]);
 			if (readedData[i].equalsIgnoreCase("Date")) {
 				fecha = new SimpleDateFormat("dd/MM/yyyy").parse(readedData[i + 2]);
-
+				if (fecha == null) {
+					i = i + 20;
+				}
 			} else if (readedData[i].equalsIgnoreCase("HourGMT")) {
 				// hora = readedData[i];
 			} else if (readedData[i].equalsIgnoreCase("comgm3")) {
@@ -81,9 +84,10 @@ public class LectorJsonData {
 				so2ica = readedData[i + 2];
 			} else if (readedData[i].equalsIgnoreCase("icaestacion")) {
 				icaestacion = readedData[i + 2];
-				Datos d = new Datos(estaciones, fecha, hora, comgm3, co8hmgm3, nogm3, no2, no2ica, noxgm3, pm10ica,
-						pm25, pm25ica, so2, so2ica, icaestacion);
+				Datos d = new Datos(estaciones, fecha, hora, comgm3, co8hmgm3, nogm3, no2, no2ica, noxgm3,
+						pm10ica, pm25, pm25ica, so2, so2ica, icaestacion);
 				inserts.insertDatos(d);
+				//i=readedData.length;
 
 			}
 		}

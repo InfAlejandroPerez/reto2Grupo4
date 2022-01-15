@@ -21,32 +21,39 @@ public class LectorEstaciones {
 		Municipiospueblos municipiospueblos = null;
 		Provincia p = new Provincia();
 		String nombre = "";
+		String localidad = "";
 		Double coordenadaX = (double) 0;
 		Double coordenadaY = (double) 0;
 		Integer codLocalidad = 0;
 		Datos datos = null;
-
+		String auxiliar;
 		for (int i = 0; i < estacion.length; i++) {
 			System.out.println(estacion[i]);
 			if (estacion[i].equalsIgnoreCase("Name")) {
 				nombre = estacion[i + 2];
 			} else if (estacion[i].equalsIgnoreCase("Province")) {
-				//p.setNombre(estacion[i + 2]);
+				// p.setNombre(estacion[i + 2]);
 			} else if (estacion[i].equalsIgnoreCase("Town")) {
-				//nombre = estacion[i + 2];
+				localidad = estacion[i + 2];
 			} else if (estacion[i].equalsIgnoreCase("Address")) {
 				// data.add(estacion[i + 2]);
 			} else if (estacion[i].equalsIgnoreCase("Latitude")) {
-				//coordenadaX = Double.parseDouble(estacion[i + 2]);
+				auxiliar = estacion[i + 2];
+				auxiliar = auxiliar.replace(',', '.');
+				coordenadaX = Double.parseDouble(auxiliar);
 			} else if (estacion[i].equalsIgnoreCase("Longitude")) {
-				//coordenadaY = Double.parseDouble(estacion[i + 2]);
+				auxiliar = estacion[i + 2];
+				auxiliar = auxiliar.replace(',', '.');
+				coordenadaY = Double.parseDouble(auxiliar);
 				Estaciones e = new Estaciones();
 				e.setCodEstacion(codEstacion);
 				e.setNombre(nombre);
+				e.setCoordenadaX(coordenadaX);
+				e.setCoordenadaY(coordenadaY);
+				
 				inserts.insertEstaciones(e);
-				
 				codEstacion++;
-				
+
 			}
 		}
 
