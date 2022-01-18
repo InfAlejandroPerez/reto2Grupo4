@@ -37,7 +37,7 @@ public class Servidor {
 	    // we keep listening to the socket's 
 	      // input stream until the message
 	    // "over" is encountered
-	    while (!message.equalsIgnoreCase("over")) {
+	    while (true) {
 	        try {
 	  
 	            // the accept method waits for a new client connection
