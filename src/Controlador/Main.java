@@ -14,18 +14,20 @@ public class Main {
 	public static void main(String[] args) {
 		System.setProperty("file.encoding", "UTF-8");
 
-		try {
 
-		//	leerPueblos.LeerPueblos();
-
+		/*try {
+			
+			//leerPueblos.LeerPueblos();
+			
 			LectorEstaciones.guardarDatosEstaciones();
-
+			
 			LectorJsonData.guardarDatosMetereologicos();
+			
+		/*} catch (ParseException e) {
 
-		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
 		Servidor s = new Servidor();
 		s.iniciar();
