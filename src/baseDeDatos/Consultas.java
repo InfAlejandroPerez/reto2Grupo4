@@ -1,16 +1,24 @@
 package baseDeDatos;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import org.hibernate.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.mapping.List;
 
 import Controlador.HibernateUtil;
 import modelo.Municipiospueblos;
-
+import modelo.Provincia;
 import modelo.Usuarios;
 
 public class Consultas {
+	
+	public static ArrayList<Provincia> pvs = new ArrayList<Provincia>();
+	
 	public static boolean consultarUsuario(String user, String contra) {
 		// TODO Auto-generated method stub
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
@@ -41,5 +49,23 @@ public class Consultas {
 		session.close();
 
 		return m;
+	}
+	
+	public static void getProvincias() {
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+		
+		String hql = "from Provincia";
+		Query q = (Query) session.createQuery(hql);
+		
+		ArrayList<Provincia> pvss = new ArrayList<Provincia>(q.list());
+		
+		for(int i = 0; i < pvss.size(); i++) {
+			
+			pvs.add(pvss.get(i));
+			
+		}
+		
 	}
 }
