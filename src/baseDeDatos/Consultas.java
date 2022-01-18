@@ -16,7 +16,7 @@ public class Consultas {
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 
-		String hql = "from Usuarios as us where us.nombre = " + user + "and us.contrasenia " + contra;
+		String hql = "from Usuarios where Nombre = '" + user + "' AND Contrasenia = '" + contra + "'";
 		Query q = (Query) session.createQuery(hql);
 		Usuarios us = (Usuarios) ((org.hibernate.Query) q).uniqueResult();
 		
