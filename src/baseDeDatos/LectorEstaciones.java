@@ -26,6 +26,7 @@ public class LectorEstaciones {
 		Double coordenadaY = (double) 0;
 		Integer codLocalidad = 0;
 		Datos datos = null;
+		Municipiospueblos municipio = null;
 		String auxiliar;
 		for (int i = 0; i < estacion.length; i++) {
 			System.out.println(estacion[i]);
@@ -35,6 +36,7 @@ public class LectorEstaciones {
 				// p.setNombre(estacion[i + 2]);
 			} else if (estacion[i].equalsIgnoreCase("Town")) {
 				localidad = estacion[i + 2];
+				municipio = Consultas.consultarCodigoMunicipio(localidad);
 			} else if (estacion[i].equalsIgnoreCase("Address")) {
 				// data.add(estacion[i + 2]);
 			} else if (estacion[i].equalsIgnoreCase("Latitude")) {
@@ -50,7 +52,7 @@ public class LectorEstaciones {
 				e.setNombre(nombre);
 				e.setCoordenadaX(coordenadaX);
 				e.setCoordenadaY(coordenadaY);
-				
+				e.setMunicipiospueblos(municipio);
 				inserts.insertEstaciones(e);
 				codEstacion++;
 

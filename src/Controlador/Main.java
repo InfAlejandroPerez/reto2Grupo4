@@ -6,13 +6,14 @@ import java.util.Date;
 
 import baseDeDatos.LectorEstaciones;
 import baseDeDatos.LectorJsonData;
+import baseDeDatos.leerPueblos;
 import modelo.Estaciones;
 
 public class Main {
-	
-	
+
 	public static void main(String[] args) {
 		System.setProperty("file.encoding", "UTF-8");
+
 
 		/*try {
 			
@@ -23,6 +24,7 @@ public class Main {
 			LectorJsonData.guardarDatosMetereologicos();
 			
 		/*} catch (ParseException e) {
+
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
@@ -31,5 +33,5 @@ public class Main {
 		s.iniciar();
 
 	}
-	
+
 }
