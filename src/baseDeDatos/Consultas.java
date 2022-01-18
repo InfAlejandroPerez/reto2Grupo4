@@ -19,6 +19,9 @@ public class Consultas {
 		String hql = "from Usuarios as us where us.nombre = " + user + "and us.contrasenia " + contra;
 		Query q = (Query) session.createQuery(hql);
 		Usuarios us = (Usuarios) ((org.hibernate.Query) q).uniqueResult();
+		
+		session.close();
+		
 		if (us != null) {
 			return true;
 		} else {
