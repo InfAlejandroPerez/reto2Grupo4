@@ -1,85 +1,80 @@
 package Controlador;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+
+import com.example.euskalmet.Envio;
 
 public class Servidor {
 
 
-	// declaring required variables
-	private static ServerSocket serverSocket;
-	private static Socket clientSocket;
-	private static InputStreamReader inputStreamReader;
-	private static ObjectOutputStream objectOutputStream;
-	private static BufferedReader bufferedReader;
-	private static String message="";
-	private static Integer opcion;
-	private static modelo.envio envio;
+	private final int PUERTO = 5000;
+
+	public void iniciar() {
+		ServerSocket servidor = null;
+		Socket cliente = null;
+		ObjectInputStream entrada = null;
+		ObjectOutputStream salida = null;
+		try {
+				servidor = new ServerSocket(PUERTO);
+				System.out.println("Esperando conexiones del cliente...");
+				cliente = servidor.accept();
+				System.out.println("Cliente conectado.");
 	
-	  
-	public static void iniciar() {
-	  
-	    try {
-	        // creating a new ServerSocket at port 4444
-	        serverSocket = new ServerSocket(4444); 
-	  
-	    } catch (IOException e) {
-	        System.out.println("Could not listen on port: 4444");
-	    }
-	  
-	    System.out.println("Server started. Listening to the port 4444");
-	  
-	    // we keep listening to the socket's 
-	      // input stream until the message
-	    // "over" is encountered
-	    while (true) {
-	        try {
-	  
-	            // the accept method waits for a new client connection
-	            // and and returns a individual socket for that connection
-	            clientSocket = serverSocket.accept(); 
-	            
-	            // get the inputstream from socket, which will have 
-	              // the message from the clients
-	            inputStreamReader = new InputStreamReader(clientSocket.getInputStream());
-	            objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream()); 
-	            bufferedReader = new BufferedReader(inputStreamReader);                     
-	             
-	              // reading the message
-	            message = bufferedReader.readLine();
-	  
-	            // printing the message
-	            System.out.println(message);
-	            
-	            
-	            //String[] peticion = message.split("\\/"); 
-	            
-	            int opcion = Integer.parseInt(message.split("/")[0]);
-	            
-	            switch(opcion) {
-	            case 1:
-	            	envio = new modelo.envio();
-	            	envio.setLogin(comprobarUsuario(message.split("/")[1], message.split("/")[2]));
-	            	objectOutputStream.writeObject(envio);
-	            	objectOutputStream.flush();
-	            }
-	              
-	            // finally it is very important
-	              // that you close the sockets
-	            inputStreamReader.close();
-	            objectOutputStream.close();
-	            clientSocket.close();
-	  
-	        } catch (IOException ex) {
-	            System.out.println("Problem in message reading");
-	        }
-	     }
-	  }
+				entrada = new ObjectInputStream(cliente.getInputStream());
+				salida = new ObjectOutputStream(cliente.getOutputStream());
+	
+				String linea = (String) entrada.readObject();
+				System.out.println("Recibido: " + linea);
+				
+				int opcion = Integer.parseInt(linea.split("/")[0]);
+
+				Envio envio = new Envio ();
+				envio.setUsuario("Patata");
+				salida.writeObject(envio);
+				salida.flush();
+				System.out.println("Respuesta enviada ");
+				
+// Esto rula!!1
+//				String response = "Hola caracola";
+//				salida.writeObject(response);
+//				salida.flush();
+//				System.out.println("Respuesta enviada " + response);
+						
+//	            switch(opcion) {
+//	            case 1:
+//	            	envio = new Objeto.envio();
+//	            	envio.setLogin(comprobarUsuario(linea.split("/")[1], linea.split("/")[2]));
+//	            	salida.writeObject(envio);
+//	            	salida.flush();
+//	            	System.out.println("enviado "+envio.getLogin());
+//	            }
+				
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+		} catch (ClassNotFoundException e) {
+			System.out.println("Error: " + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		} finally {
+			try {
+				if (servidor != null)
+					servidor.close();
+				if (cliente != null)
+					cliente.close();
+				if (entrada != null)
+					entrada.close();
+				if (salida != null)
+					salida.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 
 
 	private static Boolean comprobarUsuario(String peticion, String peticion2) {
