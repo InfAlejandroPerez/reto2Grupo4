@@ -19,6 +19,8 @@ public class Consultas {
 	
 	public static ArrayList<Provincia> pvs = new ArrayList<Provincia>();
 	
+	public static ArrayList<Municipiospueblos> munis = new ArrayList<Municipiospueblos>();
+	
 	public static boolean consultarUsuario(String user, String contra) {
 		// TODO Auto-generated method stub
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
@@ -68,4 +70,23 @@ public class Consultas {
 		}
 		
 	}
+	
+	public static void getMunicipios(String Provincia) {
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+		
+		String hql = "from Municipiospueblos Where codProvincia = (Select codProvincia From Provincia Where Nombre = '" + Provincia + "')" ;
+		Query q = (Query) session.createQuery(hql);
+		
+		ArrayList<Municipiospueblos> pvss = new ArrayList<Municipiospueblos>(q.list());
+		
+		for(int i = 0; i < pvss.size(); i++) {
+			
+			munis.add(pvss.get(i));
+			
+		}
+		
+	}
+	
 }
