@@ -15,92 +15,85 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import vista.ListaMunicipios;
-import vista.register;
+import com.example.euskalmet.Envio;
 
-public class Cliente extends JFrame{
-	
+import Vista.ListaMunicipios;
+import Vista.register;
+
+public class Cliente extends JFrame {
+
 	private final int PUERTO = 4444;
 	private final String IP = "127.0.0.1";
-
+	private boolean seguir;
+	private String peticion;
+	private String datos;
+	private Envio recibido;
+	private int opcion = 0;
 	ObjectInputStream entrada = null;
 	ObjectOutputStream salida = null;
-	
+
 	public void inicar() {
+		while (true) {
+			try {
+				// necesitamos una IP y un PUERTO para establecer la comunicacion
+				Socket cliente = new Socket(IP, PUERTO);
 
-		try {
-			// necesitamos una IP y un PUERTO para establecer la comunicacion
-			Socket cliente = new Socket(IP, PUERTO);
-			
+				System.out.println("Conexion establecida con el servidor");
 
-			System.out.println("Conexi�n establecida con el servidor");
-			
-			salida = new ObjectOutputStream(cliente.getOutputStream());
-			entrada = new ObjectInputStream(cliente.getInputStream());
-			
-			//ventanaLogIn();
-			
-			/*vista.logIn log = new vista.logIn();
-			log.frame.setVisible(true);*/
-			
-			int opcion = 0;
-			
-			switch(opcion){
-				
-			case 1:
-				
-				String user = vista.logIn.txtUser.getText().toString();
-				salida.writeObject(user);
-				
-				String pass = vista.logIn.txtPassword.getText().toString();
-				salida.writeObject(pass);
-				
-				baseDeDatos.Consultas.consultarUsuario(user, pass);
-				
-				break;
-				
-				
+				salida = new ObjectOutputStream(cliente.getOutputStream());
+				entrada = new ObjectInputStream(cliente.getInputStream());
+				do {
+					switch (opcion) {
+
+					case 1:
+						peticion = opcion + "/" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						recibido = (Envio) entrada.readObject();
+						opcion = 0;
+						break;
+					}
+				} while (seguir);
+
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-
 	}
-	
+
 	public void ventanaLogIn() {
-		
+
 		this.setBounds(100, 100, 450, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
-		
+
 		JTextField txtUser = new JTextField();
 		txtUser.setBounds(175, 89, 102, 20);
 		this.getContentPane().add(txtUser);
 		txtUser.setColumns(10);
-		
+
 		JTextField txtPassword = new JTextField();
 		txtPassword.setBounds(176, 147, 101, 20);
 		this.getContentPane().add(txtPassword);
 		txtPassword.setColumns(10);
-		
+
 		JLabel lblNewLabel = new JLabel("User:");
 		lblNewLabel.setBounds(97, 92, 68, 14);
 		this.getContentPane().add(lblNewLabel);
-		
+
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setBounds(87, 150, 79, 14);
 		this.getContentPane().add(lblPassword);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("LOG IN");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblNewLabel_1.setBounds(146, 31, 101, 37);
 		this.getContentPane().add(lblNewLabel_1);
-		
+
 		JButton btnLogIn = new JButton("Iniciar Sesion");
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				String user = txtUser.getText().toString();
 				try {
 					salida.writeObject(user);
@@ -108,7 +101,7 @@ public class Cliente extends JFrame{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+
 				String pass = txtPassword.getText().toString();
 				try {
 					salida.writeObject(pass);
@@ -119,29 +112,29 @@ public class Cliente extends JFrame{
 //				String user = txtUser.getText().toString();
 //				
 //				String password = txtPassword.getText().toString();
-			
-				if(baseDeDatos.Consultas.consultarUsuario(user, pass)) {
-					
+
+				if (baseDeDatos.Consultas.consultarUsuario(user, pass)) {
+
 					ListaMunicipios m = new ListaMunicipios();
 //					m.frame.setVisible(true);
 //					
 //					frame.setVisible(false);	
-					
-				}else {
-					
+
+				} else {
+
 					JOptionPane.showInputDialog(this, "La Contraseña o Usuario Son Incorrectos");
-					
+
 				}
-				
+
 			}
 		});
 		btnLogIn.setBounds(75, 200, 129, 37);
 		this.getContentPane().add(btnLogIn);
-		
+
 		JButton btnRegister = new JButton("Registrarme");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 //				this.setVisible(false);	
 //				
 //				register reg = new register();
@@ -151,7 +144,18 @@ public class Cliente extends JFrame{
 		});
 		btnRegister.setBounds(229, 200, 121, 37);
 		this.getContentPane().add(btnRegister);
-		
+
 	}
-	
+
+	public void setOpcion(int opc) {
+		this.opcion = opc;
+	}
+
+	public void setDatos(String dat) {
+		datos = dat;
+	}
+
+	public Envio getResponse() {
+		return recibido;
+	}
 }
