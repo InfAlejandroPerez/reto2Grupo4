@@ -10,7 +10,7 @@ import com.example.euskalmet.Envio;
 
 public class Servidor {
 
-
+	private Envio envio;
 	private final int PUERTO = 5000;
 
 	public void iniciar() {
@@ -32,26 +32,25 @@ public class Servidor {
 				
 				int opcion = Integer.parseInt(linea.split("/")[0]);
 
-				Envio envio = new Envio ();
+			/*	Envio envio = new Envio ();
 				envio.setUsuario("Patata");
 				salida.writeObject(envio);
 				salida.flush();
-				System.out.println("Respuesta enviada ");
+				System.out.println("Respuesta enviada ");*/
 				
-// Esto rula!!1
-//				String response = "Hola caracola";
-//				salida.writeObject(response);
-//				salida.flush();
-//				System.out.println("Respuesta enviada " + response);
+				// Esto rula!!1
+				//				String response = "Hola caracola";
+				//				salida.writeObject(response);
+				//				salida.flush();
+				//				System.out.println("Respuesta enviada " + response);
 						
-//	            switch(opcion) {
-//	            case 1:
-//	            	envio = new Objeto.envio();
-//	            	envio.setLogin(comprobarUsuario(linea.split("/")[1], linea.split("/")[2]));
-//	            	salida.writeObject(envio);
-//	            	salida.flush();
-//	            	System.out.println("enviado "+envio.getLogin());
-//	            }
+	            switch(opcion) {
+	            case 1:
+	            	envio.setLogin(comprobarUsuario(linea.split("/")[1], linea.split("/")[2]));
+	            	salida.writeObject(envio);
+	            	salida.flush();
+	            	System.out.println("enviado "+envio.getLogin());
+	            }
 				
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
