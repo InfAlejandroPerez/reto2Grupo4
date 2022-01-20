@@ -17,23 +17,22 @@ import javax.swing.JTextField;
 
 import com.example.euskalmet.Envio;
 
-import Vista.ListaMunicipios;
-import Vista.register;
+
 
 public class Cliente {
 
-	private final int PUERTO = 5000;
-	private final String IP = "127.0.0.1";
-	private boolean seguir;
-	private String peticion;
-	private String datos = "markel/123";
-	private Envio recibido;
-	private int opcion = 0;
-	ObjectInputStream entrada = null;
-	ObjectOutputStream salida = null;
+	private static final int PUERTO = 5000;
+	private static final String IP = "127.0.0.1";
+	private static boolean seguir;
+	private static String peticion;
+	private static String datos ;
+	private static Envio recibido;
+	private static int opcion = 0;
+	static ObjectInputStream entrada = null;
+	static ObjectOutputStream salida = null;
 
-	public void inicar() {
-		while (true) {
+	public static void inicar() {
+		//while (true) {
 			try {
 				// necesitamos una IP y un PUERTO para establecer la comunicacion
 				Socket cliente = new Socket(IP, PUERTO);
@@ -42,7 +41,7 @@ public class Cliente {
 
 				salida = new ObjectOutputStream(cliente.getOutputStream());
 				entrada = new ObjectInputStream(cliente.getInputStream());
-				opcion = 1;
+				
 				do {
 					switch (opcion) {
 
@@ -61,23 +60,23 @@ public class Cliente {
 				e.printStackTrace();
 			}
 		}
-	}
+	//}
 
-	public void setDatos(String datos) {
+	public static void setDatos(String da) {
 		//los datos necesarios para realizar la peticion
-		this.datos = datos;
+		datos = da;
 	}
 
-	public void apagarHilo() {
-		this.seguir = false;
+	public static void apagarHilo() {
+		seguir = false;
 	}
 
-	public void setPeticion(String num) {
+	public static void setOpcion(Integer num) {
 		//define el tipo de peticion para el servidor
-		this.peticion = num;
+		opcion = num;
 	}
 
-	public Envio getResponse() {
+	public static Envio getResponse() {
 		//devuelve la respuesta del server
 		return recibido;
 	}
