@@ -22,7 +22,7 @@ import Vista.register;
 
 public class Cliente extends JFrame {
 
-	private final int PUERTO = 4444;
+	private final int PUERTO = 5000;
 	private final String IP = "127.0.0.1";
 	private boolean seguir;
 	private String peticion;
