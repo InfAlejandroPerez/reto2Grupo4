@@ -71,6 +71,8 @@ public class ListaMunicipios {
 		btnFill.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				dlm.clear();
+				
 				boolean repe = false;
 				
 				baseDeDatos.Consultas.getMunicipios(comboBoxProvincias.getSelectedItem().toString());
@@ -114,6 +116,8 @@ public class ListaMunicipios {
 			public void actionPerformed(ActionEvent e) {
 				
 				dlm.clear();
+				
+				baseDeDatos.Consultas.munis.clear();
 				
 			}
 		});

@@ -16,9 +16,9 @@ import java.awt.Color;
 
 public class logIn {
 
-	JFrame frame;
-	private JTextField txtUser;
-	private JTextField txtPassword;
+	public JFrame frame;
+	public static JTextField txtUser;
+	public static JTextField txtPassword;
 
 	JButton btnLogIn;
 	
@@ -30,9 +30,11 @@ public class logIn {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					window = new logIn();
 					window.frame.setVisible(true);
 					
@@ -41,12 +43,14 @@ public class logIn {
 				}
 			}
 		});
+		
 	}
 
 	/**
 	 * Create the application.
 	 */
 	public logIn() {
+		
 		initialize();
 		
 	}
@@ -96,11 +100,11 @@ public class logIn {
 					ListaMunicipios m = new ListaMunicipios();
 					m.frame.setVisible(true);
 					
-					window.frame.setVisible(false);	
+					frame.setVisible(false);	
 					
 				}else {
 					
-					JOptionPane.showMessageDialog(frame, "La Contraseña o Usuario Son Incorrectos");
+					JOptionPane.showMessageDialog(frame, "La ContraseÃ±a o Usuario Son Incorrectos");
 					
 				}
 				
@@ -113,11 +117,11 @@ public class logIn {
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				register m = new register();
-				m.frame.setVisible(true);
+				frame.setVisible(false);	
 				
-				window.frame.setVisible(false);	
-				
+				register reg = new register();
+				reg.frame.setVisible(true);
+
 			}
 		});
 		btnRegister.setBounds(229, 200, 121, 37);

@@ -19,7 +19,7 @@ public class register {
 
 	JFrame frame;
 	private JTextField txtNombre;
-	private JTextField txtContrase�a;
+	private JTextField txtContraseña;
 	
 	static register window;
 	
@@ -47,13 +47,14 @@ public class register {
 	 * Create the application.
 	 */
 	public register() {
+
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,19 +70,19 @@ public class register {
 		frame.getContentPane().add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		txtContrase�a = new JTextField();
-		txtContrase�a.setBounds(157, 131, 111, 28);
-		frame.getContentPane().add(txtContrase�a);
-		txtContrase�a.setColumns(10);
+		txtContraseña = new JTextField();
+		txtContraseña.setBounds(157, 131, 111, 28);
+		frame.getContentPane().add(txtContraseña);
+		txtContraseña.setColumns(10);
 		
 		btnVolverLogIn = new JButton("Volver");
 		btnVolverLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				logIn m = new logIn();
-				m.frame.setVisible(true);
+				frame.setVisible(false);
 				
-				window.frame.setVisible(false);
+				logIn log = new logIn();
+				log.frame.setVisible(true);
 				
 			}
 		});
@@ -94,17 +95,17 @@ public class register {
 				
 				String nombre = txtNombre.getText();
 				
-				String Contrase�a = txtContrase�a.getText();
+				String Contraseña = txtContraseña.getText();
 				
-				if(nombre.isEmpty() || Contrase�a.isEmpty()) {
+				if(nombre.isEmpty() || Contraseña.isEmpty()) {
 					
 					
 					JOptionPane.showMessageDialog(frame, "Debes Rellenar los Campos");
 					
 					
-				}else if(isNumeric(Contrase�a) == true) {
+				}else if(isNumeric(Contraseña) == true) {
 					
-					int cont = Integer.parseInt(Contrase�a);
+					int cont = Integer.parseInt(Contraseña);
 					
 					Usuarios u1 = new Usuarios(nombre, cont);
 					
@@ -114,7 +115,7 @@ public class register {
 					 
 				}else {
 		            	
-					JOptionPane.showMessageDialog(frame, "La Contrase�a es Un Campo Numerico");
+					JOptionPane.showMessageDialog(frame, "La Contraseña es Un Campo Numerico");
 		            	
 				}
 					
@@ -128,7 +129,7 @@ public class register {
 		lblNewLabel_1.setBounds(91, 78, 56, 20);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Contrase\u00F1a:");
+		JLabel lblNewLabel_2 = new JLabel("Contraseña:");
 		lblNewLabel_2.setBounds(65, 137, 82, 17);
 		frame.getContentPane().add(lblNewLabel_2);
 	}
