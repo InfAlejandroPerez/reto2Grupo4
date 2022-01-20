@@ -5,6 +5,6 @@ public class MainCliente {
 		Cliente c = new Cliente();
 		c.inicar();
 		
-		c.ventanaLogIn();
+		//c.ventanaLogIn();
 	}
 }
