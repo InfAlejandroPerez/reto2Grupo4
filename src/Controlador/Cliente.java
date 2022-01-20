@@ -26,7 +26,7 @@ public class Cliente extends JFrame {
 	private final String IP = "127.0.0.1";
 	private boolean seguir;
 	private String peticion;
-	private String datos;
+	private String datos ="markel/123";
 	private Envio recibido;
 	private int opcion = 0;
 	ObjectInputStream entrada = null;
@@ -50,6 +50,7 @@ public class Cliente extends JFrame {
 						salida.writeObject(peticion);
 						salida.flush();
 						recibido = (Envio) entrada.readObject();
+						System.out.println(recibido.getLogin());
 						opcion = 0;
 						break;
 					}
