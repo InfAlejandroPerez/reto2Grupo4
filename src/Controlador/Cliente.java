@@ -20,13 +20,13 @@ import com.example.euskalmet.Envio;
 import Vista.ListaMunicipios;
 import Vista.register;
 
-public class Cliente extends JFrame {
+public class Cliente {
 
 	private final int PUERTO = 5000;
 	private final String IP = "127.0.0.1";
 	private boolean seguir;
 	private String peticion;
-	private String datos ="markel/123";
+	private String datos = "markel/123";
 	private Envio recibido;
 	private int opcion = 0;
 	ObjectInputStream entrada = null;
@@ -42,6 +42,7 @@ public class Cliente extends JFrame {
 
 				salida = new ObjectOutputStream(cliente.getOutputStream());
 				entrada = new ObjectInputStream(cliente.getInputStream());
+				opcion = 1;
 				do {
 					switch (opcion) {
 
@@ -62,5 +63,22 @@ public class Cliente extends JFrame {
 		}
 	}
 
-	
+	public void setDatos(String datos) {
+		//los datos necesarios para realizar la peticion
+		this.datos = datos;
+	}
+
+	public void apagarHilo() {
+		this.seguir = false;
+	}
+
+	public void setPeticion(String num) {
+		//define el tipo de peticion para el servidor
+		this.peticion = num;
+	}
+
+	public Envio getResponse() {
+		//devuelve la respuesta del server
+		return recibido;
+	}
 }

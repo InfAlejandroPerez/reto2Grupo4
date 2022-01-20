@@ -17,6 +17,8 @@ public class ServerThread implements Runnable {
 		// Inicializamos un nuevo pojo envio
 		this.envio = envio = new Envio();
 		this.cliente = cliente;
+		Thread t = new Thread(this);
+		t.start();
 	}
 
 	@Override
