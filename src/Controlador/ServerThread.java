@@ -38,6 +38,7 @@ public class ServerThread implements Runnable {
 				salida.writeObject(envio);
 				salida.flush();
 				System.out.println("enviado " + envio.getLogin());
+				break;
 			}
 
 		} catch (IOException e) {
