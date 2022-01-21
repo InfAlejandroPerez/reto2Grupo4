@@ -1,5 +1,6 @@
 package baseDeDatos;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -33,17 +34,17 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(us);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 
 	}
 
-	public static void insertUsuarios(Usuarios us) {
+	public static boolean insertUsuarios(Usuarios us) {
 
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
@@ -52,12 +53,29 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(us);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		// Visualiza los datos del departamento 30
+		String hql = "from Usuarios where Contrasenia = '" + us.getContrasenia() + "'";
+		Query q = s.createQuery(hql);
+		Usuarios u1 = (Usuarios) q.uniqueResult();
+
+		s.close();
+
+		if(u1 != null) {
+			
+			return true;
+			
+		}else {
+			
+			return false;
+			
+		}
+		
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 
 	}
 
@@ -72,12 +90,12 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(pv);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 	}
 
 	public static void insertProvincia(Provincia pv) {
@@ -88,13 +106,13 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(pv);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
 
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		 /*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 
 	}
 
@@ -117,12 +135,12 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(mun);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 	}
 
 	public static void insertMunicipio(Municipiospueblos mun) {
@@ -133,13 +151,13 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(mun);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
 
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 
 	}
 
@@ -157,12 +175,12 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(loc);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 	}
 
 	public static void insertLocalidad(Localidad loc) {
@@ -173,13 +191,13 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(loc);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
 
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 
 	}
 
@@ -194,12 +212,12 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(fav);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		 /* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 	}
 
 	public static void insertFavoritosEspacios() {
@@ -213,12 +231,12 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(fav);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 	}
 
 	public static void insertEstaciones() {
@@ -232,12 +250,12 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(est);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		  /*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 	}
 
 	public static void insertEspaciosNaturales() {
@@ -251,13 +269,13 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(esp);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
 
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		 /*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 
 	}
 
@@ -269,12 +287,12 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(datos);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		 /*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 	}
 
 	public static void insertObjeto(Object obj) {
@@ -285,11 +303,11 @@ public class inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(obj);
-		// Actualizar información en la base de datos
+		// Actualizar informaciï¿½n en la base de datos
 		tx.commit();
 		// TODO
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 	}
 }

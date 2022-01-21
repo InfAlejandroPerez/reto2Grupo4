@@ -167,22 +167,6 @@ public class MainCliente extends JFrame{
 			btnRegister.setBounds(229, 200, 121, 37);
 			panelElegido.add(btnRegister);
 		
-				/*public void actionPerformed(ActionEvent e) {
-					try {
-						System.out.println("click");
-						String usuario = textField.getText();
-						String pass = textField_1.getText();
-
-						Cliente.salida.writeObject("1/" + usuario + "/" + pass);
-						System.out.println(Cliente.entrada.readObject());
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (ClassNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}*/
 			break;
 			
 		case 2:
@@ -209,7 +193,7 @@ public class MainCliente extends JFrame{
 			btnVolverLogIn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
-					
+					panelPrincipal.add(switchPanel(1));
 					
 				}
 			});
@@ -234,17 +218,29 @@ public class MainCliente extends JFrame{
 						
 						int cont = Integer.parseInt(Contrasenia);
 						
-						Usuarios u1 = new Usuarios(nombre, cont);
+						Cliente.setDatos(nombre+"-"+Contrasenia);
+						Cliente.setOpcion(2);
+						Cliente.inicar();
+						Cliente.getResponse();
 						
-						 JOptionPane.showMessageDialog(panelElegido, "Nuevo Usuario Registrado");
+						JOptionPane.showMessageDialog(panelElegido, "Nuevo Usuario Registrado");
+						
+						Cliente.setDatos("");
+						Cliente.setOpcion(3);
+						Cliente.inicar();
+						nombresProvincias = Cliente.getArray();
+						
+						panelPrincipal.add(switchPanel(3));
 						 
 					}else {
 			            	
 						JOptionPane.showMessageDialog(panelElegido, "La Contraseña es Un Campo Numerico");
+						
+						txtContrasenia.setText("");
 			            	
 					}
 						
-					}
+				}
 				
 			});
 			btnRegister1.setBounds(117, 186, 176, 41);

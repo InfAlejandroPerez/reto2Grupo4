@@ -35,6 +35,7 @@ public class Cliente {
 	private static int opcion = 0;
 	static ObjectInputStream entrada = null;
 	static ObjectOutputStream salida = null;
+	private static boolean newUser = false;
 
 	public static void inicar() {
 		//while (true) {
@@ -57,6 +58,17 @@ public class Cliente {
 						recibido = (Envio) entrada.readObject();
 						System.out.println(recibido.getLogin());
 						opcion = 0;
+						break;
+						
+					case 2:	
+						
+						peticion = opcion + "-" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						newUser = (boolean )entrada.readObject();
+						
+						opcion = 0;
+						
 						break;
 						
 					case 3:	
@@ -116,6 +128,12 @@ public class Cliente {
 	public static ArrayList<Municipiospueblos> getMunis() {
 		//devuelve la respuesta del server
 		return Munis;
+	}
+	
+	public static boolean newUser() {
+		
+		return newUser;
+		
 	}
 	
 }

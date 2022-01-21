@@ -9,10 +9,12 @@ import java.util.ArrayList;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import com.example.euskalmet.Envio;
 
 import modelo.Municipiospueblos;
+import modelo.Usuarios;
 
 public class ServerThread implements Runnable {
 	private Envio envio;
@@ -49,6 +51,17 @@ public class ServerThread implements Runnable {
 
 				break;
 				
+			case 2:
+				
+				int pass = Integer.parseInt(linea.split("-")[2]);
+				
+				Usuarios u1 = new Usuarios(linea.split("-")[1], pass);
+				salida.writeObject(insertUsuarios(u1));
+				salida.flush();
+				System.out.println("Usuario Insertado");
+
+				break;
+				
 			case 3:
 				
 				salida.writeObject(pvs());
@@ -61,7 +74,7 @@ public class ServerThread implements Runnable {
 				
 				salida.writeObject(getMunicipios(linea.split("-")[1]));
 				salida.flush();
-				System.out.println("Municipios Enviadas");
+				System.out.println("Municipios Enviados");
 
 				break;
 			}
@@ -103,5 +116,19 @@ public class ServerThread implements Runnable {
 		
 		return baseDeDatos.Consultas.getMunicipios(Provincia);
 		
+	}
+	
+	public static boolean insertUsuarios(Usuarios us) {
+
+		if(baseDeDatos.inserts.insertUsuarios(us)) {
+			
+			return true;
+			
+		}else {
+			
+			return false;
+			
+		}
+
 	}
 }
