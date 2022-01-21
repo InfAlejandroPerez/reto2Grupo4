@@ -77,6 +77,15 @@ public class ServerThread implements Runnable {
 				System.out.println("Municipios Enviados");
 
 				break;
+				
+			case 5:
+				
+				salida.writeObject(getEstacionesYDesc(linea.split("-")[1]));
+				salida.flush();
+				System.out.println("Datos de Municipio enviados");
+
+				break;
+			
 			}
 
 		} catch (IOException e) {
@@ -112,7 +121,7 @@ public class ServerThread implements Runnable {
 		
 	}
 	
-	public static ArrayList<Municipiospueblos> getMunicipios(String Provincia) {
+	public static ArrayList<String> getMunicipios(String Provincia) {
 		
 		return baseDeDatos.Consultas.getMunicipios(Provincia);
 		
@@ -131,4 +140,11 @@ public class ServerThread implements Runnable {
 		}
 
 	}
+	
+	private static ArrayList<String> getEstacionesYDesc(String municipio){
+		
+		return baseDeDatos.Consultas.getDataAndStationsFromMunicipio(municipio);
+		
+	}
+	
 }

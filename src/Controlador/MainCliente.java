@@ -38,7 +38,9 @@ public class MainCliente extends JFrame{
 	
 	static ArrayList<String> nombresProvincias = new ArrayList<String>();
 	
-	static ArrayList<Municipiospueblos> Munis = new ArrayList<Municipiospueblos>();
+	static ArrayList<String> Munis = new ArrayList<String>();
+	
+	static ArrayList<String> datosMuni = new ArrayList<String>();
 	
 	public static void main(String[] args) {
 		
@@ -193,6 +195,8 @@ public class MainCliente extends JFrame{
 			btnVolverLogIn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
+					
+					
 					panelPrincipal.add(switchPanel(1));
 					
 				}
@@ -228,7 +232,17 @@ public class MainCliente extends JFrame{
 						Cliente.setDatos("");
 						Cliente.setOpcion(3);
 						Cliente.inicar();
-						nombresProvincias = Cliente.getArray();
+						
+						nombresProvincias.clear();
+						
+						if(nombresProvincias.size() > 0) {
+							
+							Cliente.getArray();
+							
+						}else {
+							
+							nombresProvincias = Cliente.getArray();
+						}
 						
 						panelPrincipal.add(switchPanel(3));
 						 
@@ -279,6 +293,35 @@ public class MainCliente extends JFrame{
 			
 			JList<String> list = new JList<String>(dlm);
 			scrollPane_1.setViewportView(list);
+			list.addMouseListener(new java.awt.event.MouseAdapter() {
+			      public void mouseClicked(java.awt.event.MouseEvent e) {
+			    	  
+			    	  JList list1 = (JList)e.getSource();
+			    	  
+			          if (e.getClickCount() == 2) {
+
+			              // Double-click detected
+			        	  JOptionPane.showMessageDialog(panelElegido, list.getSelectedValue());
+			        	  
+			        	  
+			        	  Cliente.setDatos(list.getSelectedValue());
+			        	  Cliente.setOpcion(5);
+			        	  Cliente.inicar();
+			        	  datosMuni = Cliente.getDatosMuni();
+			        	  
+			        	  JOptionPane.showMessageDialog(panelElegido, datosMuni.size());
+			        	  
+			              
+			          } else if (e.getClickCount() == 3) {
+
+			              // Triple-click detected
+			              int index = list.locationToIndex(e.getPoint());
+			              
+			          }
+			      
+			      }
+			      
+			});
 			
 			JButton btnFill = new JButton("Mostrar Municipios");
 			btnFill.addActionListener(new ActionListener() {
@@ -297,7 +340,7 @@ public class MainCliente extends JFrame{
 						
 						for(int x = 0; x < repes.size(); x++) {
 							
-							if(Munis.get(i).getNombre().toString().equals(repes.get(x))){
+							if(Munis.get(i).toString().equals(repes.get(x))){
 								
 								repe = true;
 								
@@ -307,11 +350,11 @@ public class MainCliente extends JFrame{
 						
 						if(repe == false) {
 						
-							dlm.addElement(Munis.get(i).getNombre().toString());
+							dlm.addElement(Munis.get(i).toString());
 							
 						}
 						
-						repes.add(Munis.get(i).getNombre().toString());
+						repes.add(Munis.get(i).toString());
 						
 						repe = false;
 						

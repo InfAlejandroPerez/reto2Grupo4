@@ -31,7 +31,8 @@ public class Cliente {
 	private static String datos ;
 	private static Envio recibido;
 	private static ArrayList<String> arrayProvincias;
-	private static ArrayList<Municipiospueblos> Munis;
+	private static ArrayList<String> Munis;
+	private static ArrayList<String> datosMuni;
 	private static int opcion = 0;
 	static ObjectInputStream entrada = null;
 	static ObjectOutputStream salida = null;
@@ -86,13 +87,27 @@ public class Cliente {
 						peticion = opcion + "-" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
-						Munis = (ArrayList<Municipiospueblos>) entrada.readObject();
+						Munis = (ArrayList<String>) entrada.readObject();
 						opcion = 0;
+						
+						System.out.println("Provincias Cargadas: " + Munis.size());
 						
 						break;
 					
-					
+					case 5:	
+						
+						peticion = opcion + "-" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						datosMuni = (ArrayList<String>) entrada.readObject();
+						opcion = 0;
+						
+						System.out.println("Provincias Cargadas: " + Munis.size());
+						
+						break;
+				
 					}
+					
 				} while (seguir);
 
 			} catch (Exception e) {
@@ -125,9 +140,14 @@ public class Cliente {
 		return arrayProvincias;
 	}
 	
-	public static ArrayList<Municipiospueblos> getMunis() {
+	public static ArrayList<String> getMunis() {
 		//devuelve la respuesta del server
 		return Munis;
+	}
+	
+	public static ArrayList<String> getDatosMuni() {
+		//devuelve la respuesta del server
+		return datosMuni;
 	}
 	
 	public static boolean newUser() {
