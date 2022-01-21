@@ -17,7 +17,7 @@ import modelo.Usuarios;
 
 public class Consultas {
 	
-	public static ArrayList<Provincia> pvs = new ArrayList<Provincia>();
+	public static ArrayList<String> pvs = new ArrayList<String>();
 	
 	public static ArrayList<Municipiospueblos> munis = new ArrayList<Municipiospueblos>();
 	
@@ -53,7 +53,7 @@ public class Consultas {
 		return m;
 	}
 	
-	public static void getProvincias() {
+	public static ArrayList<String> getProvincias() {
 		
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
@@ -65,13 +65,14 @@ public class Consultas {
 		
 		for(int i = 0; i < pvss.size(); i++) {
 			
-			pvs.add(pvss.get(i));
+			pvs.add(pvss.get(i).getNombre());
 			
 		}
+		return pvs;
 		
 	}
 	
-	public static void getMunicipios(String Provincia) {
+	public static ArrayList<Municipiospueblos> getMunicipios(String Provincia) {
 		
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
@@ -86,6 +87,8 @@ public class Consultas {
 			munis.add(pvss.get(i));
 			
 		}
+		
+		return pvss;
 		
 	}
 	
