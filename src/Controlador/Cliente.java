@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -16,6 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.example.euskalmet.Envio;
+
+import modelo.Municipiospueblos;
 
 
 
@@ -27,6 +30,8 @@ public class Cliente {
 	private static String peticion;
 	private static String datos ;
 	private static Envio recibido;
+	private static ArrayList<String> arrayProvincias;
+	private static ArrayList<Municipiospueblos> Munis;
 	private static int opcion = 0;
 	static ObjectInputStream entrada = null;
 	static ObjectOutputStream salida = null;
@@ -46,13 +51,35 @@ public class Cliente {
 					switch (opcion) {
 
 					case 1:
-						peticion = opcion + "/" + datos;
+						peticion = opcion + "-" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						recibido = (Envio) entrada.readObject();
 						System.out.println(recibido.getLogin());
 						opcion = 0;
 						break;
+						
+					case 3:	
+						
+						peticion = opcion + "";
+						salida.writeObject(peticion);
+						salida.flush();
+						arrayProvincias = (ArrayList<String>) entrada.readObject();
+						opcion = 0;
+						
+						break;
+						
+					case 4:	
+						
+						peticion = opcion + "-" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						Munis = (ArrayList<Municipiospueblos>) entrada.readObject();
+						opcion = 0;
+						
+						break;
+					
+					
 					}
 				} while (seguir);
 
@@ -80,4 +107,15 @@ public class Cliente {
 		//devuelve la respuesta del server
 		return recibido;
 	}
+	
+	public static ArrayList<String> getArray() {
+		//devuelve la respuesta del server
+		return arrayProvincias;
+	}
+	
+	public static ArrayList<Municipiospueblos> getMunis() {
+		//devuelve la respuesta del server
+		return Munis;
+	}
+	
 }

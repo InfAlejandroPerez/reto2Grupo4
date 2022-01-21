@@ -4,8 +4,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import com.example.euskalmet.Envio;
+
+import modelo.Municipiospueblos;
 
 public class ServerThread implements Runnable {
 	private Envio envio;
@@ -23,6 +30,7 @@ public class ServerThread implements Runnable {
 
 	@Override
 	public void run() {
+		
 		try {
 			this.salida = new ObjectOutputStream(cliente.getOutputStream());
 			this.entrada = new ObjectInputStream(cliente.getInputStream());
@@ -30,14 +38,30 @@ public class ServerThread implements Runnable {
 			String linea = (String) entrada.readObject();
 			System.out.println("Recibido: " + linea);
 
-			int opcion = Integer.parseInt(linea.split("/")[0]);
+			int opcion = Integer.parseInt(linea.split("-")[0]);
 
 			switch (opcion) {
 			case 1:
-				envio.setLogin(comprobarUsuario(linea.split("/")[1], linea.split("/")[2]));
+				envio.setLogin(comprobarUsuario(linea.split("-")[1], linea.split("-")[2]));
 				salida.writeObject(envio);
 				salida.flush();
 				System.out.println("enviado " + envio.getLogin());
+
+				break;
+				
+			case 3:
+				
+				salida.writeObject(pvs());
+				salida.flush();
+				System.out.println("Provincias Enviadas");
+
+				break;
+				
+			case 4:
+				
+				salida.writeObject(getMunicipios(linea.split("-")[1]));
+				salida.flush();
+				System.out.println("Municipios Enviadas");
 
 				break;
 			}
@@ -67,5 +91,17 @@ public class ServerThread implements Runnable {
 		} else {
 			return false;
 		}
+	}
+	
+	private static ArrayList<String> pvs() {
+		
+		return baseDeDatos.Consultas.getProvincias();
+		
+	}
+	
+	public static ArrayList<Municipiospueblos> getMunicipios(String Provincia) {
+		
+		return baseDeDatos.Consultas.getMunicipios(Provincia);
+		
 	}
 }

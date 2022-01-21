@@ -7,16 +7,23 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import modelo.Municipiospueblos;
 import modelo.Usuarios;
 import vista.ListaMunicipios;
 import vista.logIn;
@@ -28,6 +35,11 @@ public class MainCliente extends JFrame{
 	private JTextField textField;
 	private JTextField textField_1;
 	private Cliente c;
+	
+	static ArrayList<String> nombresProvincias = new ArrayList<String>();
+	
+	static ArrayList<Municipiospueblos> Munis = new ArrayList<Municipiospueblos>();
+	
 	public static void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -108,30 +120,36 @@ public class MainCliente extends JFrame{
 					
 					String password = txtPassword.getText().toString();
 					
-					/*if(baseDeDatos.Consultas.consultarUsuario(user, password)) {
-
-						try {
-							Cliente.salida.writeObject("1/" + user + "/" + password);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						try {
-							System.out.println(Cliente.entrada.readObject());
-						} catch (ClassNotFoundException | IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						
-					}else {
+					
+					if(user.isEmpty() || password.isEmpty()) {
 						
 						JOptionPane.showMessageDialog(panelElegido, "La Contraseña o Usuario Son Incorrectos");
 						
-					}*/
-					Cliente.setDatos(user+"/"+password);
-					Cliente.setOpcion(1);
-					Cliente.inicar();
-					Cliente.getResponse();
+					}else {
+						
+						
+						if(isNumeric(password)) {
+							
+							
+							Cliente.setDatos(user+"-"+password);
+							Cliente.setOpcion(1);
+							Cliente.inicar();
+							Cliente.getResponse();
+							
+							Cliente.setDatos("");
+							Cliente.setOpcion(3);
+							Cliente.inicar();
+							nombresProvincias = Cliente.getArray();
+							
+							panelPrincipal.add(switchPanel(3));
+							
+						}else {
+							
+							JOptionPane.showMessageDialog(panelElegido, "La Contraseña debe ser un Numerico");
+							
+						}
+						
+					}
 					
 				}
 			});
@@ -182,10 +200,10 @@ public class MainCliente extends JFrame{
 			panelElegido.add(txtNombre);
 			txtNombre.setColumns(10);
 			
-			JTextField txtContraseña = new JTextField();
-			txtContraseña.setBounds(157, 131, 111, 28);
-			panelElegido.add(txtContraseña);
-			txtContraseña.setColumns(10);
+			JTextField txtContrasenia = new JTextField();
+			txtContrasenia.setBounds(157, 131, 111, 28);
+			panelElegido.add(txtContrasenia);
+			txtContrasenia.setColumns(10);
 			
 			JButton btnVolverLogIn = new JButton("Volver");
 			btnVolverLogIn.addActionListener(new ActionListener() {
@@ -204,17 +222,17 @@ public class MainCliente extends JFrame{
 					
 					String nombre = txtNombre.getText();
 					
-					String Contraseña = txtContraseña.getText();
+					String Contrasenia = txtContrasenia.getText();
 					
-					if(nombre.isEmpty() || Contraseña.isEmpty()) {
+					if(nombre.isEmpty() || Contrasenia.isEmpty()) {
 						
 						
 						JOptionPane.showMessageDialog(panelElegido, "Debes Rellenar los Campos");
 						
 						
-					}else if(isNumeric(Contraseña) == true) {
+					}else if(isNumeric(Contrasenia) == true) {
 						
-						int cont = Integer.parseInt(Contraseña);
+						int cont = Integer.parseInt(Contrasenia);
 						
 						Usuarios u1 = new Usuarios(nombre, cont);
 						
@@ -239,6 +257,90 @@ public class MainCliente extends JFrame{
 			JLabel lblNewLabel_2 = new JLabel("Contraseña:");
 			lblNewLabel_2.setBounds(65, 137, 82, 17);
 			panelElegido.add(lblNewLabel_2);
+			
+			break;
+			
+			
+		case 3:
+			
+			ArrayList<String> repes = new ArrayList<String>();
+			
+			DefaultListModel<String> dlm = new DefaultListModel<String>();
+			
+			
+			
+			panelElegido.setBounds(this.getBounds());
+			panelElegido.setLayout(null);
+			
+			JComboBox<String> comboBoxProvincias = new JComboBox<String>();
+			comboBoxProvincias.setModel(new DefaultComboBoxModel<String>(nombresProvincias.toArray(new String[0])));
+			comboBoxProvincias.setBounds(26, 41, 124, 22);
+			panelElegido.add(comboBoxProvincias);
+			
+			JScrollPane scrollPane_1 = new JScrollPane();
+			scrollPane_1.setBounds(193, 11, 220, 239);
+			panelElegido.add(scrollPane_1);
+			
+			JList<String> list = new JList<String>(dlm);
+			scrollPane_1.setViewportView(list);
+			
+			JButton btnFill = new JButton("Mostrar Municipios");
+			btnFill.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					dlm.clear();
+				
+					boolean repe = false;
+					
+					Cliente.setDatos(comboBoxProvincias.getSelectedItem().toString());
+					Cliente.setOpcion(4);
+					Cliente.inicar();
+					Munis = Cliente.getMunis();
+					
+					for(int i = 0; i < Munis.size(); i++) {
+						
+						for(int x = 0; x < repes.size(); x++) {
+							
+							if(Munis.get(i).getNombre().toString().equals(repes.get(x))){
+								
+								repe = true;
+								
+							}
+						
+						}
+						
+						if(repe == false) {
+						
+							dlm.addElement(Munis.get(i).getNombre().toString());
+							
+						}
+						
+						repes.add(Munis.get(i).getNombre().toString());
+						
+						repe = false;
+						
+					}
+					
+					repes.clear();
+					
+				}
+			});
+			
+			btnFill.setBounds(26, 113, 124, 48);
+			panelElegido.add(btnFill);
+			
+			JButton btnNewButton = new JButton("Borrar");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					dlm.clear();
+					
+					Munis.clear();
+					
+				}
+			});
+			btnNewButton.setBounds(26, 172, 124, 35);
+			panelElegido.add(btnNewButton);
 			
 			break;
 
