@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Base64;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -13,6 +14,8 @@ import org.hibernate.Transaction;
 
 import com.example.euskalmet.Envio;
 
+import baseDeDatos.Consultas;
+import baseDeDatos.Inserts;
 import modelo.Municipiospueblos;
 import modelo.Usuarios;
 
@@ -55,7 +58,9 @@ public class ServerThread implements Runnable {
 				
 				int pass = Integer.parseInt(linea.split("-")[2]);
 				
-				Usuarios u1 = new Usuarios(linea.split("-")[1], pass);
+				Usuarios u1 = new Usuarios();
+				u1.setNombre(linea.split("-")[1]);
+				u1.setContrasenia(pass);
 				salida.writeObject(insertUsuarios(u1));
 				salida.flush();
 				System.out.println("Usuario Insertado");
@@ -85,7 +90,19 @@ public class ServerThread implements Runnable {
 				System.out.println("Datos de Municipio enviados");
 
 				break;
-			
+			case 9:
+				Inserts.insertImage(1, linea.split("-")[1].getBytes());
+				envio.setLogin(true);
+				salida.writeObject(envio);
+				salida.flush();
+				break;
+			case 10:
+				String valor=Base64.getEncoder().encodeToString(Consultas.getFoto(Integer.parseInt(linea.split("-")[1])));
+				
+				salida.writeObject(valor);
+				salida.flush();
+				System.out.println(valor);
+				break;
 			}
 
 		} catch (IOException e) {
@@ -129,7 +146,7 @@ public class ServerThread implements Runnable {
 	
 	public static boolean insertUsuarios(Usuarios us) {
 
-		if(baseDeDatos.inserts.insertUsuarios(us)) {
+		if(baseDeDatos.Inserts.insertUsuarios(us)) {
 			
 			return true;
 			

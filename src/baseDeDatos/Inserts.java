@@ -11,6 +11,7 @@ import modelo.EspaciosNaturales;
 import modelo.Estaciones;
 import modelo.FavoritosEspacios;
 import modelo.FavoritosMunicipios;
+import modelo.Fotosespacio;
 import modelo.Localidad;
 import modelo.Municipiospueblos;
 import modelo.Provincia;
@@ -19,7 +20,25 @@ import modelo.Usuarios;
 import java.util.HashSet;
 import java.util.Set;
 
-public class inserts {
+public class Inserts {
+	
+	public static void insertImage (int espaciNatural , byte[] imagen) {
+		Fotosespacio fotosespacio = new Fotosespacio();
+		fotosespacio.setImg(imagen);
+		fotosespacio.setCodEspacio(espaciNatural);
+		
+		Transaction tx;
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session s = sesion.openSession();
+		tx = s.beginTransaction();
+
+		// Guardar objeto en la base de datos
+		s.save(fotosespacio);
+		// Actualizar informaci�n en la base de datos
+		tx.commit();
+
+	}
+	
 	public static void insertUsuarios(int code, String nombre, int clave) {
 		Usuarios us = new Usuarios();
 		us.setCodUsuario(code);
@@ -38,9 +57,8 @@ public class inserts {
 		tx.commit();
 
 		// TODO
-		
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
@@ -56,7 +74,7 @@ public class inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-		
+
 		// Visualiza los datos del departamento 30
 		String hql = "from Usuarios where Contrasenia = '" + us.getContrasenia() + "'";
 		Query q = s.createQuery(hql);
@@ -64,18 +82,17 @@ public class inserts {
 
 		s.close();
 
-		if(u1 != null) {
-			
+		if (u1 != null) {
+
 			return true;
-			
-		}else {
-			
+
+		} else {
+
 			return false;
-			
+
 		}
-		
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
@@ -93,9 +110,9 @@ public class inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-		
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+
 	}
 
 	public static void insertProvincia(Provincia pv) {
@@ -110,9 +127,7 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		
-		 /*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
@@ -138,9 +153,9 @@ public class inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-		
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+
 	}
 
 	public static void insertMunicipio(Municipiospueblos mun) {
@@ -155,13 +170,12 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
-	public static void insertLocalidad(int code, String nombre, String descripcion, Municipiospueblos municipiospueblos) {
+	public static void insertLocalidad(int code, String nombre, String descripcion,
+			Municipiospueblos municipiospueblos) {
 		Localidad loc = new Localidad();
 		loc.setCodLocalidad(code);
 		loc.setNombre(nombre);
@@ -178,9 +192,9 @@ public class inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-		
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+
 	}
 
 	public static void insertLocalidad(Localidad loc) {
@@ -195,9 +209,7 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
@@ -215,9 +227,9 @@ public class inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-		
-		 /* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+
 	}
 
 	public static void insertFavoritosEspacios() {
@@ -234,9 +246,9 @@ public class inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-		
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+
 	}
 
 	public static void insertEstaciones() {
@@ -253,9 +265,9 @@ public class inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-		
-		  /*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+
 	}
 
 	public static void insertEspaciosNaturales() {
@@ -273,9 +285,7 @@ public class inserts {
 		tx.commit();
 		// TODO
 
-		
-		 /*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
@@ -290,9 +300,12 @@ public class inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-		
-		 /*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+
+		/*if (s.isConnected())
+			s.close();
+		if (!sesion.isClosed())
+			sesion.close();
+*/
 	}
 
 	public static void insertObjeto(Object obj) {
@@ -306,8 +319,8 @@ public class inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-		
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
-		 
+
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+
 	}
 }

@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.mapping.List;
 
 import Controlador.HibernateUtil;
+import modelo.Fotosespacio;
 import modelo.Municipiospueblos;
 import modelo.Provincia;
 import modelo.Usuarios;
@@ -20,6 +21,20 @@ public class Consultas {
 	public static ArrayList<String> pvs = new ArrayList<String>();
 	
 	public static ArrayList<String> munis = new ArrayList<String>();
+	
+	public static byte[] getFoto(int codeMuni) {
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "from Fotosespacio f where f.codEspacio = '" + codeMuni + "' ORDER BY f.cod desc" ;
+		Query q = (Query) session.createQuery(hql);
+		q.setMaxResults(1);
+		Fotosespacio f = (Fotosespacio) ((org.hibernate.Query) q).uniqueResult();
+		
+		session.close();
+		
+		return f.getImg();
+	}
 	
 	public static boolean consultarUsuario(String user, String contra) {
 		// TODO Auto-generated method stub
