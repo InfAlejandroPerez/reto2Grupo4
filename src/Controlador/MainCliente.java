@@ -18,8 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -42,6 +44,9 @@ public class MainCliente extends JFrame{
 	
 	static ArrayList<String> datosMuni = new ArrayList<String>();
 	
+	static Double CoodenadaX = (double) 0;
+	static Double CoodenadaY = (double) 0;
+	
 	public static void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -63,7 +68,7 @@ public class MainCliente extends JFrame{
 		
 		 c = new Cliente();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 365);
 		panelPrincipal = new JPanel(new CardLayout());
 		panelPrincipal.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panelPrincipal.setLayout(new BorderLayout(0, 0));
@@ -96,10 +101,10 @@ public class MainCliente extends JFrame{
 			panelElegido.add(txtUser);
 			txtUser.setColumns(10);
 			
-			JTextField txtPassword = new JTextField();
-			txtPassword.setBounds(176, 147, 101, 20);
-			panelElegido.add(txtPassword);
-			txtPassword.setColumns(10);
+			JPasswordField passwordField = new JPasswordField();
+			passwordField.setBounds(175, 147, 102, 20);
+			panelElegido.add(passwordField);
+			txtUser.setColumns(10);
 			
 			JLabel lblNewLabel = new JLabel("User:");
 			lblNewLabel.setBounds(97, 92, 68, 14);
@@ -120,7 +125,7 @@ public class MainCliente extends JFrame{
 					
 					String user = txtUser.getText().toString();
 					
-					String password = txtPassword.getText().toString();
+					String password = passwordField.getText().toString();
 					
 					
 					if(user.isEmpty() || password.isEmpty()) {
@@ -133,21 +138,35 @@ public class MainCliente extends JFrame{
 						if(isNumeric(password)) {
 							
 							
-							Cliente.setDatos(user+"-"+password);
+							Cliente.setDatos(user+"///"+password);
 							Cliente.setOpcion(1);
 							Cliente.inicar();
 							Cliente.getResponse();
 							
-							Cliente.setDatos("");
-							Cliente.setOpcion(3);
-							Cliente.inicar();
-							nombresProvincias = Cliente.getArray();
-							
-							panelPrincipal.add(switchPanel(3));
+							if(Cliente.getResponse() == true) {
+								
+								Cliente.setDatos("");
+								Cliente.setOpcion(3);
+								Cliente.inicar();
+								nombresProvincias = Cliente.getArray();
+								
+								panelPrincipal.add(switchPanel(3));
+								
+							}else {
+								
+								JOptionPane.showMessageDialog(panelElegido, "Usuario o Contraseña Incorrectos");
+								
+								txtUser.setText("");
+								
+								passwordField.setText("");
+								
+							}							
 							
 						}else {
 							
 							JOptionPane.showMessageDialog(panelElegido, "La Contraseña debe ser un Numerico");
+						
+							passwordField.setText("");
 							
 						}
 						
@@ -222,29 +241,45 @@ public class MainCliente extends JFrame{
 						
 						int cont = Integer.parseInt(Contrasenia);
 						
-						Cliente.setDatos(nombre+"-"+Contrasenia);
-						Cliente.setOpcion(2);
+						Cliente.setDatos(nombre);
+						Cliente.setOpcion(6);
 						Cliente.inicar();
 						Cliente.getResponse();
 						
-						JOptionPane.showMessageDialog(panelElegido, "Nuevo Usuario Registrado");
-						
-						Cliente.setDatos("");
-						Cliente.setOpcion(3);
-						Cliente.inicar();
-						
-						nombresProvincias.clear();
-						
-						if(nombresProvincias.size() > 0) {
+						if(Cliente.getResponse() == false) {
 							
-							Cliente.getArray();
+							Cliente.setDatos(nombre+"///"+Contrasenia);
+							Cliente.setOpcion(2);
+							Cliente.inicar();
+							
+							JOptionPane.showMessageDialog(panelElegido, "Nuevo Usuario Registrado");
+							
+							Cliente.setDatos("");
+							Cliente.setOpcion(3);
+							Cliente.inicar();
+							
+							nombresProvincias.clear();
+							
+							if(nombresProvincias.size() > 0) {
+								
+								Cliente.getArray();
+								
+							}else {
+								
+								nombresProvincias = Cliente.getArray();
+							}
+							
+							panelPrincipal.add(switchPanel(3));
 							
 						}else {
 							
-							nombresProvincias = Cliente.getArray();
+							JOptionPane.showMessageDialog(panelElegido, "Usuario ya Existente");
+	
+							txtNombre.setText("");
+							
+							txtContrasenia.setText("");
+							
 						}
-						
-						panelPrincipal.add(switchPanel(3));
 						 
 					}else {
 			            	
@@ -300,16 +335,14 @@ public class MainCliente extends JFrame{
 			    	  
 			          if (e.getClickCount() == 2) {
 
-			              // Double-click detected
-			        	  JOptionPane.showMessageDialog(panelElegido, list.getSelectedValue());
-			        	  
+			              // Double-click detected 	  
 			        	  
 			        	  Cliente.setDatos(list.getSelectedValue());
 			        	  Cliente.setOpcion(5);
 			        	  Cliente.inicar();
 			        	  datosMuni = Cliente.getDatosMuni();
 			        	  
-			        	  JOptionPane.showMessageDialog(panelElegido, datosMuni.size());
+			        	  panelPrincipal.add(switchPanel(4));
 			        	  
 			              
 			          } else if (e.getClickCount() == 3) {
@@ -380,6 +413,110 @@ public class MainCliente extends JFrame{
 			});
 			btnNewButton.setBounds(26, 172, 124, 35);
 			panelElegido.add(btnNewButton);
+			
+			break;
+			
+		case 4:
+			
+			DefaultListModel<String> dlm1 = new DefaultListModel<String>();
+			
+			dlm1.clear();
+			
+			for(int i = 1; i < datosMuni.size();i++) {
+				
+				dlm1.addElement(datosMuni.get(i));
+				
+			}
+			
+			if(dlm1.getSize() == 0) {
+				
+				dlm1.addElement("No hay Estaciones Registradas");
+				
+			}
+			
+			panelElegido.setBounds(this.getBounds());
+			panelElegido.setLayout(null);
+			
+			JScrollPane scrollPane = new JScrollPane();
+			scrollPane.setBounds(238, 59, 172, 178);
+			panelElegido.add(scrollPane);
+			
+			JList<String> listEstaciones = new JList(dlm1);
+			scrollPane.setViewportView(listEstaciones);
+			listEstaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+			      public void mouseClicked(java.awt.event.MouseEvent e) {
+			    	  
+			          if (e.getClickCount() == 2) {
+			        	  
+			        	  if(!listEstaciones.getSelectedValue().toString().equals("No hay Estaciones Registradas")) {
+			        	  
+			        	  	Cliente.setDatos(listEstaciones.getSelectedValue().toString());
+							Cliente.setOpcion(7);
+							Cliente.inicar();
+							CoodenadaX = Cliente.getCoordenadasEstacion();
+							
+							Cliente.setDatos(listEstaciones.getSelectedValue().toString());
+							Cliente.setOpcion(8);
+							Cliente.inicar();
+							CoodenadaY = Cliente.getCoordenadasEstacion();
+
+			        	  JOptionPane.showMessageDialog(panelElegido, "Coordenada de " + listEstaciones.getSelectedValue().toString() + "\n \nCoordenada X: " + CoodenadaX + "\n\nCoordenadaY : " + CoodenadaY);
+			        	  
+			        	  }
+			        	  
+			          }
+			      
+			      }
+			      
+			});
+			
+			JLabel lblNewLabel12 = new JLabel("ESTACIONES");
+			lblNewLabel12.setFont(new Font("Tahoma", Font.BOLD, 25));
+			lblNewLabel12.setBounds(238, 11, 172, 37);
+			panelElegido.add(lblNewLabel12);
+			
+			JScrollPane scrollPane_11 = new JScrollPane();
+			scrollPane_11.setBounds(10, 59, 172, 178);
+			panelElegido.add(scrollPane_11);
+			
+			JTextPane textPaneDescripcion = new JTextPane();
+			scrollPane_11.setViewportView(textPaneDescripcion);
+			
+			textPaneDescripcion.setText(datosMuni.get(0).toString());
+			
+			datosMuni.clear();
+			
+			JLabel lblNewLabel_11 = new JLabel("MUNICIPIO");
+			lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 25));
+			lblNewLabel_11.setBounds(10, 11, 172, 37);
+			panelElegido.add(lblNewLabel_11);
+			
+			JButton btnExit = new JButton("EXIT");
+			btnExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					panelPrincipal.setVisible(false);
+					
+				}
+			});
+			btnExit.setBounds(278, 276, 105, 37);
+			panelElegido.add(btnExit);
+			
+			JButton btnVolverMunis = new JButton("VOLVER");
+			btnVolverMunis.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					/*Cliente.setDatos("");
+					Cliente.setOpcion(3);
+					Cliente.inicar();
+					nombresProvincias = Cliente.getArray();*/
+					
+					panelPrincipal.add(switchPanel(3));
+					
+				}
+			});
+			btnVolverMunis.setBounds(50, 276, 105, 37);
+			panelElegido.add(btnVolverMunis);
 			
 			break;
 

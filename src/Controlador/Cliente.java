@@ -33,6 +33,7 @@ public class Cliente {
 	private static ArrayList<String> arrayProvincias;
 	private static ArrayList<String> Munis;
 	private static ArrayList<String> datosMuni;
+	private static Double CoordenadasEstacion;
 	private static int opcion = 0;
 	static ObjectInputStream entrada = null;
 	static ObjectOutputStream salida = null;
@@ -53,7 +54,7 @@ public class Cliente {
 					switch (opcion) {
 
 					case 1:
-						peticion = opcion + "-" + datos;
+						peticion = opcion + "///" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						recibido = (Envio) entrada.readObject();
@@ -63,10 +64,10 @@ public class Cliente {
 						
 					case 2:	
 						
-						peticion = opcion + "-" + datos;
+						peticion = opcion + "///" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
-						newUser = (boolean )entrada.readObject();
+						
 						
 						opcion = 0;
 						
@@ -84,7 +85,7 @@ public class Cliente {
 						
 					case 4:	
 						
-						peticion = opcion + "-" + datos;
+						peticion = opcion + "///" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						Munis = (ArrayList<String>) entrada.readObject();
@@ -96,7 +97,7 @@ public class Cliente {
 					
 					case 5:	
 						
-						peticion = opcion + "-" + datos;
+						peticion = opcion + "///" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						datosMuni = (ArrayList<String>) entrada.readObject();
@@ -106,7 +107,43 @@ public class Cliente {
 						
 						break;
 						
-					}
+					case 6:	
+						
+						peticion = opcion + "///" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						recibido = (Envio) entrada.readObject();
+						System.out.println(recibido.getLogin());
+						opcion = 0;
+
+						
+						break;
+						
+					case 7:	
+						
+						peticion = opcion + "///" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						CoordenadasEstacion = (Double) entrada.readObject();
+						opcion = 0;
+						
+						System.out.println("Coordenada X Cargada");
+						
+						break;	
+						
+					case 8:	
+						
+						peticion = opcion + "///" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						CoordenadasEstacion = (Double) entrada.readObject();
+						opcion = 0;
+						
+						System.out.println("Coordenada Y Cargada");
+						
+						break;	
+						
+					}	
 					
 				} while (seguir);
 
@@ -130,9 +167,9 @@ public class Cliente {
 		opcion = num;
 	}
 
-	public static Envio getResponse() {
+	public static boolean getResponse() {
 		//devuelve la respuesta del server
-		return recibido;
+		return recibido.getLogin();
 	}
 	
 	public static ArrayList<String> getArray() {
@@ -148,6 +185,11 @@ public class Cliente {
 	public static ArrayList<String> getDatosMuni() {
 		//devuelve la respuesta del server
 		return datosMuni;
+	}
+	
+	public static Double getCoordenadasEstacion() {
+		//devuelve la respuesta del server
+		return CoordenadasEstacion;
 	}
 	
 	public static boolean newUser() {

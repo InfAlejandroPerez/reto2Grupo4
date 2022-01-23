@@ -18,6 +18,8 @@ import modelo.Usuarios;
 
 public class Consultas {
 	
+	public static Double CoordenadasEstacion =  (double) 0;
+	
 	public static ArrayList<String> pvs = new ArrayList<String>();
 	
 	public static ArrayList<String> munis = new ArrayList<String>();
@@ -42,6 +44,25 @@ public class Consultas {
 		Session session = sesion.openSession();
 
 		String hql = "from Usuarios where Nombre = '" + user + "' AND Contrasenia = '" + contra + "'";
+		Query q = (Query) session.createQuery(hql);
+		Usuarios us = (Usuarios) ((org.hibernate.Query) q).uniqueResult();
+		
+		session.close();
+		
+		if (us != null) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+	
+	public static boolean consultarNombreUser(String user) {
+		// TODO Auto-generated method stub
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "from Usuarios where Nombre = '" + user + "'";
 		Query q = (Query) session.createQuery(hql);
 		Usuarios us = (Usuarios) ((org.hibernate.Query) q).uniqueResult();
 		
@@ -132,6 +153,34 @@ public class Consultas {
 		arr.add(descripcion);
 		
 		return arr;
+		
+	}
+	
+	public static Double getCoordenadaX(String Estacion) {
+	
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+		
+		String hql = "Select coordenadaX from Estaciones Where nombre = '" + Estacion + "'" ;
+		Query q = (Query) session.createQuery(hql);
+		
+		Double CoordenadaX = (Double) ((org.hibernate.Query) q).uniqueResult();
+		
+		return CoordenadaX;
+		
+	}
+	
+	public static Double getCoordenadaY(String Estacion) {
+	
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+		
+		String hql = "Select coordenadaY from Estaciones Where nombre = '" + Estacion + "'" ;
+		Query q = (Query) session.createQuery(hql);
+		
+		Double CoordenadaY = (Double) ((org.hibernate.Query) q).uniqueResult();
+		
+		return CoordenadaY;
 		
 	}
 	
