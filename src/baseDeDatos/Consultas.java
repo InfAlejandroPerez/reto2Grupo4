@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.mapping.List;
 
 import Controlador.HibernateUtil;
+import modelo.EspaciosNaturales;
 import modelo.Fotosespacio;
 import modelo.Municipiospueblos;
 import modelo.Provincia;
@@ -136,31 +137,45 @@ public class Consultas {
 		
 	}
 	
-	public static ArrayList<String> getDataAndStationsFromMunicipio(String municipio) {
-		
-		ArrayList<String> arr = new ArrayList<String>();
+public static ArrayList<String> getEspaciosNaturales(String Municipio) {
 		
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 		
-		String hql = "Select descripcion from Municipiospueblos Where Nombre = '" + municipio + "')" ;
+		String hql = "from EspaciosNaturales Where codMunicipio = (Select codProvincia From Provincia Where Nombre = '" + Municipio + "')" ;
 		Query q = (Query) session.createQuery(hql);
 		
-		String descripcion = (String) ((org.hibernate.Query) q).uniqueResult();
-		arr.add(descripcion);
+		munis.clear();
 		
-		hql = "Select nombre from Estaciones Where codMunicipio=(Select codMunicipio from Municipiospueblos Where Nombre = '" + municipio + "')" ;
-		q = (Query) session.createQuery(hql);
-		//La ultima posicion es la descripcion del municipio, el resto son nombres de estaciones
-		ArrayList<String> estaciones = new ArrayList<String>(q.list());
+		ArrayList<Municipiospueblos> pvss = new ArrayList<Municipiospueblos>(q.list());
 		
-		for(int i = 0; i < estaciones.size(); i++) {
+		for(int i = 0; i < pvss.size(); i++) {
 			
-			arr.add(estaciones.get(i).toString());
+			munis.add(pvss.get(i).getNombre());
 			
 		}
 		
-		return arr;
+		return munis;
+		
+	}
+	
+	public static ArrayList<String> getDataAndStationsFromMunicipio(String municipio) {
+		
+		ArrayList<String> ret = new ArrayList<String>();
+		 
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+		
+		String hql = "from EspaciosNaturales Where codMunicipio = (Select codMunicipio from Municipiospueblos where nombre ='" + municipio + "')" ;
+		Query q = (Query) session.createQuery(hql);
+		
+		q = (Query) session.createQuery(hql);
+		
+		//La ultima posicion es la descripcion del municipio, el resto son nombres de estaciones
+		ArrayList<EspaciosNaturales> arrNat = new ArrayList<EspaciosNaturales>(q.list());
+		ret.add(arrNat.get(0).getNombre());
+		ret.add(arrNat.get(0).getDescripcion());
+		return ret;
 		
 	}
 

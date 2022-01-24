@@ -24,7 +24,8 @@ public class ServerThread implements Runnable {
 	private Socket cliente;
 	private ObjectOutputStream salida;
 	private ObjectInputStream entrada;
-
+	private static final String SEPARADOR = "/////";
+	
 	public ServerThread(Socket cliente) {
 		// Inicializamos un nuevo pojo envio
 		this.envio = envio = new Envio();
@@ -43,12 +44,12 @@ public class ServerThread implements Runnable {
 			String linea = (String) entrada.readObject();
 			System.out.println("Recibido: " + linea);
 
-			int opcion = Integer.parseInt(linea.split("*///*")[0]);
+			int opcion = Integer.parseInt(linea.split(SEPARADOR)[0]);
 
 			switch (opcion) {
 			case 1:
 				// Login
-				envio.setLogin(comprobarUsuario(linea.split("*///*")[1], linea.split("*///*")[2]));
+				envio.setLogin(comprobarUsuario(linea.split(SEPARADOR)[1], linea.split(SEPARADOR)[2]));
 				salida.writeObject(envio);
 				salida.flush();
 				System.out.println("enviado " + envio.getLogin());
@@ -57,10 +58,10 @@ public class ServerThread implements Runnable {
 
 			case 2:
 				//Register
-				int pass = Integer.parseInt(linea.split("*///*")[2]);
+				int pass = Integer.parseInt(linea.split(SEPARADOR)[2]);
 
 				Usuarios u1 = new Usuarios();
-				u1.setNombre(linea.split("*///*")[1]);
+				u1.setNombre(linea.split(SEPARADOR)[1]);
 				u1.setContrasenia(pass);
 				salida.writeObject(insertUsuarios(u1));
 				salida.flush();
@@ -78,7 +79,7 @@ public class ServerThread implements Runnable {
 
 			case 4:
 				//get ??
-				ArrayList<String> a = getMunicipios(linea.split("*///*")[1]);
+				ArrayList<String> a = getMunicipios(linea.split(SEPARADOR)[1]);
 				salida.writeObject(a);
 				salida.flush();
 				System.out.println(a.size());
@@ -90,7 +91,7 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 5:
-				salida.writeObject(getEstacionesYDesc(linea.split("*///*")[1]));
+				salida.writeObject(getEstacionesYDesc(linea.split(SEPARADOR)[1]));
 
 				salida.flush();
 				System.out.println("Datos de Municipio enviados");
@@ -99,7 +100,7 @@ public class ServerThread implements Runnable {
 				
 			case 6:
 				
-				envio.setLogin(consultarNombreUser(linea.split("*///*")[1]));
+				envio.setLogin(consultarNombreUser(linea.split(SEPARADOR)[1]));
 				salida.writeObject(envio);
 				salida.flush();
 				System.out.println("enviado " + envio.getLogin());
@@ -108,7 +109,7 @@ public class ServerThread implements Runnable {
 				
 			case 7:
 				
-				salida.writeObject(getMunicipiosCoordenadasEst(linea.split("*///*")[1]));
+				salida.writeObject(getMunicipiosCoordenadasEst(linea.split(SEPARADOR)[1]));
 				salida.flush();
 				System.out.println("Coordenadas de Estacion Enviadas");
 
@@ -116,36 +117,43 @@ public class ServerThread implements Runnable {
 				
 			case 8:
 				
-				salida.writeObject(getMunicipiosCoordenadasEst1(linea.split("*///*")[1]));
+				salida.writeObject(getMunicipiosCoordenadasEst1(linea.split(SEPARADOR)[1]));
 				salida.flush();
 				System.out.println("Coordenadas de Estacion Enviadas");
 
 				break;
 				
 			case 9:
-				Inserts.insertImage(1, linea.split("*///*")[1].getBytes());
+				Inserts.insertImage(1, linea.split(SEPARADOR)[1].getBytes());
 				envio.setLogin(true);
 				salida.writeObject(envio);
 				salida.flush();
 				break;
 			case 10:
-				String valor = Base64.getEncoder().encodeToString(Consultas.getFoto(Integer.parseInt(linea.split("*///*")[1])));
+				String valor = Base64.getEncoder().encodeToString(Consultas.getFoto(Integer.parseInt(linea.split(SEPARADOR)[1])));
 				salida.writeObject(valor);
 				salida.flush();
 				System.out.println(valor);
 				break;
 			case 20:
-				ArrayList<Double> choords = getChoords(linea.split("*///*")[1]);
+				ArrayList<Double> choords = getChoords(linea.split(SEPARADOR)[1]);
 				salida.writeObject(choords);
 				salida.flush();
 				System.out.println("coords enviadas: "+choords.get(0));
 				break;
 			case 21:
-				String munDesc = Consultas.getDescriptionFromMunicipio(linea.split("*///*")[1]);
+				String munDesc = Consultas.getDescriptionFromMunicipio(linea.split(SEPARADOR)[1]);
 				salida.writeObject(munDesc);
 				salida.flush();
 				System.out.println("descripcion enviadas: "+munDesc);
 				break;
+			case 22:
+				ArrayList<String> estac = getEstacionesYDesc(linea.split(SEPARADOR)[1]);
+				salida.writeObject(estac);
+				salida.flush();
+				System.out.println("descripcion enviadas: "+estac.get(1).toString());
+				break;
+			
 			}
 
 		} catch (IOException e) {
