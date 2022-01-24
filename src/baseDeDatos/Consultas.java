@@ -26,11 +26,11 @@ public class Consultas {
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 
-		String hql = "from Fotosespacio f where f.codEspacio = '" + codeMuni + "' ORDER BY f.cod desc" ;
+		String hql = "from Fotosespacio  where codEspacio = '" + codeMuni + "' ORDER BY cod desc" ;
 		Query q = (Query) session.createQuery(hql);
 		q.setMaxResults(1);
 		Fotosespacio f = (Fotosespacio) ((org.hibernate.Query) q).uniqueResult();
-		
+		//TODO
 		session.close();
 		
 		return f.getImg();
@@ -55,7 +55,7 @@ public class Consultas {
 
 	}
 
-	static Municipiospueblos consultarCodigoMunicipio(String municipio) {
+	public static Municipiospueblos consultarCodigoMunicipio(String municipio) {
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 		// Visualiza los datos del departamento 30
@@ -132,6 +132,36 @@ public class Consultas {
 		arr.add(descripcion);
 		
 		return arr;
+		
+	}
+
+public static String getDescriptionFromMunicipio(String municipio) {
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+		
+		String hql = "Select descripcion from Municipiospueblos Where Nombre = '" + municipio + "')" ;
+		Query q = (Query) session.createQuery(hql);
+		
+		String descripcion = (String) ((org.hibernate.Query) q).uniqueResult();
+	
+		
+		return descripcion;
+		
+	}
+	
+	public static ArrayList<Double> getChoords(int codMunicipio) {
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "SELECT coordenadaX, coordenadaY from Estaciones  where CodMunicipio = '" + codMunicipio + "'" ;
+		Query q = (Query) session.createQuery(hql);
+		
+		ArrayList<Double> f = new ArrayList<Double>(q.list());
+		//TODO
+		session.close();
+		
+		return f;
 		
 	}
 	

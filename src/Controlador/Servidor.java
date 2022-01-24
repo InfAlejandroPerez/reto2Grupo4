@@ -15,7 +15,7 @@ public class Servidor {
 	private static int contador = 0;
 
 	public void iniciar() {
-		while (contador < 20) {
+		while (true) {
 			ServerSocket servidor = null;
 			Socket cliente = null;
 			try {

@@ -219,7 +219,7 @@ public class LeerEspaciosNaturales {
 
 					System.out.println(l1.getNombre() + l1.getCodLocalidad());
 
-					inserts.insertLocalidad(l1);
+					Inserts.insertLocalidad(l1);
 
 				}
 
@@ -238,7 +238,7 @@ public class LeerEspaciosNaturales {
 				e1.setDescripcion(turism);
 				e1.setCodMunicipio(codMunicipio);
 				e1.setCodLocalidad(codLocalidad);
-				inserts.insertEspaciosNaturales(e1);
+				Inserts.insertEspaciosNaturales(e1);
 
 				espaciosNaturales.add(e1);
 

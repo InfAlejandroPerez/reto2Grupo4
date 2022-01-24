@@ -35,7 +35,7 @@ public class ServerThread implements Runnable {
 
 	@Override
 	public void run() {
-		
+
 		try {
 			this.salida = new ObjectOutputStream(cliente.getOutputStream());
 			this.entrada = new ObjectInputStream(cliente.getInputStream());
@@ -47,17 +47,18 @@ public class ServerThread implements Runnable {
 
 			switch (opcion) {
 			case 1:
+				// Login
 				envio.setLogin(comprobarUsuario(linea.split("-")[1], linea.split("-")[2]));
 				salida.writeObject(envio);
 				salida.flush();
 				System.out.println("enviado " + envio.getLogin());
 
 				break;
-				
+
 			case 2:
-				
+
 				int pass = Integer.parseInt(linea.split("-")[2]);
-				
+
 				Usuarios u1 = new Usuarios();
 				u1.setNombre(linea.split("-")[1]);
 				u1.setContrasenia(pass);
@@ -66,25 +67,29 @@ public class ServerThread implements Runnable {
 				System.out.println("Usuario Insertado");
 
 				break;
-				
+
 			case 3:
-				
+
 				salida.writeObject(pvs());
 				salida.flush();
 				System.out.println("Provincias Enviadas");
 
 				break;
-				
+
 			case 4:
-				
-				salida.writeObject(getMunicipios(linea.split("-")[1]));
+				ArrayList<String> a = getMunicipios(linea.split("-")[1]);
+				salida.writeObject(a);
 				salida.flush();
+				System.out.println(a.size());
+				for (int i = 0; i < a.size(); i++) {
+					System.out.println(a.get(i).toString());
+				}
 				System.out.println("Municipios Enviados");
 
 				break;
-				
+
 			case 5:
-				
+
 				salida.writeObject(getEstacionesYDesc(linea.split("-")[1]));
 				salida.flush();
 				System.out.println("Datos de Municipio enviados");
@@ -97,11 +102,24 @@ public class ServerThread implements Runnable {
 				salida.flush();
 				break;
 			case 10:
-				String valor=Base64.getEncoder().encodeToString(Consultas.getFoto(Integer.parseInt(linea.split("-")[1])));
-				
+				String valor = Base64.getEncoder()
+						.encodeToString(Consultas.getFoto(Integer.parseInt(linea.split("-")[1])));
+
 				salida.writeObject(valor);
 				salida.flush();
 				System.out.println(valor);
+				break;
+			case 20:
+				ArrayList<Double> choords = getChoords(linea.split("-")[1]);
+				salida.writeObject(choords);
+				salida.flush();
+				System.out.println("coords enviadas: "+choords.get(0));
+				break;
+			case 21:
+				String munDesc = Consultas.getDescriptionFromMunicipio(linea.split("-")[1]);
+				salida.writeObject(munDesc);
+				salida.flush();
+				System.out.println("descripcion enviadas: "+munDesc);
 				break;
 			}
 
@@ -131,37 +149,45 @@ public class ServerThread implements Runnable {
 			return false;
 		}
 	}
-	
+
 	private static ArrayList<String> pvs() {
-		
+
 		return baseDeDatos.Consultas.getProvincias();
-		
+
 	}
-	
+
 	public static ArrayList<String> getMunicipios(String Provincia) {
-		
+
 		return baseDeDatos.Consultas.getMunicipios(Provincia);
-		
+
 	}
-	
+
 	public static boolean insertUsuarios(Usuarios us) {
 
-		if(baseDeDatos.Inserts.insertUsuarios(us)) {
-			
+		if (baseDeDatos.Inserts.insertUsuarios(us)) {
+
 			return true;
-			
-		}else {
-			
+
+		} else {
+
 			return false;
-			
+
 		}
 
 	}
-	
-	private static ArrayList<String> getEstacionesYDesc(String municipio){
-		
+
+	private static ArrayList<String> getEstacionesYDesc(String municipio) {
+
 		return baseDeDatos.Consultas.getDataAndStationsFromMunicipio(municipio);
-		
+
 	}
 	
+	private static ArrayList<Double> getChoords(String municipio) {
+		Municipiospueblos m =  baseDeDatos.Consultas.consultarCodigoMunicipio(municipio);
+		System.out.println(m.getCodMunicipio());
+		ArrayList<Double> ret= baseDeDatos.Consultas.getChoords(m.getCodMunicipio());
+		
+		return ret;
+	}
+
 }

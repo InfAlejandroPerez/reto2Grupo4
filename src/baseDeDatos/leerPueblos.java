@@ -177,8 +177,9 @@ public class leerPueblos {
 				boolean alredyExistP = false;
 
 				for (int i = 0; i < Provincias.size(); i++) {
-
+					
 					if (Provincias.get(i).getCodProvincia() == codProvincia) {
+						System.out.println("Provincia existe, " + Provincias.get(i).getCodProvincia());
 
 						alredyExistP = true;
 
@@ -191,10 +192,11 @@ public class leerPueblos {
 				p1.setNombre(territory);
 
 				if (!alredyExistP) {
+					System.out.println("Provincia añadida, " + p1.getCodProvincia());
 
 					Provincias.add(p1);
 
-					inserts.insertProvincia(p1);
+					Inserts.insertProvincia(p1);
 
 				} else {
 
@@ -222,7 +224,7 @@ public class leerPueblos {
 
 				if (codAlreadyExist == false) {
 
-					inserts.insertMunicipio(m1);
+					Inserts.insertMunicipio(m1);
 
 					Municipios.add(m1);
 
@@ -247,7 +249,7 @@ public class leerPueblos {
 
 					localidad.add(l1);
 
-					inserts.insertLocalidad(l1);
+					Inserts.insertLocalidad(l1);
 
 				}
 

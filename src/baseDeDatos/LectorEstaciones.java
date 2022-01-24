@@ -53,7 +53,7 @@ public class LectorEstaciones {
 				e.setCoordenadaX(coordenadaX);
 				e.setCoordenadaY(coordenadaY);
 				e.setMunicipiospueblos(municipio);
-				inserts.insertEstaciones(e);
+				Inserts.insertEstaciones(e);
 				codEstacion++;
 
 			}

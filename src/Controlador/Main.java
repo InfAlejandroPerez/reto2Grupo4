@@ -15,15 +15,15 @@ public class Main {
 		System.setProperty("file.encoding", "UTF-8");
 
 
-		//try {
+		/*try {
 			
-			//leerPueblos.LeerPueblos();
+			leerPueblos.LeerPueblos();
 			
-			//LectorEstaciones.guardarDatosEstaciones();
+			LectorEstaciones.guardarDatosEstaciones();
 			
 			//LectorJsonData.guardarDatosMetereologicos();
 			
-		/*} catch (ParseException e) {
+		} catch (ParseException e) {
 
 			// TODO Auto-generated catch block
 			e.printStackTrace();

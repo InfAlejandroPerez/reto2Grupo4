@@ -86,7 +86,7 @@ public class LectorJsonData {
 				icaestacion = readedData[i + 2];
 				Datos d = new Datos(estaciones, fecha, hora, comgm3, co8hmgm3, nogm3, no2, no2ica, noxgm3,
 						pm10ica, pm25, pm25ica, so2, so2ica, icaestacion);
-				inserts.insertDatos(d);
+				Inserts.insertDatos(d);
 				//i=readedData.length;
 
 			}
