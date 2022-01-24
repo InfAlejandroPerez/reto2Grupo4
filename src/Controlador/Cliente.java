@@ -54,7 +54,7 @@ public class Cliente {
 					switch (opcion) {
 
 					case 1:
-						peticion = opcion + "///" + datos;
+						peticion = opcion + "/////" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						recibido = (Envio) entrada.readObject();
@@ -64,7 +64,7 @@ public class Cliente {
 						
 					case 2:	
 						
-						peticion = opcion + "///" + datos;
+						peticion = opcion + "/////" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						
@@ -85,7 +85,7 @@ public class Cliente {
 						
 					case 4:	
 						
-						peticion = opcion + "///" + datos;
+						peticion = opcion + "/////" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						Munis = (ArrayList<String>) entrada.readObject();
@@ -97,7 +97,7 @@ public class Cliente {
 					
 					case 5:	
 						
-						peticion = opcion + "///" + datos;
+						peticion = opcion + "/////" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						datosMuni = (ArrayList<String>) entrada.readObject();
@@ -109,7 +109,7 @@ public class Cliente {
 						
 					case 6:	
 						
-						peticion = opcion + "///" + datos;
+						peticion = opcion + "/////" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						recibido = (Envio) entrada.readObject();
@@ -121,7 +121,7 @@ public class Cliente {
 						
 					case 7:	
 						
-						peticion = opcion + "///" + datos;
+						peticion = opcion + "/////" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						CoordenadasEstacion = (Double) entrada.readObject();
@@ -133,7 +133,7 @@ public class Cliente {
 						
 					case 8:	
 						
-						peticion = opcion + "///" + datos;
+						peticion = opcion + "/////" + datos;
 						salida.writeObject(peticion);
 						salida.flush();
 						CoordenadasEstacion = (Double) entrada.readObject();

@@ -27,9 +27,6 @@ import javax.swing.border.EmptyBorder;
 
 import modelo.Municipiospueblos;
 import modelo.Usuarios;
-import vista.ListaMunicipios;
-import vista.logIn;
-import vista.register;
 
 public class MainCliente extends JFrame{
 	
@@ -68,7 +65,7 @@ public class MainCliente extends JFrame{
 		
 		 c = new Cliente();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 365);
+		setBounds(100, 100, 463, 365);
 		panelPrincipal = new JPanel(new CardLayout());
 		panelPrincipal.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panelPrincipal.setLayout(new BorderLayout(0, 0));
@@ -138,7 +135,7 @@ public class MainCliente extends JFrame{
 						if(isNumeric(password)) {
 							
 							
-							Cliente.setDatos(user+"///"+password);
+							Cliente.setDatos(user+"/////"+password);
 							Cliente.setOpcion(1);
 							Cliente.inicar();
 							Cliente.getResponse();
@@ -149,6 +146,8 @@ public class MainCliente extends JFrame{
 								Cliente.setOpcion(3);
 								Cliente.inicar();
 								nombresProvincias = Cliente.getArray();
+								
+								panelPrincipal.setLocation(0, 0);
 								
 								panelPrincipal.add(switchPanel(3));
 								
@@ -248,7 +247,7 @@ public class MainCliente extends JFrame{
 						
 						if(Cliente.getResponse() == false) {
 							
-							Cliente.setDatos(nombre+"///"+Contrasenia);
+							Cliente.setDatos(nombre+"/////"+Contrasenia);
 							Cliente.setOpcion(2);
 							Cliente.inicar();
 							
@@ -524,6 +523,8 @@ public class MainCliente extends JFrame{
 			break;
 		}
 
+		panelElegido.setLocation(0, 0);
+		
 		return panelElegido;
 	}
 	

@@ -211,7 +211,7 @@ public class ServerThread implements Runnable {
 
 	private static ArrayList<String> getEstacionesYDesc(String municipio) {
 
-		return baseDeDatos.Consultas.getDataAndStationsFromMunicipio(municipio);
+		return baseDeDatos.Consultas.getDataEstacionesMasDesc(municipio);
 
 	}
 	
