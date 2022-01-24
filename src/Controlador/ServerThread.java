@@ -43,12 +43,12 @@ public class ServerThread implements Runnable {
 			String linea = (String) entrada.readObject();
 			System.out.println("Recibido: " + linea);
 
-			int opcion = Integer.parseInt(linea.split("-")[0]);
+			int opcion = Integer.parseInt(linea.split("*///*")[0]);
 
 			switch (opcion) {
 			case 1:
 				// Login
-				envio.setLogin(comprobarUsuario(linea.split("-")[1], linea.split("-")[2]));
+				envio.setLogin(comprobarUsuario(linea.split("*///*")[1], linea.split("*///*")[2]));
 				salida.writeObject(envio);
 				salida.flush();
 				System.out.println("enviado " + envio.getLogin());
@@ -56,11 +56,11 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 2:
-
-				int pass = Integer.parseInt(linea.split("-")[2]);
+				//Register
+				int pass = Integer.parseInt(linea.split("*///*")[2]);
 
 				Usuarios u1 = new Usuarios();
-				u1.setNombre(linea.split("-")[1]);
+				u1.setNombre(linea.split("*///*")[1]);
 				u1.setContrasenia(pass);
 				salida.writeObject(insertUsuarios(u1));
 				salida.flush();
@@ -77,7 +77,8 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 4:
-				ArrayList<String> a = getMunicipios(linea.split("-")[1]);
+				//get ??
+				ArrayList<String> a = getMunicipios(linea.split("*///*")[1]);
 				salida.writeObject(a);
 				salida.flush();
 				System.out.println(a.size());
@@ -89,34 +90,58 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 5:
+				salida.writeObject(getEstacionesYDesc(linea.split("*///*")[1]));
 
-				salida.writeObject(getEstacionesYDesc(linea.split("-")[1]));
 				salida.flush();
 				System.out.println("Datos de Municipio enviados");
 
 				break;
+				
+			case 6:
+				
+				envio.setLogin(consultarNombreUser(linea.split("*///*")[1]));
+				salida.writeObject(envio);
+				salida.flush();
+				System.out.println("enviado " + envio.getLogin());
+
+				break;
+				
+			case 7:
+				
+				salida.writeObject(getMunicipiosCoordenadasEst(linea.split("*///*")[1]));
+				salida.flush();
+				System.out.println("Coordenadas de Estacion Enviadas");
+
+				break;
+				
+			case 8:
+				
+				salida.writeObject(getMunicipiosCoordenadasEst1(linea.split("*///*")[1]));
+				salida.flush();
+				System.out.println("Coordenadas de Estacion Enviadas");
+
+				break;
+				
 			case 9:
-				Inserts.insertImage(1, linea.split("-")[1].getBytes());
+				Inserts.insertImage(1, linea.split("*///*")[1].getBytes());
 				envio.setLogin(true);
 				salida.writeObject(envio);
 				salida.flush();
 				break;
 			case 10:
-				String valor = Base64.getEncoder()
-						.encodeToString(Consultas.getFoto(Integer.parseInt(linea.split("-")[1])));
-
+				String valor = Base64.getEncoder().encodeToString(Consultas.getFoto(Integer.parseInt(linea.split("*///*")[1])));
 				salida.writeObject(valor);
 				salida.flush();
 				System.out.println(valor);
 				break;
 			case 20:
-				ArrayList<Double> choords = getChoords(linea.split("-")[1]);
+				ArrayList<Double> choords = getChoords(linea.split("*///*")[1]);
 				salida.writeObject(choords);
 				salida.flush();
 				System.out.println("coords enviadas: "+choords.get(0));
 				break;
 			case 21:
-				String munDesc = Consultas.getDescriptionFromMunicipio(linea.split("-")[1]);
+				String munDesc = Consultas.getDescriptionFromMunicipio(linea.split("*///*")[1]);
 				salida.writeObject(munDesc);
 				salida.flush();
 				System.out.println("descripcion enviadas: "+munDesc);
@@ -182,6 +207,7 @@ public class ServerThread implements Runnable {
 
 	}
 	
+
 	private static ArrayList<Double> getChoords(String municipio) {
 		Municipiospueblos m =  baseDeDatos.Consultas.consultarCodigoMunicipio(municipio);
 		System.out.println(m.getCodMunicipio());
@@ -189,5 +215,27 @@ public class ServerThread implements Runnable {
 		
 		return ret;
 	}
+
+	private static Double getMunicipiosCoordenadasEst(String Estacion){
+		
+		return baseDeDatos.Consultas.getCoordenadaX(Estacion);
+		
+	}
+	
+	private static Double getMunicipiosCoordenadasEst1(String Estacion){
+		
+		return baseDeDatos.Consultas.getCoordenadaY(Estacion);
+		
+	}
+	
+	private static Boolean consultarNombreUser(String peticion) {
+		
+		if (baseDeDatos.Consultas.consultarNombreUser(peticion)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 
 }

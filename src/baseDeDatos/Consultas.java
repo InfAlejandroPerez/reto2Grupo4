@@ -18,6 +18,8 @@ import modelo.Usuarios;
 
 public class Consultas {
 	
+	public static Double CoordenadasEstacion =  (double) 0;
+	
 	public static ArrayList<String> pvs = new ArrayList<String>();
 	
 	public static ArrayList<String> munis = new ArrayList<String>();
@@ -42,6 +44,25 @@ public class Consultas {
 		Session session = sesion.openSession();
 
 		String hql = "from Usuarios where Nombre = '" + user + "' AND Contrasenia = '" + contra + "'";
+		Query q = (Query) session.createQuery(hql);
+		Usuarios us = (Usuarios) ((org.hibernate.Query) q).uniqueResult();
+		
+		session.close();
+		
+		if (us != null) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+	
+	public static boolean consultarNombreUser(String user) {
+		// TODO Auto-generated method stub
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "from Usuarios where Nombre = '" + user + "'";
 		Query q = (Query) session.createQuery(hql);
 		Usuarios us = (Usuarios) ((org.hibernate.Query) q).uniqueResult();
 		
@@ -117,6 +138,8 @@ public class Consultas {
 	
 	public static ArrayList<String> getDataAndStationsFromMunicipio(String municipio) {
 		
+		ArrayList<String> arr = new ArrayList<String>();
+		
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 		
@@ -124,12 +147,18 @@ public class Consultas {
 		Query q = (Query) session.createQuery(hql);
 		
 		String descripcion = (String) ((org.hibernate.Query) q).uniqueResult();
+		arr.add(descripcion);
 		
 		hql = "Select nombre from Estaciones Where codMunicipio=(Select codMunicipio from Municipiospueblos Where Nombre = '" + municipio + "')" ;
 		q = (Query) session.createQuery(hql);
 		//La ultima posicion es la descripcion del municipio, el resto son nombres de estaciones
-		ArrayList<String> arr = new ArrayList<String>(q.list());
-		arr.add(descripcion);
+		ArrayList<String> estaciones = new ArrayList<String>(q.list());
+		
+		for(int i = 0; i < estaciones.size(); i++) {
+			
+			arr.add(estaciones.get(i).toString());
+			
+		}
 		
 		return arr;
 		
@@ -162,6 +191,34 @@ public static String getDescriptionFromMunicipio(String municipio) {
 		session.close();
 		
 		return f;
+		
+	}
+	
+	public static Double getCoordenadaX(String Estacion) {
+	
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+		
+		String hql = "Select coordenadaX from Estaciones Where nombre = '" + Estacion + "'" ;
+		Query q = (Query) session.createQuery(hql);
+		
+		Double CoordenadaX = (Double) ((org.hibernate.Query) q).uniqueResult();
+		
+		return CoordenadaX;
+		
+	}
+	
+	public static Double getCoordenadaY(String Estacion) {
+	
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+		
+		String hql = "Select coordenadaY from Estaciones Where nombre = '" + Estacion + "'" ;
+		Query q = (Query) session.createQuery(hql);
+		
+		Double CoordenadaY = (Double) ((org.hibernate.Query) q).uniqueResult();
+		
+		return CoordenadaY;
 		
 	}
 	
