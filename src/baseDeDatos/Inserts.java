@@ -232,7 +232,22 @@ public class Inserts {
 
 	}
 
-	public static void insertFavoritosEspacios() {
+	public static boolean insertFavoritosEspacios(int user, String place) {
+		Transaction tx;
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session s = sesion.openSession();
+		tx = s.beginTransaction();
+		FavoritosEspacios fav = new FavoritosEspacios();
+		fav.setCodUsuario(user);
+		fav.setNombreEspacio(place);
+		// Guardar objeto en la base de datos
+		s.save(fav);
+		// Actualizar informaci�n en la base de datos
+		tx.commit();
+		// TODO
+
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+		return true;
 	}
 
 	public static void insertFavoritosEspacios(FavoritosEspacios fav) {

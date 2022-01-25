@@ -154,7 +154,35 @@ public class ServerThread implements Runnable {
 				salida.flush();
 				System.out.println("descripcion enviadas: " + estac.get(1).toString());
 				break;
-
+			case 23:
+				// Insert favs
+				envio = new Envio();
+				envio.setLogin(
+						insertFavs(linea.split(SEPARADOR)[1], linea.split(SEPARADOR)[2], linea.split(SEPARADOR)[3]));
+				salida.writeObject(envio);
+				salida.flush();
+				System.out.println("insercion realizada: " + envio.getLogin());
+				break;
+			case 24:
+				// Delete favs
+				envio = new Envio();
+				envio.setLogin(
+						deleteFav(linea.split(SEPARADOR)[1], linea.split(SEPARADOR)[2], linea.split(SEPARADOR)[3]));
+				System.out.println(" ");
+				salida.writeObject(envio);
+				salida.flush();
+				System.out.println("borrado realizado: " + envio.getLogin());
+				break;
+			case 25:
+				// Check if a spaceArea is already in favs;
+				envio = new Envio();
+				envio.setLogin(
+						checkFavs(linea.split(SEPARADOR)[1], linea.split(SEPARADOR)[2], linea.split(SEPARADOR)[3]));
+				System.out.println(" ");
+				salida.writeObject(envio);
+				salida.flush();
+				System.out.println("borrado realizado: " + envio.getLogin());
+				break;
 			}
 
 		} catch (IOException e) {
@@ -174,6 +202,39 @@ public class ServerThread implements Runnable {
 			}
 		}
 
+	}
+
+	private Boolean deleteFav(String userS, String pass, String place) {
+		int user = baseDeDatos.Consultas.getUserCode(userS, pass);
+		boolean ret = baseDeDatos.Delete.deleteFav(user, place);
+		System.out.println("salida");
+		return ret;
+	}
+
+	private Boolean insertFavs(String userS, String pass, String place) {
+		int user;
+		int comprobacion;
+		boolean ret;
+		user = baseDeDatos.Consultas.getUserCode(userS, pass);
+		comprobacion = baseDeDatos.Consultas.gedCodeFavEspacio(user, place);
+		System.out.println("comprobacion " + comprobacion);
+		if (comprobacion == 0) {
+			ret = baseDeDatos.Inserts.insertFavoritosEspacios(user, place);
+		}
+		return true;
+	}
+
+	private boolean checkFavs(String userS, String pass, String place) {
+		int user;
+		int comprobacion;
+		boolean ret = true;
+		user = baseDeDatos.Consultas.getUserCode(userS, pass);
+		comprobacion = baseDeDatos.Consultas.gedCodeFavEspacio(user, place);
+		System.out.println("comprobacion " + comprobacion);
+		if (comprobacion == 0) {
+			ret = false;
+		}
+		return ret;
 	}
 
 	private static Boolean comprobarUsuario(String peticion, String peticion2) {
@@ -217,19 +278,20 @@ public class ServerThread implements Runnable {
 	}
 
 	private static ArrayList<Double> getChoords(String municipio) {
-		//Municipiospueblos m = baseDeDatos.Consultas.consultarCodigoMunicipio(municipio);
-		//System.out.println(m.getCodMunicipio());
+		// Municipiospueblos m =
+		// baseDeDatos.Consultas.consultarCodigoMunicipio(municipio);
+		// System.out.println(m.getCodMunicipio());
 		ArrayList<Double> ret = new ArrayList<Double>();
 		// ArrayList<Double> ret= baseDeDatos.Consultas.getChoords(m.getCodMunicipio());
 		ArrayList<String> est = getEstacionesYDesc(municipio);
-		int lastI = est.size()-1;
+		int lastI = est.size() - 1;
 		if (est.size() > 0) {
 			Double x = baseDeDatos.Consultas.getCoordenadaX(est.get(lastI));
 			Double y = baseDeDatos.Consultas.getCoordenadaY(est.get(lastI));
-			System.out.println(est.get(lastI) +" choords " + x + " "+ y);
+			System.out.println(est.get(lastI) + " choords " + x + " " + y);
 			ret.add(x);
 			ret.add(y);
-		}else {
+		} else {
 			ret.add(0.0000);
 			ret.add(0.0000);
 		}
