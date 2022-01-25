@@ -295,8 +295,8 @@ public class Consultas {
 			SessionFactory sesion = HibernateUtil.getSessionFactory();
 			Session session = sesion.openSession();
 
-			String hql = "Select codFav from FavoritosEspacios Where nombreEspacio = '" + nombre + "' AND codUsuario = '"
-					+ user + "'";
+			String hql = "Select codFav from FavoritosEspacios Where nombreEspacio = '" + nombre
+					+ "' AND codUsuario = '" + user + "'";
 			Query q = (Query) session.createQuery(hql);
 
 			cod = (int) ((org.hibernate.Query) q).uniqueResult();
@@ -304,6 +304,40 @@ public class Consultas {
 			System.out.println("No hay entradas en getCodeFavEspacio");
 		}
 		return cod;
+
+	}
+
+	public static ArrayList<String> getEstacionesFavs(String usuario, String contrasenia) {
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select codUsuario from Usuarios Where nombre = '" + usuario + "' AND contrasenia = '"
+				+ contrasenia + "'";
+		Query q = (Query) session.createQuery(hql);
+
+		int codUser = (Integer) ((org.hibernate.Query) q).uniqueResult();
+
+		hql = "Select nombreEspacio from FavoritosEspacios Where codUsuario = " + codUser;
+		q = (Query) session.createQuery(hql);
+
+		ArrayList<String> Espacios = new ArrayList<String>(q.list());
+
+		return Espacios;
+
+	}
+
+	public static ArrayList<String> getNombreEspacios() {
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select nombre from EspaciosNaturales";
+		Query q = (Query) session.createQuery(hql);
+
+		ArrayList<String> EspaciosNombres = new ArrayList<String>(q.list());
+
+		return EspaciosNombres;
 
 	}
 }

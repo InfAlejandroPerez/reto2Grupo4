@@ -183,6 +183,20 @@ public class ServerThread implements Runnable {
 				salida.flush();
 				System.out.println("borrado realizado: " + envio.getLogin());
 				break;
+			case 30:
+				salida.writeObject(EstacionesFav(linea.split(SEPARADOR)[1], linea.split(SEPARADOR)[2]));
+				salida.flush();
+				System.out.println("Favoritos Espacios");
+
+				break;
+
+			case 31:
+
+				salida.writeObject(getNombreEspacios());
+				salida.flush();
+				System.out.println("Nombres Espacios");
+
+				break;
 			}
 
 		} catch (IOException e) {
@@ -320,4 +334,15 @@ public class ServerThread implements Runnable {
 		}
 	}
 
+	private static ArrayList<String> EstacionesFav(String nombre, String contrasenia) {
+
+		return baseDeDatos.Consultas.getEstacionesFavs(nombre, contrasenia);
+
+	}
+
+	private static ArrayList<String> getNombreEspacios() {
+
+		return baseDeDatos.Consultas.getNombreEspacios();
+
+	}
 }
