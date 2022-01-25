@@ -161,6 +161,33 @@ public static ArrayList<String> getEspaciosNaturales(String Municipio) {
 	
 	public static ArrayList<String> getDataAndStationsFromMunicipio(String municipio) {
 		
+		ArrayList<String> arr = new ArrayList<String>();
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select descripcion from Municipiospueblos Where Nombre = '" + municipio + "')" ;
+		Query q = (Query) session.createQuery(hql);
+
+		String descripcion = (String) ((org.hibernate.Query) q).uniqueResult();
+		arr.add(descripcion);
+
+		hql = "Select nombre from Estaciones Where codMunicipio=(Select codMunicipio from Municipiospueblos Where Nombre = '" + municipio + "')" ;
+		q = (Query) session.createQuery(hql);
+		//La ultima posicion es la descripcion del municipio, el resto son nombres de estaciones
+		ArrayList<String> estaciones = new ArrayList<String>(q.list());
+
+		for(int i = 0; i < estaciones.size(); i++) {
+
+			arr.add(estaciones.get(i).toString());
+
+		}
+
+		return arr;
+		
+	}
+public static ArrayList<String> getDataAndStationsFromMunicipio2(String municipio) {
+		
 		ArrayList<String> ret = new ArrayList<String>();
 		 
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
@@ -178,7 +205,6 @@ public static ArrayList<String> getEspaciosNaturales(String Municipio) {
 		return ret;
 		
 	}
-
 public static String getDescriptionFromMunicipio(String municipio) {
 		
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
@@ -198,7 +224,7 @@ public static String getDescriptionFromMunicipio(String municipio) {
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 
-		String hql = "SELECT coordenadaX, coordenadaY from Estaciones  where CodMunicipio = '" + codMunicipio + "'" ;
+		String hql = "Select coordenadaX, coordenadaY from Estaciones Where codMunicipio = '" + codMunicipio + "'" ;
 		Query q = (Query) session.createQuery(hql);
 		
 		ArrayList<Double> f = new ArrayList<Double>(q.list());
