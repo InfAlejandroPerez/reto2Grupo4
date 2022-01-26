@@ -208,7 +208,27 @@ public class Consultas {
 		return arr;
 
 	}
+	
+	
+	public static ArrayList<String> getDataFromEspacio(String espacio) {
 
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select descripcion from EspaciosNaturales Where Nombre = '" + espacio + "')";
+		Query q = (Query) session.createQuery(hql);
+
+		
+		ArrayList<String> estaciones = new ArrayList<String>(q.list());
+
+		if (estaciones.size()==0) {
+			estaciones.add("no se ha encontrado este espacio");
+		}
+		return estaciones;
+
+	}
+	
 	public static ArrayList<String> getDataAndStationsFromMunicipio2(String municipio) {
 
 		ArrayList<String> ret = new ArrayList<String>();

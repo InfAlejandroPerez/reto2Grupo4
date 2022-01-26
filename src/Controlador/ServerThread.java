@@ -183,6 +183,13 @@ public class ServerThread implements Runnable {
 				salida.flush();
 				System.out.println("borrado realizado: " + envio.getLogin());
 				break;
+			case 26:
+				// get SpaceArea details;
+				ArrayList<String> estac1 = getEstacionesYDesc2(linea.split(SEPARADOR)[1]);
+				salida.writeObject(estac1);
+				salida.flush();
+				System.out.println("descripcion enviadas: " + estac1.get(0).toString());
+				break;
 			case 30:
 				salida.writeObject(EstacionesFav(linea.split(SEPARADOR)[1], linea.split(SEPARADOR)[2]));
 				salida.flush();
@@ -286,8 +293,26 @@ public class ServerThread implements Runnable {
 	}
 
 	private static ArrayList<String> getEstacionesYDesc(String municipio) {
+		ArrayList<String> ret = baseDeDatos.Consultas.getDataAndStationsFromMunicipio(municipio);
+		if (ret.size() < 2) {
+			if (ret.get(0) == null) {
+				ret.clear();
+			}
+			ret.add("no se ha encontrado este dato");
+			ret.add("no se ha encontrado este dato");
+		}
+		return ret;
 
-		return baseDeDatos.Consultas.getDataAndStationsFromMunicipio(municipio);
+	}
+
+	private static ArrayList<String> getEstacionesYDesc2(String espacio) {
+
+		ArrayList<String> ret = baseDeDatos.Consultas.getDataFromEspacio(espacio);
+		if (ret.get(0).contentEquals("no se ha encontrado este espacio")) {
+			ret = new ArrayList<String>();
+			ret = getEstacionesYDesc(espacio);
+		}
+		return ret;
 
 	}
 
