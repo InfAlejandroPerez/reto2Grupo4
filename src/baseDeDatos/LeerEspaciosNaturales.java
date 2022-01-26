@@ -26,7 +26,7 @@ public class LeerEspaciosNaturales {
 
 	static ArrayList<EspaciosNaturales> espaciosNaturales = new ArrayList<EspaciosNaturales>();
 
-	static int codEspacios = 0;
+	static int codEspacios = 1;
 
 	public static void Espacios() {
 
@@ -98,11 +98,48 @@ public class LeerEspaciosNaturales {
 
 				}
 
-				for (int i = 0; i < 28; i++) {
+				for (int i = 0; i < 23; i++) {
 
 					iter2.next();
 
 				}
+				
+				JsonPrimitive tipo = iter2.next().getValue().getAsJsonPrimitive();
+				System.out.println(tipo.getAsString());
+
+				String tipoEspacio = tipo.toString();
+				
+				tipoEspacio = tipoEspacio.substring(1, tipoEspacio.length() - 1);
+				
+				iter2.next();
+				
+				Double latit;
+				
+				JsonPrimitive latitud = iter2.next().getValue().getAsJsonPrimitive();
+				if(latitud.getAsString().isEmpty()) {
+					
+					latit = (double) 0;
+					
+				}else {
+				
+					latit = latitud.getAsDouble();
+				
+				}
+				
+				double longit;
+				
+				JsonPrimitive longitud = iter2.next().getValue().getAsJsonPrimitive();
+				if(longitud.getAsString().isEmpty()) {
+					
+					longit = (double) 0;
+					
+				}else {
+				
+					longit = longitud.getAsDouble();
+				
+				}
+				
+				iter2.next();
 
 				JsonPrimitive valor7 = iter2.next().getValue().getAsJsonPrimitive();
 				System.out.println(valor7.getAsString());
@@ -235,6 +272,9 @@ public class LeerEspaciosNaturales {
 				e1.setCodEspacio(codEspacios);
 				e1.setCodMunicipio(codMunicipio);
 				e1.setNombre(documentName);
+				e1.setTipo(tipoEspacio);
+				e1.setLatitud(latit);
+				e1.setLongitud(longit);
 				e1.setDescripcion(turism);
 				e1.setCodMunicipio(codMunicipio);
 				e1.setCodLocalidad(codLocalidad);
