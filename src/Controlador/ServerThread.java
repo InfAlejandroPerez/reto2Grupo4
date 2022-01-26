@@ -204,6 +204,15 @@ public class ServerThread implements Runnable {
 				System.out.println("Nombres Espacios");
 
 				break;
+				
+			case 32:
+				
+				ArrayList<Double> cor = getLatLon(linea.split(SEPARADOR)[1]);
+				salida.writeObject(cor);
+				salida.flush();
+				System.out.println("Coordenadas de Espacio Natural enviadas");
+				
+				break;
 			}
 
 		} catch (IOException e) {
@@ -336,6 +345,37 @@ public class ServerThread implements Runnable {
 		}
 
 		return ret;
+	}
+	
+	private static ArrayList<Double> getLatLon(String Espacio) {
+		// Municipiospueblos m =
+		// baseDeDatos.Consultas.consultarCodigoMunicipio(municipio);
+		// System.out.println(m.getCodMunicipio());
+		ArrayList<Double> ret = new ArrayList<Double>();
+		// ArrayList<Double> ret= baseDeDatos.Consultas.getChoords(m.getCodMunicipio());
+		
+		if(baseDeDatos.Consultas.getLatitud(Espacio) == 0){
+			
+			ret.add(0.0000);
+			
+		}else {
+			
+			ret.add(baseDeDatos.Consultas.getLatitud(Espacio));
+			
+		}
+		
+		if(baseDeDatos.Consultas.getLongitud(Espacio) == 0) {
+			
+			ret.add(0.0000);
+			
+		}else {
+			
+			ret.add(baseDeDatos.Consultas.getLongitud(Espacio));
+			
+		}
+
+		return ret;
+		
 	}
 
 	private static Double getMunicipiosCoordenadasEst(String Estacion) {

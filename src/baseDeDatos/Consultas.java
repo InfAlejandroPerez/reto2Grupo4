@@ -307,6 +307,34 @@ public class Consultas {
 		return CoordenadaY;
 
 	}
+	
+	public static Double getLongitud(String Espacio) {
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select longitud from EspaciosNaturales Where nombre = '" + Espacio + "'";
+		Query q = (Query) session.createQuery(hql);
+
+		Double Longitud = (Double) ((org.hibernate.Query) q).uniqueResult();
+
+		return Longitud;
+
+	}
+
+	public static Double getLatitud(String Espacio) {
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select latitud from EspaciosNaturales Where nombre = '" + Espacio + "'";
+		Query q = (Query) session.createQuery(hql);
+
+		Double Latitud = (Double) ((org.hibernate.Query) q).uniqueResult();
+
+		return Latitud;
+
+	}
 
 	public static int gedCodeFavEspacio(int user, String nombre) {
 
@@ -360,4 +388,33 @@ public class Consultas {
 		return EspaciosNombres;
 
 	}
+	
+	public static ArrayList<String> getDataEstacionesMasDesc(String municipio) {
+
+		ArrayList<String> arr = new ArrayList<String>();
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select descripcion from Municipiospueblos Where Nombre = '" + municipio + "')" ;
+		Query q = (Query) session.createQuery(hql);
+
+		String descripcion = (String) ((org.hibernate.Query) q).uniqueResult();
+		arr.add(descripcion);
+
+		hql = "Select nombre from Estaciones Where codMunicipio=(Select codMunicipio from Municipiospueblos Where Nombre = '" + municipio + "')" ;
+		q = (Query) session.createQuery(hql);
+		//La ultima posicion es la descripcion del municipio, el resto son nombres de estaciones
+		ArrayList<String> estaciones = new ArrayList<String>(q.list());
+
+		for(int i = 0; i < estaciones.size(); i++) {
+
+			arr.add(estaciones.get(i).toString());
+
+		}
+
+		return arr;
+		
+	}
+	
 }
