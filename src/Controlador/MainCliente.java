@@ -27,9 +27,6 @@ import javax.swing.border.EmptyBorder;
 
 import modelo.Municipiospueblos;
 import modelo.Usuarios;
-import vista.ListaMunicipios;
-import vista.logIn;
-import vista.register;
 
 public class MainCliente extends JFrame{
 	
