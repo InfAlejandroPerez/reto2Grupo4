@@ -307,6 +307,34 @@ public class Consultas {
 		return CoordenadaY;
 
 	}
+	
+	public static Double getLongitud(String Espacio) {
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select longitud from EspaciosNaturales Where nombre = '" + Espacio + "'";
+		Query q = (Query) session.createQuery(hql);
+
+		Double Longitud = (Double) ((org.hibernate.Query) q).uniqueResult();
+
+		return Longitud;
+
+	}
+
+	public static Double getLatitud(String Espacio) {
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select latitud from EspaciosNaturales Where nombre = '" + Espacio + "'";
+		Query q = (Query) session.createQuery(hql);
+
+		Double Latitud = (Double) ((org.hibernate.Query) q).uniqueResult();
+
+		return Latitud;
+
+	}
 
 	public static int gedCodeFavEspacio(int user, String nombre) {
 
