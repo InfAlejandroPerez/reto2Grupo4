@@ -136,6 +136,18 @@ public class ServerThread implements Runnable {
 				salida.flush();
 				System.out.println(valor);
 				break;
+			case 11:
+				salida.writeObject(getMunicipioPlayas());
+				salida.flush();
+				System.out.println("Munis con Playas Mandados");
+				break;
+				
+			case 12:
+				salida.writeObject(getPlayas(linea.split(SEPARADOR)[1]));
+				salida.flush();
+				System.out.println("PLayas Enviadas");
+				break;
+				
 			case 20:
 				ArrayList<Double> choords = getChoords(linea.split(SEPARADOR)[1]);
 				salida.writeObject(choords);
@@ -409,5 +421,17 @@ public class ServerThread implements Runnable {
 
 		return baseDeDatos.Consultas.getNombreEspacios();
 
+	}
+	
+	private static ArrayList<String> getMunicipioPlayas(){
+		
+		return baseDeDatos.Consultas.getMunisWithPLayas();
+		
+	}
+	
+	private static ArrayList<String> getPlayas(String nombre){
+		
+		return baseDeDatos.Consultas.getPlayasfromMuni(nombre);
+		
 	}
 }

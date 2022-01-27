@@ -405,15 +405,61 @@ public class Consultas {
 		hql = "Select nombre from Estaciones Where codMunicipio=(Select codMunicipio from Municipiospueblos Where Nombre = '" + municipio + "')" ;
 		q = (Query) session.createQuery(hql);
 		//La ultima posicion es la descripcion del municipio, el resto son nombres de estaciones
-		ArrayList<String> estaciones = new ArrayList<String>(q.list());
+		ArrayList<String> playas = new ArrayList<String>(q.list());
 
-		for(int i = 0; i < estaciones.size(); i++) {
+		for(int i = 0; i < playas.size(); i++) {
 
-			arr.add(estaciones.get(i).toString());
+			arr.add(playas.get(i).toString());
 
 		}
 
 		return arr;
+		
+	}
+	
+	public static ArrayList<String> getMunisWithPLayas(){
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select nombre from Municipiospueblos Where codMunicipio in (Select DISTINCT codMunicipio from EspaciosNaturales Where tipo LIKE 'Playas')";
+		Query q = (Query) session.createQuery(hql);
+		
+		ArrayList<String> Espacios = new ArrayList<String>(q.list());
+		
+		return Espacios;
+	
+	}
+	
+	public static ArrayList<String> getPlayasfromMuni(String Muni){
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select nombre from EspaciosNaturales Where codMunicipio = (Select codMunicipio from Municipiospueblos Where nombre LIKE '" + Muni + "')";
+		Query q = (Query) session.createQuery(hql);
+		
+		ArrayList<String> Espacios = new ArrayList<String>(q.list());
+		
+		return Espacios;
+	
+	}
+	
+	public static ArrayList<String> getDatosPLaya(String Playa){
+		
+		ArrayList<String> playas = new ArrayList<String>();
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select icaestacion from Datos Where codEstacion = (Select codEstacion From Estaciones Where codMunicipio = (Select codMuicipio from EspaciosNaturales Where nombre LIKE '"+ Playa + "'))";
+		Query q = (Query) session.createQuery(hql).uniqueResult();
+		
+		String dato = q.toString();
+		
+		
+		
+		return playas;
 		
 	}
 	

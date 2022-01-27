@@ -35,11 +35,15 @@ public class MainCliente extends JFrame{
 	private JTextField textField_1;
 	private Cliente c;
 	
+	static String NombreMuni;
+	
 	static ArrayList<String> nombresProvincias = new ArrayList<String>();
 	
 	static ArrayList<String> Munis = new ArrayList<String>();
 	
 	static ArrayList<String> datosMuni = new ArrayList<String>();
+	
+	static ArrayList<String> playas = new ArrayList<String>();
 	
 	static Double CoodenadaX = (double) 0;
 	static Double CoodenadaY = (double) 0;
@@ -333,15 +337,38 @@ public class MainCliente extends JFrame{
 			    	  JList list1 = (JList)e.getSource();
 			    	  
 			          if (e.getClickCount() == 2) {
+			        	  
+			        	  String ventana = list.getSelectedValue().split("\\(")[1];
+			        	  
+			        	  ventana = ventana.substring(0, ventana.length() - 1);
+			        	  
+			        	  if(ventana.equals("Datos")) {
 
-			              // Double-click detected 	  
+			              // Double-click detected 	 
+			        		  
+			        		  String dato = list.getSelectedValue().split("\\(")[0];
 			        	  
-			        	  Cliente.setDatos(list.getSelectedValue());
-			        	  Cliente.setOpcion(5);
-			        	  Cliente.inicar();
-			        	  datosMuni = Cliente.getDatosMuni();
+			        		  Cliente.setDatos(dato);
+			        		  Cliente.setOpcion(5);
+			        		  Cliente.inicar();
+			        		  datosMuni = Cliente.getDatosMuni();
 			        	  
-			        	  panelPrincipal.add(switchPanel(4));
+			        		  panelPrincipal.add(switchPanel(4));
+			        	  
+			        	  }else if (ventana.equals("Playas")) {
+			        		  
+			        		  String dato = list.getSelectedValue().split("\\(")[0];
+			        		  
+			        		  NombreMuni = dato;
+			        		  
+			        		  Cliente.setDatos(dato);
+			        		  Cliente.setOpcion(12);
+			        		  Cliente.inicar();
+			        		  playas = Cliente.getPlayasFromMuni();
+			        		  
+			        		  panelPrincipal.add(switchPanel(5));
+			        		  
+			        	  }
 			        	  
 			              
 			          } else if (e.getClickCount() == 3) {
@@ -382,7 +409,7 @@ public class MainCliente extends JFrame{
 						
 						if(repe == false) {
 						
-							dlm.addElement(Munis.get(i).toString());
+							dlm.addElement(Munis.get(i).toString() + "(Datos)");
 							
 						}
 						
@@ -412,6 +439,50 @@ public class MainCliente extends JFrame{
 			});
 			btnNewButton.setBounds(26, 172, 124, 35);
 			panelElegido.add(btnNewButton);
+			
+			JButton btnPlayas = new JButton("Ver Playas");
+			btnPlayas.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					dlm.clear();
+					
+					boolean repe = false;
+					
+					Cliente.setDatos("");
+					Cliente.setOpcion(11);
+					Cliente.inicar();
+					Munis = Cliente.getMunisPlayas();
+					
+					for(int i = 0; i < Munis.size(); i++) {
+						
+						for(int x = 0; x < repes.size(); x++) {
+							
+							if(Munis.get(i).toString().equals(repes.get(x))){
+								
+								repe = true;
+								
+							}
+						
+						}
+						
+						if(repe == false) {
+						
+							dlm.addElement(Munis.get(i).toString() + "(Playas)" );
+							
+						}
+						
+						repes.add(Munis.get(i).toString());
+						
+						repe = false;
+						
+					}
+					
+					repes.clear();
+					
+				}
+			});
+			btnPlayas.setBounds(26, 210, 124, 35);
+			panelElegido.add(btnPlayas);
 			
 			break;
 			
@@ -516,9 +587,65 @@ public class MainCliente extends JFrame{
 			});
 			btnVolverMunis.setBounds(50, 276, 105, 37);
 			panelElegido.add(btnVolverMunis);
+
+			break;
+			
+		case 5:
+			
+			DefaultListModel<String> dlm2 = new DefaultListModel<String>();
+			
+			dlm2.clear();
+			
+			for(int i = 0; i < playas.size();i++) {
+				
+				dlm2.addElement(playas.get(i));
+				
+			}
+			
+			if(dlm2.getSize() == 0) {
+				
+				dlm2.addElement("No hay Estaciones Registradas");
+				
+			}
+			
+			panelElegido.setBounds(this.getBounds());
+			panelElegido.setLayout(null);
+			
+			JScrollPane scrollPane1 = new JScrollPane();
+			scrollPane1.setBounds(24, 48, 257, 179);
+			panelElegido.add(scrollPane1);
+			
+			JList<String> list1 = new JList<String>(dlm2);
+			scrollPane1.setViewportView(list1);
+			
+			JLabel playa = new JLabel("PLAYAS");
+			playa.setFont(new Font("Tahoma", Font.BOLD, 22));
+			playa.setBounds(147, 11, 215, 26);
+			panelElegido.add(playa);
+			
+			JButton btnNewButton_1 = new JButton("VOLVER");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					panelPrincipal.add(switchPanel(3));
+					
+				}
+			});
+			btnNewButton_1.setBounds(291, 192, 119, 47);
+			panelElegido.add(btnNewButton_1);
+			
+			JLabel lblNewLabel_4 = new JLabel("MUNICIPIO");
+			lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 16));
+			lblNewLabel_4.setBounds(291, 50, 119, 26);
+			panelElegido.add(lblNewLabel_4);
+			
+			JLabel lblNombreMunicipio = new JLabel(NombreMuni);
+			lblNombreMunicipio.setFont(new Font("Tahoma", Font.BOLD, 13));
+			lblNombreMunicipio.setBounds(291, 73, 107, 42);
+			panelElegido.add(lblNombreMunicipio);
 			
 			break;
-
+			
 		default:
 			break;
 		}
