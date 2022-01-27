@@ -417,10 +417,13 @@ public class Consultas {
 		
 	}
 	
+
 	public static ArrayList<String> getMunisWithPLayas(){
+
 		
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
+
 
 		String hql = "Select nombre from Municipiospueblos Where codMunicipio in (Select DISTINCT codMunicipio from EspaciosNaturales Where tipo LIKE 'Playas')";
 		Query q = (Query) session.createQuery(hql);
@@ -460,7 +463,20 @@ public class Consultas {
 		
 		
 		return playas;
+	}
 		
+	public static ArrayList<String> getTopRanking() {
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+	
+		String hql = "Select nombreEspacio from TopRanking";
+		Query q = (Query) session.createQuery(hql);
+
+		ArrayList<String> topRanking = new ArrayList<String>(q.list());
+		
+		return topRanking;
+
 	}
 	
 }
