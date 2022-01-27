@@ -417,4 +417,17 @@ public class Consultas {
 		
 	}
 	
+	public static ArrayList<String> getTopRanking() {
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select nombreEspacio from TopRanking";
+		Query q = (Query) session.createQuery(hql);
+
+		ArrayList<String> topRanking = new ArrayList<String>(q.list());
+		
+		return topRanking;
+	}
+	
 }

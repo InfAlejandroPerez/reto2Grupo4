@@ -213,6 +213,14 @@ public class ServerThread implements Runnable {
 				System.out.println("Coordenadas de Espacio Natural enviadas");
 				
 				break;
+				
+			case 35:
+				
+				salida.writeObject(getTopRanking());
+				salida.flush();
+				System.out.println("Top Ranking");
+				
+				break;
 			}
 
 		} catch (IOException e) {
@@ -409,5 +417,10 @@ public class ServerThread implements Runnable {
 
 		return baseDeDatos.Consultas.getNombreEspacios();
 
+	}
+	
+	private static ArrayList<String> getTopRanking() {
+		
+		return baseDeDatos.Consultas.getTopRanking();
 	}
 }
