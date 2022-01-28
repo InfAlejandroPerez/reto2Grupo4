@@ -10,7 +10,6 @@ import modelo.Datos;
 import modelo.EspaciosNaturales;
 import modelo.Estaciones;
 import modelo.FavoritosEspacios;
-import modelo.FavoritosMunicipios;
 import modelo.Fotosespacio;
 import modelo.Localidad;
 import modelo.Municipiospueblos;
@@ -21,12 +20,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Inserts {
-	
-	public static void insertImage (int espaciNatural , byte[] imagen) {
+
+	public static void insertImage(int espaciNatural, byte[] imagen) {
 		Fotosespacio fotosespacio = new Fotosespacio();
 		fotosespacio.setImg(imagen);
 		fotosespacio.setCodEspacio(espaciNatural);
-		
+
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session s = sesion.openSession();
@@ -38,7 +37,7 @@ public class Inserts {
 		tx.commit();
 
 	}
-	
+
 	public static void insertUsuarios(int code, String nombre, int clave) {
 		Usuarios us = new Usuarios();
 		us.setCodUsuario(code);
@@ -216,22 +215,6 @@ public class Inserts {
 	public static void insertFavoritosMunicipios() {
 	}
 
-	public static void insertFavoritosMunicipios(FavoritosMunicipios fav) {
-		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
-		tx = s.beginTransaction();
-
-		// Guardar objeto en la base de datos
-		s.save(fav);
-		// Actualizar informaci�n en la base de datos
-		tx.commit();
-		// TODO
-
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
-
-	}
-
 	public static boolean insertFavoritosEspacios(int user, String place) {
 		Transaction tx;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
@@ -316,11 +299,9 @@ public class Inserts {
 		tx.commit();
 		// TODO
 
-		/*if (s.isConnected())
-			s.close();
-		if (!sesion.isClosed())
-			sesion.close();
-*/
+		/*
+		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
+		 */
 	}
 
 	public static void insertObjeto(Object obj) {

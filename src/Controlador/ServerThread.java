@@ -99,7 +99,7 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 6:
-
+				//Nombre de usuario
 				envio.setLogin(consultarNombreUser(linea.split(SEPARADOR)[1]));
 				salida.writeObject(envio);
 				salida.flush();
@@ -108,7 +108,7 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 7:
-
+				//Get coordenadas
 				salida.writeObject(getMunicipiosCoordenadasEst(linea.split(SEPARADOR)[1]));
 				salida.flush();
 				System.out.println("Coordenadas de Estacion Enviadas");
@@ -116,7 +116,7 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 8:
-
+				//Get coordenadas
 				salida.writeObject(getMunicipiosCoordenadasEst1(linea.split(SEPARADOR)[1]));
 				salida.flush();
 				System.out.println("Coordenadas de Estacion Enviadas");
@@ -124,19 +124,22 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 9:
+				//insertar imagen
 				Inserts.insertImage(1, linea.split(SEPARADOR)[1].getBytes());
 				envio.setLogin(true);
 				salida.writeObject(envio);
 				salida.flush();
 				break;
 			case 10:
-				String valor = Base64.getEncoder()
-						.encodeToString(Consultas.getFoto(Integer.parseInt(linea.split(SEPARADOR)[1])));
-				salida.writeObject(valor);
+				//Enviar imagen
+				byte[] valorArry = Consultas.getFoto(Integer.parseInt(linea.split(SEPARADOR)[1]));
+				String finale = new String(valorArry);
+				salida.writeObject(finale);
 				salida.flush();
-				System.out.println(valor);
+				System.out.println(finale);
 				break;
 			case 20:
+				//Get todas las coordenadas
 				ArrayList<Double> choords = getChoords(linea.split(SEPARADOR)[1]);
 				salida.writeObject(choords);
 				salida.flush();
