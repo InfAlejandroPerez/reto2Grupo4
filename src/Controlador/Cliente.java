@@ -33,6 +33,8 @@ public class Cliente {
 	private static ArrayList<String> arrayProvincias;
 	private static ArrayList<String> Munis;
 	private static ArrayList<String> datosMuni;
+	private static ArrayList<String> MunisPlayas;
+	private static ArrayList<String> playas;
 	private static Double CoordenadasEstacion;
 	private static int opcion = 0;
 	static ObjectInputStream entrada = null;
@@ -141,6 +143,30 @@ public class Cliente {
 						
 						System.out.println("Coordenada Y Cargada");
 						
+						break;
+						
+					case 11:
+						
+						peticion = opcion + "";
+						salida.writeObject(peticion);
+						salida.flush();
+						MunisPlayas = (ArrayList<String>) entrada.readObject();
+						opcion = 0;
+						
+						System.out.println("Municipios con playas Mostrados");
+						
+						break;	
+
+					case 12:
+						
+						peticion = opcion + "/////" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						playas = (ArrayList<String>) entrada.readObject();
+						opcion = 0;
+						
+						System.out.println("Playas Enviadas");
+						
 						break;	
 						
 					}	
@@ -196,6 +222,18 @@ public class Cliente {
 		
 		return newUser;
 		
+	}
+	
+	public static ArrayList<String> getMunisPlayas() {
+		
+		return MunisPlayas;
+	
+	}
+
+	public static ArrayList<String> getPlayasFromMuni() {
+		
+		return playas;
+	
 	}
 	
 }

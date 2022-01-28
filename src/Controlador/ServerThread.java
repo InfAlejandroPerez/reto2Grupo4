@@ -138,6 +138,18 @@ public class ServerThread implements Runnable {
 				salida.flush();
 				System.out.println(finale);
 				break;
+			case 11:
+				salida.writeObject(getMunicipioPlayas());
+				salida.flush();
+				System.out.println("Munis con Playas Mandados");
+				break;
+				
+			case 12:
+				salida.writeObject(getPlayas(linea.split(SEPARADOR)[1]));
+				salida.flush();
+				System.out.println("PLayas Enviadas");
+				break;
+				
 			case 20:
 				//Get todas las coordenadas
 				ArrayList<Double> choords = getChoords(linea.split(SEPARADOR)[1]);
@@ -214,6 +226,14 @@ public class ServerThread implements Runnable {
 				salida.writeObject(cor);
 				salida.flush();
 				System.out.println("Coordenadas de Espacio Natural enviadas");
+				
+				break;
+				
+			case 35:
+				
+				salida.writeObject(getTopRanking());
+				salida.flush();
+				System.out.println("Top Ranking");
 				
 				break;
 			}
@@ -411,6 +431,26 @@ public class ServerThread implements Runnable {
 	private static ArrayList<String> getNombreEspacios() {
 
 		return baseDeDatos.Consultas.getNombreEspacios();
+
+	}
+	
+
+	private static ArrayList<String> getMunicipioPlayas(){
+		
+		return baseDeDatos.Consultas.getMunisWithPLayas();
+		
+	}
+	
+	private static ArrayList<String> getPlayas(String nombre){
+		
+		return baseDeDatos.Consultas.getPlayasfromMuni(nombre);
+		
+	}
+		
+
+	private static ArrayList<String> getTopRanking() {
+		
+		return baseDeDatos.Consultas.getTopRanking();
 
 	}
 }
