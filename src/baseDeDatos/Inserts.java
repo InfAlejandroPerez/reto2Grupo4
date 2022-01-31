@@ -24,7 +24,7 @@ import java.util.Set;
 public class Inserts {
 
 	private static SessionFactory factory;
-	
+
 	public static void insertImage(int espaciNatural, byte[] imagen) {
 		Fotosespacio fotosespacio = new Fotosespacio();
 		fotosespacio.setImg(imagen);
@@ -299,7 +299,6 @@ public class Inserts {
 		// TODO
 		s.flush();
 
-		
 		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
 		 
 	}
