@@ -29,6 +29,7 @@ public class Cliente {
 	private static boolean seguir;
 	private static String peticion;
 	private static String datos ;
+	private static String datosPlayas;
 	private static Envio recibido;
 	private static ArrayList<String> arrayProvincias;
 	private static ArrayList<String> Munis;
@@ -169,6 +170,18 @@ public class Cliente {
 						
 						break;	
 						
+					case 13:
+						
+						peticion = opcion + "/////" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						datosPlayas = (String) entrada.readObject();
+						opcion = 0;
+						
+						System.out.println("Datos Meteorologicos");
+						
+						break;	
+						
 					}	
 					
 				} while (seguir);
@@ -233,6 +246,12 @@ public class Cliente {
 	public static ArrayList<String> getPlayasFromMuni() {
 		
 		return playas;
+	
+	}
+	
+	public static String getMeteorPlayas() {
+		
+		return datosPlayas;
 	
 	}
 	

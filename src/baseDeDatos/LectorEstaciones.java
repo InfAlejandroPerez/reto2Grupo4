@@ -9,9 +9,15 @@ import modelo.Municipiospueblos;
 import modelo.Provincia;
 
 public class LectorEstaciones {
+	
+	public static ArrayList<Estaciones> ArrayEstaciones = new ArrayList<Estaciones>();
+	
 	private static final String ESTACIONES = "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2020/es_def/adjuntos/estaciones.json";
 
 	public static void guardarDatosEstaciones() throws ParseException {
+		
+		ArrayEstaciones.clear();
+		
 		// lee la info de euskalmet e inserta los datos en la bbdd
 		String jsonData = ReadJsonFromUrl.readData(ESTACIONES);
 		// ArrayList<String> datosMeteo = new ArrayList<String>();
@@ -55,6 +61,8 @@ public class LectorEstaciones {
 				e.setMunicipiospueblos(municipio);
 				Inserts.insertEstaciones(e);
 				codEstacion++;
+				
+				ArrayEstaciones.add(e);
 
 			}
 		}

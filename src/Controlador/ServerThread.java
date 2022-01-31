@@ -148,6 +148,12 @@ public class ServerThread implements Runnable {
 				System.out.println("PLayas Enviadas");
 				break;
 				
+			case 13:
+				salida.writeObject(getMeteorPlaya(linea.split(SEPARADOR)[1]));
+				salida.flush();
+				System.out.println("Datos Meteor PLayas");
+				break;
+				
 			case 20:
 				ArrayList<Double> choords = getChoords(linea.split(SEPARADOR)[1]);
 				salida.writeObject(choords);
@@ -448,6 +454,12 @@ public class ServerThread implements Runnable {
 	private static ArrayList<String> getTopRanking() {
 		
 		return baseDeDatos.Consultas.getTopRanking();
+
+	}
+	
+	private static String getMeteorPlaya(String dato) {
+		
+		return baseDeDatos.Consultas.getDatosPLaya(dato);
 
 	}
 }
