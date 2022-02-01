@@ -31,7 +31,9 @@ public class Main {
 			
 			
 
-		try {
+
+	/*try {
+
 			
 			//leerPueblos.LeerPueblos();
 			
@@ -46,10 +48,10 @@ public class Main {
 		}
 
 		//Servidor s = new Servidor();
-		//s.iniciar();
+		//s.iniciar();*/
 		
 		}while(!next.equals("1"));
-
+		
 	}
 
 }

@@ -29,21 +29,22 @@ public class LectorJsonData {
 		ArrayList<String> readedData = ordenarDatos(jsonData);
 		
 		if(noCargar == false) {
-		
+			
 			leerPueblos.LeerPueblos();
 			
 			LectorEstaciones.guardarDatosEstaciones();
-			
-			for (int i = 0; i < readedData.size(); i++) {
-				estacion = readedData.get(i).toString();
-				if (readedData.size() >= i + 6) {
-					estacion2 = readedData.get(i + 4).toString();			
-					// System.out.println(estacion);
-					if (estacion.equalsIgnoreCase(estacion2)) {
+		
+		for (int i = 0; i < readedData.size(); i++) {
+			estacion = readedData.get(i).toString();
+			if (readedData.size() >= i + 6) {
+				estacion2 = readedData.get(i + 4).toString();			
+				// System.out.println(estacion);
+				if (estacion.equalsIgnoreCase(estacion2)) {
 						jsonData = ReadJsonFromUrl.readData(readedData.get(i + 5).toString());
 						// System.out.println(jsonData);
 						volcarDatos(estacion, jsonData);
 						i = i + 5;
+
 						// Avanzo 5 posiciones hasta la siguiente estacion metereologica
 					}
 				}
@@ -57,12 +58,11 @@ public class LectorJsonData {
 	private static void volcarDatos(String estacion, String jsonData) throws ParseException {
 		// los datos
 		String readedData[] = jsonData.split("\"");
-		
-		Estaciones e1 = new Estaciones();
-		
-		e1.setNombre(estacion);
-		e1.setCodEstacion(Consultas.getCodeFromEstacion(estacion));
-		
+
+		Estaciones estaciones = new Estaciones();
+		estaciones.setNombre(estacion);
+		estaciones.setCodEstacion(Consultas.getCodeFromEstacion(estacion));
+
 		Date fecha = null;
 		Date hora = null;
 		String comgm3 = null;
@@ -77,7 +77,7 @@ public class LectorJsonData {
 		String so2 = null;
 		String so2ica = null;
 		String icaestacion = null;
-		
+
 		for (int i = 0; i < readedData.length; i++) {
 			System.out.println(readedData[i]);
 			if (readedData[i].equalsIgnoreCase("Date")) {
@@ -105,7 +105,8 @@ public class LectorJsonData {
 				so2ica = readedData[i + 2];
 			} else if (readedData[i].equalsIgnoreCase("icaestacion")) {
 				icaestacion = readedData[i + 2];
-				Datos d = new Datos(e1, fecha, hora, comgm3, co8hmgm3, nogm3, no2, no2ica, noxgm3,
+				
+				Datos d = new Datos(estaciones, fecha, hora, comgm3, co8hmgm3, nogm3, no2, no2ica, noxgm3,
 						pm10ica, pm25, pm25ica, so2, so2ica, icaestacion);
 				
 				baseDeDatos.Inserts.insertDatos(d);
