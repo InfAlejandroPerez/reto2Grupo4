@@ -514,6 +514,10 @@ public class Consultas {
 				
 				estacion = estacion.replaceAll("_BBIZI2", " (BBIZI2)");
 				
+			}else if(estacion.contains("BOROA")) {
+				
+				estacion = estacion.replaceAll("BOROA", "BOROA METEO");
+				
 			}else if(estacion.contains("_Monte")) {
 				
 				estacion = estacion.replaceAll("_Monte", " (Monte)");
@@ -526,13 +530,9 @@ public class Consultas {
 				
 				estacion = estacion.replaceAll("AVDA_", "AVDA. ");
 				
-			}else if(estacion.contains("Ñ")) {
+			}else if(estacion.contains("ANORGA")) {
 				
-				estacion = estacion.replaceAll("Ñ", "N");
-				
-			}else if(estacion.contains("Ñ")) {
-				
-				estacion = estacion.replaceAll("Ñ", "N");
+				estacion = estacion.replaceAll("ANORGA", "AÑORGA");
 				
 			}else if(estacion.contains("_meteo")) {
 				
