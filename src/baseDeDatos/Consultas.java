@@ -479,4 +479,17 @@ public class Consultas {
 
 	}
 	
+public static ArrayList<String> getDatosMetereologicos() {
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+	
+		String hql = "Select no2ica, pm10ica, so2ica, icaestacion from Datos Where codEstacion = (Select codEstacion From Estaciones Where codMunicipio = (Select codMuicipio from EspaciosNaturales Where nombre LIKE '\"+ Playa + \"'))\"";
+		Query q = (Query) session.createQuery(hql);
+
+		ArrayList<String> datosMetereologicos = new ArrayList<String>(q.list());
+		
+		return datosMetereologicos;
+}
+	
 }

@@ -236,6 +236,14 @@ public class ServerThread implements Runnable {
 				System.out.println("Top Ranking");
 				
 				break;
+				
+			case 36:
+				
+				salida.writeObject(getDatosMetereologicos());
+				salida.flush();
+				System.out.println("Datos Metereologicos");
+				
+				break;
 			}
 
 		} catch (IOException e) {
@@ -452,5 +460,10 @@ public class ServerThread implements Runnable {
 		
 		return baseDeDatos.Consultas.getTopRanking();
 
+	}
+	
+	private static ArrayList<String> getDatosMetereologicos() {
+		
+		return baseDeDatos.Consultas.getDatosMetereologicos();
 	}
 }
