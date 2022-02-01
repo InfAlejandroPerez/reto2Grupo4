@@ -531,7 +531,7 @@ public class Consultas {
 		return code;
 		}
 	
-public static ArrayList<String> getDatosMetereologicos() {
+	public static ArrayList<String> getDatosMetereologicos() {
 		
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
@@ -542,6 +542,19 @@ public static ArrayList<String> getDatosMetereologicos() {
 		ArrayList<String> datosMetereologicos = new ArrayList<String>(q.list());
 		
 		return datosMetereologicos;
-}
+	}
+
+	public static String getLastUpdate() {
+	
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+	
+		String hql = "SELECT fecha from Actualizar";
+		Query q = (Query) session.createQuery(hql);
+	
+		String lastUpdate = (String) ((org.hibernate.Query) q).uniqueResult();
+		
+		return lastUpdate;
+	}
 	
 }

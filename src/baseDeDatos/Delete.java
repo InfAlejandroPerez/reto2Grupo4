@@ -11,6 +11,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.exception.ConstraintViolationException;
 
 import Controlador.HibernateUtil;
+import modelo.Actualizar;
+import modelo.EspaciosNaturales;
+import modelo.Estaciones;
 import modelo.FavoritosEspacios;
 import modelo.Provincia;
 
@@ -49,6 +52,12 @@ public class Delete {
 		
 		ArrayList<Integer> codProvincias = new ArrayList<Integer>();
 		
+		ArrayList<Estaciones> codEstaciones = new ArrayList<Estaciones>();
+		
+		ArrayList<EspaciosNaturales> codEspacios = new ArrayList<EspaciosNaturales>();
+		
+		ArrayList<Actualizar> codActualizar = new ArrayList<Actualizar>();
+		
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 		
@@ -64,6 +73,57 @@ public class Delete {
 			Provincia de = (Provincia) session.load(Provincia.class, codProvincias.get(i));
 			
 			session.delete(de); // elimina el objeto
+			
+			tx.commit();
+			
+		}
+		
+		hql = "SELECT codEstacion from Estaciones";
+		q = (Query) session.createQuery(hql);
+		
+		codEstaciones = new ArrayList<Estaciones>(q.list());
+		
+		for(int i = 0; i < codEstaciones.size(); i++) {
+			
+			Transaction tx = (Transaction) session.beginTransaction();
+			
+			Estaciones es = (Estaciones) session.load(Estaciones.class, codEstaciones.get(i));
+			
+			session.delete(es); // elimina el objeto
+			
+			tx.commit();
+			
+		}
+		
+		hql = "SELECT codEspacio from EspaciosNaturales";
+		q = (Query) session.createQuery(hql);
+		
+		codEspacios = new ArrayList<EspaciosNaturales>(q.list());
+		
+		for(int i = 0; i < codEspacios.size(); i++) {
+			
+			Transaction tx = (Transaction) session.beginTransaction();
+			
+			EspaciosNaturales esp = (EspaciosNaturales) session.load(EspaciosNaturales.class, codEspacios.get(i));
+			
+			session.delete(esp); // elimina el objeto
+			
+			tx.commit();
+			
+		}
+		
+		hql = "SELECT cod from Actualizar";
+		q = (Query) session.createQuery(hql);
+		
+		codActualizar = new ArrayList<Actualizar>(q.list());
+		
+		for(int i = 0; i < codActualizar.size(); i++) {
+			
+			Transaction tx = (Transaction) session.beginTransaction();
+			
+			Actualizar ac = (Actualizar) session.load(Actualizar.class, codActualizar.get(i));
+			
+			session.delete(ac); // elimina el objeto
 			
 			tx.commit();
 			

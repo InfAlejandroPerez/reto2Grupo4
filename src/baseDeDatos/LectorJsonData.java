@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import modelo.Actualizar;
 import modelo.Datos;
 import modelo.Estaciones;
 
@@ -146,31 +147,30 @@ public class LectorJsonData {
 				
 					DROPDATABASE = readedData[i + 2];
 					
-					FirstDataCharge = 1;
+					String lastUpdate = baseDeDatos.Consultas.getLastUpdate();
 					
-					noCargar = false;
-					
-					System.out.println("PRIMERA CARGA");
-					
-					System.out.println("PRIMERA CARGA");
-					
-					System.out.println("PRIMERA CARGA");
-					
-					System.out.println("PRIMERA CARGA");
-				
-				}else {
-					
-					if(!DROPDATABASE.equals(readedData[i + 2])){
+					if(!(lastUpdate == null)) {
 						
-						
+						if(DROPDATABASE.equals(lastUpdate)) {
+							
+							noCargar = true;
+							
+						}else {
+							
+							noCargar = false;
+							baseDeDatos.Delete.DeleteAll();
+							
+							Actualizar az = new Actualizar(DROPDATABASE);
+							
+							baseDeDatos.Inserts.insertLastUpdate(az);
+							
+						}
 						
 					}else {
 						
-						System.out.println("ENTRE AQUI WEY");
+						Actualizar az = new Actualizar(DROPDATABASE);
 						
-						baseDeDatos.Delete.DeleteAll();
-						
-						noCargar = true;
+						baseDeDatos.Inserts.insertLastUpdate(az);
 						
 					}
 					

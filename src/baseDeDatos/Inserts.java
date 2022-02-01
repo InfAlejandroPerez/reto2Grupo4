@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import Controlador.HibernateUtil;
+import modelo.Actualizar;
 import modelo.Datos;
 import modelo.EspaciosNaturales;
 import modelo.Estaciones;
@@ -311,6 +312,22 @@ public class Inserts {
 
 		// Guardar objeto en la base de datos
 		s.save(obj);
+		// Actualizar informaci�n en la base de datos
+		tx.commit();
+		// TODO
+
+		/*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+
+	}
+	
+	public static void insertLastUpdate(Actualizar az) {
+		Transaction tx;
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
+		tx = s.beginTransaction();
+
+		// Guardar objeto en la base de datos
+		s.save(az);
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
