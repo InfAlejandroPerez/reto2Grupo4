@@ -2,6 +2,8 @@ package baseDeDatos;
 
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
+
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -10,6 +12,7 @@ import org.hibernate.exception.ConstraintViolationException;
 
 import Controlador.HibernateUtil;
 import modelo.FavoritosEspacios;
+import modelo.Provincia;
 
 public class Delete {
 	public static boolean deleteFav(int user, String place) {
@@ -44,12 +47,27 @@ public class Delete {
 	
 	public static void DeleteAll() {
 		
+		ArrayList<Integer> codProvincias = new ArrayList<Integer>();
+		
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 		
-		String hql = "ON DELETE CASCADE FROM MunicipiosPueblos";
+		String hql = "SELECT codProvincia from Provincia";
 		Query q = (Query) session.createQuery(hql);
 		
+		codProvincias = new ArrayList<Integer>(q.list());
+		
+		for(int i = 0; i < codProvincias.size(); i++) {
+			
+			Transaction tx = (Transaction) session.beginTransaction();
+			
+			Provincia de = (Provincia) session.load(Provincia.class, codProvincias.get(i));
+			
+			session.delete(de); // elimina el objeto
+			
+			tx.commit();
+			
+		}
 		
 	}
 	

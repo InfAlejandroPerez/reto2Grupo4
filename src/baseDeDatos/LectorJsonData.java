@@ -15,6 +15,10 @@ public class LectorJsonData {
 	
 	private static int FirstDataCharge;
 	
+	private static int salirFor = 0;
+	
+	private static boolean noCargar = false;
+	
 	public static void guardarDatosMetereologicos() throws ParseException {
 		// lee la info de euskalmet e inserta los datos en la bbdd
 		String jsonData = ReadJsonFromUrl.readData(DATOSMETEOROLICOS);
@@ -24,24 +28,30 @@ public class LectorJsonData {
 		String estacion2;
 		ArrayList<String> readedData = ordenarDatos(jsonData);
 		
-		leerPueblos.LeerPueblos();
+		if(noCargar == false) {
 		
-		LectorEstaciones.guardarDatosEstaciones();
-		
-		for (int i = 0; i < readedData.size(); i++) {
-			estacion = readedData.get(i).toString();
-			if (readedData.size() >= i + 6) {
-				estacion2 = readedData.get(i + 4).toString();			
-				// System.out.println(estacion);
-				if (estacion.equalsIgnoreCase(estacion2)) {
-					jsonData = ReadJsonFromUrl.readData(readedData.get(i + 5).toString());
-					// System.out.println(jsonData);
-					volcarDatos(estacion, jsonData);
-					i = i + 5;
-					// Avanzo 5 posiciones hasta la siguiente estacion metereologica
+			leerPueblos.LeerPueblos();
+			
+			LectorEstaciones.guardarDatosEstaciones();
+			
+			for (int i = 0; i < readedData.size(); i++) {
+				estacion = readedData.get(i).toString();
+				if (readedData.size() >= i + 6) {
+					estacion2 = readedData.get(i + 4).toString();			
+					// System.out.println(estacion);
+					if (estacion.equalsIgnoreCase(estacion2)) {
+						jsonData = ReadJsonFromUrl.readData(readedData.get(i + 5).toString());
+						// System.out.println(jsonData);
+						volcarDatos(estacion, jsonData);
+						i = i + 5;
+						// Avanzo 5 posiciones hasta la siguiente estacion metereologica
+					}
 				}
 			}
+		
 		}
+		
+		noCargar = false;
 	}
 
 	private static void volcarDatos(String estacion, String jsonData) throws ParseException {
@@ -100,8 +110,18 @@ public class LectorJsonData {
 				
 				baseDeDatos.Inserts.insertDatos(d);
 				
+				salirFor = 1;
+				
 				//i=readedData.length;
 
+			}
+			
+			if (salirFor == 1) {
+				
+				salirFor = 0;
+				
+				break;
+				
 			}
 		}
 
@@ -126,12 +146,30 @@ public class LectorJsonData {
 					DROPDATABASE = readedData[i + 2];
 					
 					FirstDataCharge = 1;
+					
+					noCargar = false;
+					
+					System.out.println("PRIMERA CARGA");
+					
+					System.out.println("PRIMERA CARGA");
+					
+					System.out.println("PRIMERA CARGA");
+					
+					System.out.println("PRIMERA CARGA");
 				
 				}else {
 					
 					if(!DROPDATABASE.equals(readedData[i + 2])){
 						
+						
+						
+					}else {
+						
+						System.out.println("ENTRE AQUI WEY");
+						
 						baseDeDatos.Delete.DeleteAll();
+						
+						noCargar = true;
 						
 					}
 					

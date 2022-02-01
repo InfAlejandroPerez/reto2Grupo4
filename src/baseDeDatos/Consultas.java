@@ -456,7 +456,7 @@ public class Consultas {
 		Session session = sesion.openSession();
 
 		String hql = "Select icaestacion from Datos Where codEstacion = (Select codEstacion From Estaciones Where codMunicipio in (Select codMunicipio from EspaciosNaturales Where nombre LIKE '"+ Playa + "'))";
-		Query q = (Query) session.createQuery(hql).uniqueResult();
+		Query q = (Query) session.createQuery(hql);
 		
 		String dato = (String) ((org.hibernate.Query) q).uniqueResult();
 		
@@ -479,6 +479,13 @@ public class Consultas {
 	}
 	
 	public static int getCodeFromEstacion(String estacion) {
+		
+		if(estacion.contains("_")){
+			
+			estacion.replaceAll("_", " ");
+			
+		}
+		
 		int code = 0;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
