@@ -24,15 +24,11 @@ public class Main {
 		
 		String next = null;
 		
-		do {
-			
-			System.out.println("numerito:");
-			next = teclado.nextLine();
-			
+		
 			
 
 
-	/*try {
+	try {
 
 			
 			//leerPueblos.LeerPueblos();
@@ -46,11 +42,12 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
 
-		//Servidor s = new Servidor();
-		//s.iniciar();*/
+		Servidor s = new Servidor();
+		s.iniciar();
 		
-		}while(!next.equals("1"));
+		
 		
 	}
 

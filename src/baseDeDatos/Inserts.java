@@ -80,7 +80,7 @@ public class Inserts {
 		// TODO
 
 		// Visualiza los datos del departamento 30
-		String hql = "from Usuarios where Contrasenia = '" + us.getContrasenia() + "'";
+		String hql = "from Usuarios where Nombre = '"+ us.getNombre() +"' AND Contrasenia = '" + us.getContrasenia() + "'";
 		Query q = s.createQuery(hql);
 		Usuarios u1 = (Usuarios) q.uniqueResult();
 

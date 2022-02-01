@@ -63,9 +63,12 @@ public class ServerThread implements Runnable {
 				Usuarios u1 = new Usuarios();
 				u1.setNombre(linea.split(SEPARADOR)[1]);
 				u1.setContrasenia(pass);
-				salida.writeObject(insertUsuarios(u1));
+
+				envio.setLogin(insertUsuarios(u1));
+
+				salida.writeObject(envio);
 				salida.flush();
-				System.out.println("Usuario Insertado");
+				System.out.println("Usuario enviado");
 
 				break;
 
@@ -159,13 +162,13 @@ public class ServerThread implements Runnable {
 				salida.flush();
 				System.out.println("PLayas Enviadas");
 				break;
-				
+
 			case 13:
 				salida.writeObject(getMeteorPlaya(linea.split(SEPARADOR)[1]));
 				salida.flush();
 				System.out.println("Datos Meteor PLayas");
 				break;
-				
+
 			case 20:
 				// Get todas las coordenadas
 				ArrayList<Double> choords = getChoords(linea.split(SEPARADOR)[1]);
@@ -252,13 +255,13 @@ public class ServerThread implements Runnable {
 				System.out.println("Top Ranking");
 
 				break;
-				
+
 			case 36:
-				
+
 				salida.writeObject(getDatosMetereologicos());
 				salida.flush();
 				System.out.println("Datos Metereologicos");
-				
+
 				break;
 			}
 
@@ -347,17 +350,19 @@ public class ServerThread implements Runnable {
 	}
 
 	public static boolean insertUsuarios(Usuarios us) {
+		if (!baseDeDatos.Consultas.consultarNombreUser(us.getNombre())) {
+			System.out.println(baseDeDatos.Consultas.consultarNombreUser(us.getNombre()));
+			if (baseDeDatos.Inserts.insertUsuarios(us)) {
 
-		if (baseDeDatos.Inserts.insertUsuarios(us)) {
+				return true;
 
-			return true;
+			} else {
 
-		} else {
+				return false;
 
-			return false;
-
+			}
 		}
-
+		return false;
 	}
 
 	private static ArrayList<String> getEstacionesYDesc(String municipio) {
@@ -487,16 +492,15 @@ public class ServerThread implements Runnable {
 		return baseDeDatos.Consultas.getTopRanking();
 
 	}
-	
 
 	private static ArrayList<String> getDatosMetereologicos() {
-		
+
 		return baseDeDatos.Consultas.getDatosMetereologicos();
-		
+
 	}
 
 	private static String getMeteorPlaya(String dato) {
-		
+
 		return baseDeDatos.Consultas.getDatosPLaya(dato);
 
 	}
