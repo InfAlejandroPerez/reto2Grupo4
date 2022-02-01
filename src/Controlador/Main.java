@@ -15,11 +15,11 @@ public class Main {
 		System.setProperty("file.encoding", "UTF-8");
 
 
-		/*try {
+	/*try {
 			
-			leerPueblos.LeerPueblos();
+			//leerPueblos.LeerPueblos();
 			
-			LectorEstaciones.guardarDatosEstaciones();
+			//LectorEstaciones.guardarDatosEstaciones();
 			
 			//LectorJsonData.guardarDatosMetereologicos();
 			
@@ -27,8 +27,8 @@ public class Main {
 
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-
+		}
+*/
 		Servidor s = new Servidor();
 		s.iniciar();
 
