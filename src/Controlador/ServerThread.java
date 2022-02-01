@@ -99,7 +99,7 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 6:
-				//Nombre de usuario
+				// Nombre de usuario
 				envio.setLogin(consultarNombreUser(linea.split(SEPARADOR)[1]));
 				salida.writeObject(envio);
 				salida.flush();
@@ -108,7 +108,7 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 7:
-				//Get coordenadas
+				// Get coordenadas
 				salida.writeObject(getMunicipiosCoordenadasEst(linea.split(SEPARADOR)[1]));
 				salida.flush();
 				System.out.println("Coordenadas de Estacion Enviadas");
@@ -116,7 +116,7 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 8:
-				//Get coordenadas
+				// Get coordenadas
 				salida.writeObject(getMunicipiosCoordenadasEst1(linea.split(SEPARADOR)[1]));
 				salida.flush();
 				System.out.println("Coordenadas de Estacion Enviadas");
@@ -124,16 +124,26 @@ public class ServerThread implements Runnable {
 				break;
 
 			case 9:
-				//insertar imagen
-				Inserts.insertImage(1, linea.split(SEPARADOR)[1].getBytes());
+				// insertar imagen
+				insertarImagen(linea.split(SEPARADOR)[1], linea.split(SEPARADOR)[2].getBytes());
+				// Inserts.insertImage(1, linea.split(SEPARADOR)[1].getBytes());
 				envio.setLogin(true);
 				salida.writeObject(envio);
 				salida.flush();
 				break;
 			case 10:
-				//Enviar imagen
-				byte[] valorArry = Consultas.getFoto(Integer.parseInt(linea.split(SEPARADOR)[1]));
-				String finale = new String(valorArry);
+				// Enviar imagen
+				// byte[] valorArry =
+				// Consultas.getFoto(Integer.parseInt(linea.split(SEPARADOR)[1]));
+				ArrayList<byte[]> valorArry = getFotos(linea.split(SEPARADOR)[1]);
+				ArrayList<String> finale = new ArrayList<String>();
+
+				for (int i = 0; i < valorArry.size(); i++) {
+					finale.add(new String(valorArry.get(i)));
+				}
+
+				// String finale = new String(valorArry);
+
 				salida.writeObject(finale);
 				salida.flush();
 				System.out.println(finale);
@@ -143,15 +153,21 @@ public class ServerThread implements Runnable {
 				salida.flush();
 				System.out.println("Munis con Playas Mandados");
 				break;
-				
+
 			case 12:
 				salida.writeObject(getPlayas(linea.split(SEPARADOR)[1]));
 				salida.flush();
 				System.out.println("PLayas Enviadas");
 				break;
 				
+			case 13:
+				salida.writeObject(getMeteorPlaya(linea.split(SEPARADOR)[1]));
+				salida.flush();
+				System.out.println("Datos Meteor PLayas");
+				break;
+				
 			case 20:
-				//Get todas las coordenadas
+				// Get todas las coordenadas
 				ArrayList<Double> choords = getChoords(linea.split(SEPARADOR)[1]);
 				salida.writeObject(choords);
 				salida.flush();
@@ -219,22 +235,22 @@ public class ServerThread implements Runnable {
 				System.out.println("Nombres Espacios");
 
 				break;
-				
+
 			case 32:
-				
+
 				ArrayList<Double> cor = getLatLon(linea.split(SEPARADOR)[1]);
 				salida.writeObject(cor);
 				salida.flush();
 				System.out.println("Coordenadas de Espacio Natural enviadas");
-				
+
 				break;
-				
+
 			case 35:
-				
+
 				salida.writeObject(getTopRanking());
 				salida.flush();
 				System.out.println("Top Ranking");
-				
+
 				break;
 				
 			case 36:
@@ -262,6 +278,18 @@ public class ServerThread implements Runnable {
 				e.printStackTrace();
 			}
 		}
+
+	}
+
+	private ArrayList<byte[]> getFotos(String place) {
+		int code = baseDeDatos.Consultas.getCodeFromEspacio(place);
+		ArrayList<byte[]> ret = Consultas.getFoto(code);
+		return ret;
+	}
+
+	private void insertarImagen(String place, byte[] bytes2) {
+		int code = baseDeDatos.Consultas.getCodeFromEspacio(place);
+		Inserts.insertImage(code, bytes2);
 
 	}
 
@@ -377,36 +405,36 @@ public class ServerThread implements Runnable {
 
 		return ret;
 	}
-	
+
 	private static ArrayList<Double> getLatLon(String Espacio) {
 		// Municipiospueblos m =
 		// baseDeDatos.Consultas.consultarCodigoMunicipio(municipio);
 		// System.out.println(m.getCodMunicipio());
 		ArrayList<Double> ret = new ArrayList<Double>();
 		// ArrayList<Double> ret= baseDeDatos.Consultas.getChoords(m.getCodMunicipio());
-		
-		if(baseDeDatos.Consultas.getLatitud(Espacio) == 0){
-			
+
+		if (baseDeDatos.Consultas.getLatitud(Espacio) == 0) {
+
 			ret.add(0.0000);
-			
-		}else {
-			
+
+		} else {
+
 			ret.add(baseDeDatos.Consultas.getLatitud(Espacio));
-			
+
 		}
-		
-		if(baseDeDatos.Consultas.getLongitud(Espacio) == 0) {
-			
+
+		if (baseDeDatos.Consultas.getLongitud(Espacio) == 0) {
+
 			ret.add(0.0000);
-			
-		}else {
-			
+
+		} else {
+
 			ret.add(baseDeDatos.Consultas.getLongitud(Espacio));
-			
+
 		}
 
 		return ret;
-		
+
 	}
 
 	private static Double getMunicipiosCoordenadasEst(String Estacion) {
@@ -441,29 +469,35 @@ public class ServerThread implements Runnable {
 		return baseDeDatos.Consultas.getNombreEspacios();
 
 	}
-	
 
-	private static ArrayList<String> getMunicipioPlayas(){
-		
+	private static ArrayList<String> getMunicipioPlayas() {
+
 		return baseDeDatos.Consultas.getMunisWithPLayas();
-		
+
 	}
-	
-	private static ArrayList<String> getPlayas(String nombre){
-		
+
+	private static ArrayList<String> getPlayas(String nombre) {
+
 		return baseDeDatos.Consultas.getPlayasfromMuni(nombre);
-		
+
 	}
-		
 
 	private static ArrayList<String> getTopRanking() {
-		
+
 		return baseDeDatos.Consultas.getTopRanking();
 
 	}
 	
+
 	private static ArrayList<String> getDatosMetereologicos() {
 		
 		return baseDeDatos.Consultas.getDatosMetereologicos();
+		
+	}
+
+	private static String getMeteorPlaya(String dato) {
+		
+		return baseDeDatos.Consultas.getDatosPLaya(dato);
+
 	}
 }

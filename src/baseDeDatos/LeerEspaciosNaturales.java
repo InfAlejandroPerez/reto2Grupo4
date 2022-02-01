@@ -194,7 +194,7 @@ public class LeerEspaciosNaturales {
 
 					if (leerPueblos.Municipios.get(i).getNombre().equalsIgnoreCase(nombreMunicipio)) {
 
-						System.out.println(nombreMunicipio);
+						//System.out.println(nombreMunicipio);
 
 						p1 = leerPueblos.Municipios.get(i);
 
@@ -216,7 +216,7 @@ public class LeerEspaciosNaturales {
 
 						m1 = leerPueblos.Municipios.get(x);
 
-						System.out.println(m1.getCodMunicipio());
+						//System.out.println(m1.getCodMunicipio());
 
 					}
 
@@ -238,7 +238,7 @@ public class LeerEspaciosNaturales {
 
 							codLocalidad = loc.getCodLocalidad();
 
-							System.out.println(codLocalidad);
+							//System.out.println(codLocalidad);
 
 							session.close();
 
@@ -254,7 +254,7 @@ public class LeerEspaciosNaturales {
 
 					leerPueblos.localidad.add(l1);
 
-					System.out.println(l1.getNombre() + l1.getCodLocalidad());
+					//System.out.println(l1.getNombre() + l1.getCodLocalidad());
 
 					Inserts.insertLocalidad(l1);
 
@@ -266,7 +266,7 @@ public class LeerEspaciosNaturales {
 
 				}
 
-				System.out.println(m1 + documentName + turism + codLocalidad);
+				//System.out.println(m1 + documentName + turism + codLocalidad);
 
 				EspaciosNaturales e1 = new EspaciosNaturales();
 				e1.setCodEspacio(codEspacios);

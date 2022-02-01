@@ -25,18 +25,24 @@ public class Consultas {
 
 	public static ArrayList<String> munis = new ArrayList<String>();
 
-	public static byte[] getFoto(int codeMuni) {
+	public static ArrayList<byte[]> getFoto(int codeMuni) {
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 
 		String hql = "from Fotosespacio  where codEspacio = '" + codeMuni + "' ORDER BY cod desc";
 		Query q = (Query) session.createQuery(hql);
 		q.setMaxResults(1);
-		Fotosespacio f = (Fotosespacio) ((org.hibernate.Query) q).uniqueResult();
+		// Fotosespacio f = (Fotosespacio) ((org.hibernate.Query) q).uniqueResult();
+		ArrayList<Fotosespacio> f = new ArrayList<Fotosespacio>(q.list());
 		// TODO
 		session.close();
+		ArrayList<byte[]> ret = new ArrayList<byte[]>();
 
-		return f.getImg();
+		for (int i = 0; i < f.size(); i++) {
+			ret.add(f.get(i).getImg());
+		}
+		
+		return ret;
 	}
 
 	public static int getUserCode(String user, String pass) {
@@ -208,10 +214,8 @@ public class Consultas {
 		return arr;
 
 	}
-	
-	
-	public static ArrayList<String> getDataFromEspacio(String espacio) {
 
+	public static ArrayList<String> getDataFromEspacio(String espacio) {
 
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
@@ -219,16 +223,32 @@ public class Consultas {
 		String hql = "Select descripcion from EspaciosNaturales Where Nombre = '" + espacio + "')";
 		Query q = (Query) session.createQuery(hql);
 
-		
 		ArrayList<String> estaciones = new ArrayList<String>(q.list());
 
-		if (estaciones.size()==0) {
+		if (estaciones.size() == 0) {
 			estaciones.add("no se ha encontrado este espacio");
 		}
 		return estaciones;
 
 	}
+
+	public static int getCodeFromEspacio(String espacio) {
+		int code = 1;
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select codEspacio from EspaciosNaturales Where Nombre = '" + espacio + "')";
+		Query q = (Query) session.createQuery(hql);
+
+		try {
+			code = (int) ((org.hibernate.Query) q).uniqueResult();
+		} catch (Exception e) {
+			System.out.println("No hay espacio con ese nombre getCodeFromEspacio, null pointer.");
+		}
+		return code;
+	}
 	
+
 	public static ArrayList<String> getDataAndStationsFromMunicipio2(String municipio) {
 
 		ArrayList<String> ret = new ArrayList<String>();
@@ -307,7 +327,7 @@ public class Consultas {
 		return CoordenadaY;
 
 	}
-	
+
 	public static Double getLongitud(String Espacio) {
 
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
@@ -388,7 +408,7 @@ public class Consultas {
 		return EspaciosNombres;
 
 	}
-	
+
 	public static ArrayList<String> getDataEstacionesMasDesc(String municipio) {
 
 		ArrayList<String> arr = new ArrayList<String>();
@@ -396,88 +416,120 @@ public class Consultas {
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 
-		String hql = "Select descripcion from Municipiospueblos Where Nombre = '" + municipio + "')" ;
+		String hql = "Select descripcion from Municipiospueblos Where Nombre = '" + municipio + "')";
 		Query q = (Query) session.createQuery(hql);
 
 		String descripcion = (String) ((org.hibernate.Query) q).uniqueResult();
 		arr.add(descripcion);
 
-		hql = "Select nombre from Estaciones Where codMunicipio=(Select codMunicipio from Municipiospueblos Where Nombre = '" + municipio + "')" ;
+		hql = "Select nombre from Estaciones Where codMunicipio=(Select codMunicipio from Municipiospueblos Where Nombre = '"
+				+ municipio + "')";
 		q = (Query) session.createQuery(hql);
-		//La ultima posicion es la descripcion del municipio, el resto son nombres de estaciones
+		// La ultima posicion es la descripcion del municipio, el resto son nombres de
+		// estaciones
 		ArrayList<String> playas = new ArrayList<String>(q.list());
 
-		for(int i = 0; i < playas.size(); i++) {
+		for (int i = 0; i < playas.size(); i++) {
 
 			arr.add(playas.get(i).toString());
 
 		}
 
 		return arr;
-		
+
 	}
-	
 
-	public static ArrayList<String> getMunisWithPLayas(){
+	public static ArrayList<String> getMunisWithPLayas() {
 
-		
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
-
 
 		String hql = "Select nombre from Municipiospueblos Where codMunicipio in (Select DISTINCT codMunicipio from EspaciosNaturales Where tipo LIKE 'Playas')";
 		Query q = (Query) session.createQuery(hql);
-		
+
 		ArrayList<String> Espacios = new ArrayList<String>(q.list());
-		
+
 		return Espacios;
-	
+
 	}
-	
-	public static ArrayList<String> getPlayasfromMuni(String Muni){
-		
+
+	public static ArrayList<String> getPlayasfromMuni(String Muni) {
+
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 
-		String hql = "Select nombre from EspaciosNaturales Where codMunicipio = (Select codMunicipio from Municipiospueblos Where nombre LIKE '" + Muni + "')";
+		String hql = "Select nombre from EspaciosNaturales Where codMunicipio = (Select codMunicipio from Municipiospueblos Where nombre LIKE '"
+				+ Muni + "')";
 		Query q = (Query) session.createQuery(hql);
-		
+
 		ArrayList<String> Espacios = new ArrayList<String>(q.list());
-		
+
 		return Espacios;
-	
+
 	}
+
 	
-	public static ArrayList<String> getDatosPLaya(String Playa){
+	public static String getDatosPLaya(String Playa){
 		
 		ArrayList<String> playas = new ArrayList<String>();
-		
+
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 
-		String hql = "Select icaestacion from Datos Where codEstacion = (Select codEstacion From Estaciones Where codMunicipio = (Select codMuicipio from EspaciosNaturales Where nombre LIKE '"+ Playa + "'))";
+		/*String hql = "Select icaestacion from Datos Where codEstacion = (Select codEstacion From Estaciones Where codMunicipio = (Select codMuicipio from EspaciosNaturales Where nombre LIKE '"
+				+ Playa + "'))";
 		Query q = (Query) session.createQuery(hql).uniqueResult();
-		
+
 		String dato = q.toString();
+
+		return playas;*/
+
+		String hql = "Select icaestacion from Datos Where codEstacion = (Select codEstacion From Estaciones Where codMunicipio in (Select codMunicipio from EspaciosNaturales Where nombre LIKE '"+ Playa + "'))";
+		Query q = (Query) session.createQuery(hql);
 		
+		String dato = (String) ((org.hibernate.Query) q).uniqueResult();
 		
+		return dato;
 		
-		return playas;
 	}
-		
+
 	public static ArrayList<String> getTopRanking() {
-		
+
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
-	
+
 		String hql = "Select nombreEspacio from TopRanking";
 		Query q = (Query) session.createQuery(hql);
 
 		ArrayList<String> topRanking = new ArrayList<String>(q.list());
-		
+
 		return topRanking;
 
 	}
+
+	
+	public static int getCodeFromEstacion(String estacion) {
+		
+		if(estacion.contains("_")){
+			
+			estacion.replaceAll("_", " ");
+			
+		}
+		
+		int code = 0;
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "SELECT codEstacion from Estaciones WHERE nombre LIKE '" + estacion + "'";
+		Query q = (Query) session.createQuery(hql);
+
+		try {
+		code = (int) ((org.hibernate.Query) q).uniqueResult();
+		} catch (Exception e) {
+		System.out.println("No hay espacio con ese nombre getCodeFromEspacio, null pointer.");
+		}
+		return code;
+		}
 	
 public static ArrayList<String> getDatosMetereologicos() {
 		

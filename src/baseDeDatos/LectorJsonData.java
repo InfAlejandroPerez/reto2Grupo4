@@ -11,6 +11,14 @@ import modelo.Estaciones;
 public class LectorJsonData {
 	private static final String DATOSMETEOROLICOS = "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/calidad_aire_2021/es_def/adjuntos/index.json";
 
+	private static String DROPDATABASE = null;
+	
+	private static int FirstDataCharge;
+	
+	private static int salirFor = 0;
+	
+	private static boolean noCargar = false;
+	
 	public static void guardarDatosMetereologicos() throws ParseException {
 		// lee la info de euskalmet e inserta los datos en la bbdd
 		String jsonData = ReadJsonFromUrl.readData(DATOSMETEOROLICOS);
@@ -19,29 +27,42 @@ public class LectorJsonData {
 		String estacion;
 		String estacion2;
 		ArrayList<String> readedData = ordenarDatos(jsonData);
+		
+		if(noCargar == false) {
+			
+			leerPueblos.LeerPueblos();
+			
+			LectorEstaciones.guardarDatosEstaciones();
+		
 		for (int i = 0; i < readedData.size(); i++) {
 			estacion = readedData.get(i).toString();
 			if (readedData.size() >= i + 6) {
-				estacion2 = readedData.get(i + 4).toString();
+				estacion2 = readedData.get(i + 4).toString();			
 				// System.out.println(estacion);
 				if (estacion.equalsIgnoreCase(estacion2)) {
-					jsonData = ReadJsonFromUrl.readData(readedData.get(i + 5).toString());
-					// System.out.println(jsonData);
-					volcarDatos(estacion, jsonData);
-					i = i + 5;
-					// Avanzo 5 posiciones hasta la siguiente estacion metereologica
+						jsonData = ReadJsonFromUrl.readData(readedData.get(i + 5).toString());
+						// System.out.println(jsonData);
+						volcarDatos(estacion, jsonData);
+						i = i + 5;
+
+						// Avanzo 5 posiciones hasta la siguiente estacion metereologica
+					}
 				}
 			}
+		
 		}
+		
+		noCargar = false;
 	}
 
 	private static void volcarDatos(String estacion, String jsonData) throws ParseException {
 		// los datos
 		String readedData[] = jsonData.split("\"");
+
 		Estaciones estaciones = new Estaciones();
-		estaciones.setNombre("3_DE_MARZO");
-		estaciones.setCodEstacion(1);
-		
+		estaciones.setNombre(estacion);
+		estaciones.setCodEstacion(Consultas.getCodeFromEstacion(estacion));
+
 		Date fecha = null;
 		Date hora = null;
 		String comgm3 = null;
@@ -56,7 +77,7 @@ public class LectorJsonData {
 		String so2 = null;
 		String so2ica = null;
 		String icaestacion = null;
-		
+
 		for (int i = 0; i < readedData.length; i++) {
 			System.out.println(readedData[i]);
 			if (readedData[i].equalsIgnoreCase("Date")) {
@@ -84,11 +105,24 @@ public class LectorJsonData {
 				so2ica = readedData[i + 2];
 			} else if (readedData[i].equalsIgnoreCase("icaestacion")) {
 				icaestacion = readedData[i + 2];
+				
 				Datos d = new Datos(estaciones, fecha, hora, comgm3, co8hmgm3, nogm3, no2, no2ica, noxgm3,
 						pm10ica, pm25, pm25ica, so2, so2ica, icaestacion);
-				Inserts.insertDatos(d);
+				
+				baseDeDatos.Inserts.insertDatos(d);
+				
+				salirFor = 1;
+				
 				//i=readedData.length;
 
+			}
+			
+			if (salirFor == 1) {
+				
+				salirFor = 0;
+				
+				break;
+				
 			}
 		}
 
@@ -106,6 +140,42 @@ public class LectorJsonData {
 				data.add(readedData[i + 2]);
 			} else if (readedData[i].equalsIgnoreCase("url")) {
 				data.add(readedData[i + 2]);
+			}else if(readedData[i].equalsIgnoreCase("lastUpdateDate")) {
+				
+				if(FirstDataCharge == 0) {
+				
+					DROPDATABASE = readedData[i + 2];
+					
+					FirstDataCharge = 1;
+					
+					noCargar = false;
+					
+					System.out.println("PRIMERA CARGA");
+					
+					System.out.println("PRIMERA CARGA");
+					
+					System.out.println("PRIMERA CARGA");
+					
+					System.out.println("PRIMERA CARGA");
+				
+				}else {
+					
+					if(!DROPDATABASE.equals(readedData[i + 2])){
+						
+						
+						
+					}else {
+						
+						System.out.println("ENTRE AQUI WEY");
+						
+						baseDeDatos.Delete.DeleteAll();
+						
+						noCargar = true;
+						
+					}
+					
+				}
+				
 			}
 		}
 		return data;
