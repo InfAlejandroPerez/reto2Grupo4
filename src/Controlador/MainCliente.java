@@ -604,7 +604,7 @@ public class MainCliente extends JFrame{
 			
 			if(dlm2.getSize() == 0) {
 				
-				dlm2.addElement("No hay Estaciones Registradas");
+				dlm2.addElement("No hay Playas Registradas");
 				
 			}
 			
@@ -617,6 +617,25 @@ public class MainCliente extends JFrame{
 			
 			JList<String> list1 = new JList<String>(dlm2);
 			scrollPane1.setViewportView(list1);
+			list1.addMouseListener(new java.awt.event.MouseAdapter() {
+			      public void mouseClicked(java.awt.event.MouseEvent e) {
+			    	  
+			          if (e.getClickCount() == 2) {
+			        	  
+			        	  String data;
+			        	  
+			        	  Cliente.setDatos(list1.getSelectedValue().toString());
+			        	  Cliente.setOpcion(13);
+			        	  Cliente.inicar();
+			        	  data = Cliente.getMeteorPlayas();
+			        	  
+			        	  JOptionPane.showMessageDialog(panelElegido, data);
+			        	  
+			          }
+			      
+			      }
+			      
+			});
 			
 			JLabel playa = new JLabel("PLAYAS");
 			playa.setFont(new Font("Tahoma", Font.BOLD, 22));

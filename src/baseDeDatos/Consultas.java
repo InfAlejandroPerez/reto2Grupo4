@@ -248,21 +248,6 @@ public class Consultas {
 		return code;
 	}
 	
-	public static int getCodeFromEstacion(String espacio) {
-		int code = 1;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session session = sesion.openSession();
-
-		String hql = "Select codEstacion from Estaciones Where nombre = '" + espacio + "')";
-		Query q = (Query) session.createQuery(hql);
-
-		try {
-			code = (int) ((org.hibernate.Query) q).uniqueResult();
-		} catch (Exception e) {
-			System.out.println("No hay espacio con ese nombre getCodeFromEspacio, null pointer.");
-		}
-		return code;
-	}
 
 	public static ArrayList<String> getDataAndStationsFromMunicipio2(String municipio) {
 
@@ -483,20 +468,29 @@ public class Consultas {
 
 	}
 
-	public static ArrayList<String> getDatosPLaya(String Playa) {
-
+	
+	public static String getDatosPLaya(String Playa){
+		
 		ArrayList<String> playas = new ArrayList<String>();
 
 		SessionFactory sesion = HibernateUtil.getSessionFactory();
 		Session session = sesion.openSession();
 
-		String hql = "Select icaestacion from Datos Where codEstacion = (Select codEstacion From Estaciones Where codMunicipio = (Select codMuicipio from EspaciosNaturales Where nombre LIKE '"
+		/*String hql = "Select icaestacion from Datos Where codEstacion = (Select codEstacion From Estaciones Where codMunicipio = (Select codMuicipio from EspaciosNaturales Where nombre LIKE '"
 				+ Playa + "'))";
 		Query q = (Query) session.createQuery(hql).uniqueResult();
 
 		String dato = q.toString();
 
-		return playas;
+		return playas;*/
+
+		String hql = "Select icaestacion from Datos Where codEstacion = (Select codEstacion From Estaciones Where codMunicipio in (Select codMunicipio from EspaciosNaturales Where nombre LIKE '"+ Playa + "'))";
+		Query q = (Query) session.createQuery(hql).uniqueResult();
+		
+		String dato = (String) ((org.hibernate.Query) q).uniqueResult();
+		
+		return dato;
+		
 	}
 
 	public static ArrayList<String> getTopRanking() {
@@ -513,4 +507,21 @@ public class Consultas {
 
 	}
 
+	
+	public static int getCodeFromEstacion(String estacion) {
+		int code = 0;
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "SELECT codEstacion from Estaciones WHERE nombre LIKE '" + estacion + "'";
+		Query q = (Query) session.createQuery(hql);
+
+		try {
+		code = (int) ((org.hibernate.Query) q).uniqueResult();
+		} catch (Exception e) {
+		System.out.println("No hay espacio con ese nombre getCodeFromEspacio, null pointer.");
+		}
+		return code;
+		}
+	
 }

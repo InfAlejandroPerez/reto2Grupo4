@@ -3,6 +3,7 @@ package baseDeDatos;
 import org.hibernate.Transaction;
 
 import org.hibernate.ObjectNotFoundException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.exception.ConstraintViolationException;
@@ -40,4 +41,16 @@ public class Delete {
 		
 		return ret;
 	}
+	
+	public static void DeleteAll() {
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+		
+		String hql = "ON DELETE CASCADE FROM MunicipiosPueblos";
+		Query q = (Query) session.createQuery(hql);
+		
+		
+	}
+	
 }

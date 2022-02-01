@@ -4,6 +4,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 import Controlador.HibernateUtil;
 import modelo.Datos;
@@ -16,10 +17,13 @@ import modelo.Municipiospueblos;
 import modelo.Provincia;
 import modelo.Usuarios;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Inserts {
+
+	private static SessionFactory factory;
 
 	public static void insertImage(int espaciNatural, byte[] imagen) {
 		Fotosespacio fotosespacio = new Fotosespacio();
@@ -100,8 +104,8 @@ public class Inserts {
 		pv.setCodProvincia(code);
 		pv.setNombre(nombre);
 		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
 		tx = s.beginTransaction();
 
 		// Guardar objeto en la base de datos
@@ -109,15 +113,12 @@ public class Inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
-
 	}
 
 	public static void insertProvincia(Provincia pv) {
 		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
 		tx = s.beginTransaction();
 
 		// Guardar objeto en la base de datos
@@ -125,8 +126,6 @@ public class Inserts {
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
-
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
@@ -143,8 +142,8 @@ public class Inserts {
 		mun.setEstacioneses(estacioneses);
 
 		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
 		tx = s.beginTransaction();
 
 		// Guardar objeto en la base de datos
@@ -153,14 +152,14 @@ public class Inserts {
 		tx.commit();
 		// TODO
 
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
 
 	}
 
 	public static void insertMunicipio(Municipiospueblos mun) {
 		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
 		tx = s.beginTransaction();
 
 		// Guardar objeto en la base de datos
@@ -169,7 +168,7 @@ public class Inserts {
 		tx.commit();
 		// TODO
 
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+		 /*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/ 
 
 	}
 
@@ -182,8 +181,8 @@ public class Inserts {
 		loc.setMunicipiospueblos(municipiospueblos);
 
 		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
 		tx = s.beginTransaction();
 
 		// Guardar objeto en la base de datos
@@ -192,14 +191,14 @@ public class Inserts {
 		tx.commit();
 		// TODO
 
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+		/*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
 	public static void insertLocalidad(Localidad loc) {
 		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
 		tx = s.beginTransaction();
 
 		// Guardar objeto en la base de datos
@@ -208,7 +207,7 @@ public class Inserts {
 		tx.commit();
 		// TODO
 
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+	/*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
@@ -254,8 +253,8 @@ public class Inserts {
 
 	public static void insertEstaciones(Estaciones est) {
 		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
 		tx = s.beginTransaction();
 
 		// Guardar objeto en la base de datos
@@ -264,7 +263,7 @@ public class Inserts {
 		tx.commit();
 		// TODO
 
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+		/*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
@@ -273,8 +272,8 @@ public class Inserts {
 
 	public static void insertEspaciosNaturales(EspaciosNaturales esp) {
 		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
 		tx = s.beginTransaction();
 
 		// Guardar objeto en la base de datos
@@ -283,31 +282,31 @@ public class Inserts {
 		tx.commit();
 		// TODO
 
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+		/*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 
-	public static void insertDatos(Datos datos) {
+	public static void insertDatos(Datos d) {
 		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
 		tx = s.beginTransaction();
 
-		// Guardar objeto en la base de datos
-		s.save(datos);
+		// Guardar objeto en la base de datos	
+		s.save(d);
 		// Actualizar informaci�n en la base de datos
 		tx.commit();
 		// TODO
+		s.flush();
 
-		/*
-		 * if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();
-		 */
+		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close();*/
+		 
 	}
 
 	public static void insertObjeto(Object obj) {
 		Transaction tx;
-		SessionFactory sesion = HibernateUtil.getSessionFactory();
-		Session s = sesion.openSession();
+		factory = new Configuration().configure().buildSessionFactory();
+		Session s = factory.openSession();
 		tx = s.beginTransaction();
 
 		// Guardar objeto en la base de datos
@@ -316,7 +315,7 @@ public class Inserts {
 		tx.commit();
 		// TODO
 
-		/* if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
+		/*if (s.isConnected()) s.close(); if (!sesion.isClosed()) sesion.close(); */
 
 	}
 }
