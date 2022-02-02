@@ -112,7 +112,7 @@ public class Delete {
 			
 		}
 		
-		hql = "SELECT cod from Actualizar";
+		hql = "SELECT cod from Actualizar ";
 		q = (Query) session.createQuery(hql);
 		
 		codActualizar = new ArrayList<Actualizar>(q.list());

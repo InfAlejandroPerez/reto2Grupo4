@@ -544,51 +544,53 @@ public class Consultas {
 
 	public static int getCodeFromEstacion(String estacion) {
 
-		if (estacion.contains("_BBIZI2")) {
-
-			estacion = estacion.replaceAll("_BBIZI2", " (BBIZI2)");
-
-		} else if (estacion.contains("_Monte")) {
-
-			estacion = estacion.replaceAll("_Monte", " (Monte)");
-
-		} else if (estacion.contains("AV_")) {
-
-			estacion = estacion.replaceAll("AV_", "AV. ");
-
-		} else if (estacion.contains("AVDA_")) {
-
-			estacion = estacion.replaceAll("AVDA_", "AVDA. ");
-
-		} else if (estacion.contains("Ñ")) {
-
-			estacion = estacion.replaceAll("Ñ", "N");
-
-		} else if (estacion.contains("Ñ")) {
-
-			estacion = estacion.replaceAll("Ñ", "N");
-
-		} else if (estacion.contains("_meteo")) {
-
-			estacion = estacion.replaceAll("_meteo", " (meteo)");
-
-		} else if (estacion.contains(" METEO")) {
-
-			estacion = estacion.replaceAll(" METEO", "");
-
-		} else if (estacion.contains("M_DIAZ_HARO")) {
-
-			estacion = estacion.replaceAll("M_DIAZ_HARO", "Mª DIAZ HARO");
-
-		} else if (estacion.contains("_Puerto")) {
-
-			estacion = estacion.replaceAll("_Puerto", " (Puerto)");
-
-		} else if (estacion.contains("_")) {
-
-			estacion = estacion.replaceAll("_", " ");
-
-		}
+			
+			if(estacion.contains("_BBIZI2")) {
+				
+				estacion = estacion.replaceAll("_BBIZI2", " (BBIZI2)");
+				
+			}else if(estacion.contains("BOROA")) {
+				
+				estacion = estacion.replaceAll("BOROA", "BOROA METEO");
+				
+			}else if(estacion.contains("_Monte")) {
+				
+				estacion = estacion.replaceAll("_Monte", " (Monte)");
+				
+			}else if(estacion.contains("AV_")) {
+				
+				estacion = estacion.replaceAll("AV_", "AV. ");
+				
+			}else if(estacion.contains("AVDA_")) {
+				
+				estacion = estacion.replaceAll("AVDA_", "AVDA. ");
+				
+			}else if(estacion.contains("ANORGA")) {
+				
+				estacion = estacion.replaceAll("ANORGA", "AÑORGA");
+				
+			}else if(estacion.contains("_meteo")) {
+				
+				estacion = estacion.replaceAll("_meteo", " (meteo)");
+				
+			}else if(estacion.contains(" METEO")) {
+				
+				estacion = estacion.replaceAll(" METEO", "");
+				
+			}else if(estacion.contains("M_DIAZ_HARO")) {
+				
+				estacion = estacion.replaceAll("M_DIAZ_HARO", "Mª DIAZ HARO");
+				
+			}else if(estacion.contains("_Puerto")) {
+				
+				estacion = estacion.replaceAll("_Puerto", " (Puerto)");
+				
+			}else if(estacion.contains("_")) {
+				
+				estacion = estacion.replaceAll("_", " ");
+				
+			}
+		
 
 		int code = 0;
 		SessionFactory sesion = HibernateUtil.getSessionFactory();

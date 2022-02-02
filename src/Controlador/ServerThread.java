@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
 
@@ -16,7 +18,10 @@ import com.example.euskalmet.Envio;
 
 import baseDeDatos.Consultas;
 import baseDeDatos.Inserts;
+import modelo.Datos;
+import modelo.Estaciones;
 import modelo.Municipiospueblos;
+import modelo.Provincia;
 import modelo.Usuarios;
 
 public class ServerThread implements Runnable {
@@ -250,17 +255,17 @@ public class ServerThread implements Runnable {
 
 			case 35:
 
-				salida.writeObject(getTopRanking());
+				salida.writeObject(getTopRanking(linea.split(SEPARADOR)[1]));
 				salida.flush();
 				System.out.println("Top Ranking");
 
 				break;
 
 			case 36:
-
-				salida.writeObject(getDatosMetereologicos());
+				ArrayList<String> arr = getDatosMetereologicos(linea.split(SEPARADOR)[1]);
+				salida.writeObject(arr);
 				salida.flush();
-				System.out.println("Datos Metereologicos");
+				System.out.println("Datos Metereologicos: " + arr.get(0).toString());
 
 				break;
 			}
@@ -487,15 +492,72 @@ public class ServerThread implements Runnable {
 
 	}
 
-	private static ArrayList<String> getTopRanking() {
+	private static ArrayList<String> getTopRanking(String pv) {
 
-		return baseDeDatos.Consultas.getTopRanking();
+		ArrayList<String> arr = baseDeDatos.Consultas.getTopRanking();
+		ArrayList<String> ret = new ArrayList<String>();
+		for (int i = 0; i < arr.size(); i++) {
+			int mun = baseDeDatos.Consultas.getCodeMunFromEspacio(arr.get(i));
+			Provincia prov = new Provincia();
+			try {
+				prov = baseDeDatos.Consultas.getPVFromMunicipio(mun);
+			} catch (Exception E) {
+				System.out.println("No hay informacion sobre este municipio");
+				prov.setNombre("a");
+			}
+
+			if (prov.getNombre().equalsIgnoreCase(pv)) {
+				ret.add(arr.get(i));
+
+			}
+		}
+
+		return ret;
 
 	}
 
-	private static ArrayList<String> getDatosMetereologicos() {
+	private static ArrayList<String> getDatosMetereologicos(String playa) {
+		int mun = baseDeDatos.Consultas.getCodeMunFromEspacio(playa);
+		ArrayList<Estaciones> est = baseDeDatos.Consultas.getEstacionesFromMunicipio(mun);
+		if (est.size() > 0) {
+			ArrayList<Datos> datos = baseDeDatos.Consultas.getDatosMeteorologicos(est.get(0));
+			ArrayList<String> dato = new ArrayList<String>();
 
-		return baseDeDatos.Consultas.getDatosMetereologicos();
+			if (datos.size() == 0) {
+				dato.add("No hay estaciones meteorológicas en este espacio");
+			}
+
+			for (int i = 0; i < datos.size(); i++) {
+				String headers = "Fecha" + ";" + "hora" + ";" + "NO2ICA";
+				dato.add(headers);
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+				String strDate = dateFormat.format(datos.get(i).getFecha());
+				String data = strDate.concat(";");
+				// dato.add(strDate);
+				dateFormat = new SimpleDateFormat("HH:mm");
+				String hora = dateFormat.format(datos.get(i).getHora());
+				data = data.concat(hora);
+				data = data.concat(";");
+				data = data + datos.get(i).getNo2ica();
+				/*
+				 * dato.add(hora); dato.add(datos.get(i).getNo2ica());
+				 * dato.add(datos.get(i).getPm10ica()); dato.add(datos.get(i).getSo2ica());
+				 * dato.add(datos.get(i).getIcaestacion());
+				 */
+				dato.add(data);
+				headers = "PM10ICA" + ";" + "SO2ICA" + ";" + "ICAEstacion";
+				dato.add(headers);
+				data = datos.get(i).getPm10ica() + ";" + datos.get(i).getSo2ica() + ";" + datos.get(i).getIcaestacion();
+				dato.add(data);
+				data = " " + ";" + " " + ";" + " ";
+				dato.add(data);
+			}
+			return dato;
+		} else {
+			ArrayList<String> dato = new ArrayList<String>();
+			dato.add("No hay estaciones en este espacio");
+			return dato;
+		}
 
 	}
 
