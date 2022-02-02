@@ -173,6 +173,24 @@ public class ServerThread implements Runnable {
 				salida.flush();
 				System.out.println("Datos Meteor PLayas");
 				break;
+				
+			case 14:
+				salida.writeObject(getDataPlaya(linea.split(SEPARADOR)[1]));
+				salida.flush();
+				System.out.println("Datos de Playa");
+				break;
+				
+			case 15:
+				salida.writeObject(getTop5());
+				salida.flush();
+				System.out.println("top5 espacios");
+				break;
+				
+			case 16:
+				salida.writeObject(getdataTop5(linea.split(SEPARADOR)[1]));
+				salida.flush();
+				System.out.println("datos de top 5");
+				break;
 
 			case 20:
 				// Get todas las coordenadas
@@ -524,7 +542,7 @@ public class ServerThread implements Runnable {
 			ArrayList<String> dato = new ArrayList<String>();
 
 			if (datos.size() == 0) {
-				dato.add("No hay estaciones meteorológicas en este espacio");
+				dato.add("No hay estaciones meteorolï¿½gicas en este espacio");
 			}
 
 			for (int i = 0; i < datos.size(); i++) {
@@ -563,7 +581,25 @@ public class ServerThread implements Runnable {
 
 	private static String getMeteorPlaya(String dato) {
 
-		return baseDeDatos.Consultas.getDatosPLaya(dato);
+		return baseDeDatos.Consultas.getDatoMeteorPLaya(dato);
+
+	}
+	
+	private static ArrayList<String> getDataPlaya(String dato) {
+
+		return baseDeDatos.Consultas.getDatosPLayas(dato);
+
+	}
+	
+	private static ArrayList<String> getTop5() {
+
+		return baseDeDatos.Consultas.getEspacioNaturalFromMuni();
+
+	}
+	
+	private static ArrayList<String> getdataTop5(String dato) {
+
+		return baseDeDatos.Consultas.getMuniProvinciaFromEspacio(dato);
 
 	}
 }

@@ -32,6 +32,9 @@ public class Cliente {
 	private static String datosPlayas;
 	private static Envio recibido;
 	private static ArrayList<String> arrayProvincias;
+	private static ArrayList<String> top5;
+	private static ArrayList<String> top5datos;
+	private static ArrayList<String> dataPlaya;
 	private static ArrayList<String> Munis;
 	private static ArrayList<String> datosMuni;
 	private static ArrayList<String> MunisPlayas;
@@ -182,6 +185,42 @@ public class Cliente {
 						
 						break;	
 						
+					case 14:
+						
+						peticion = opcion + "/////" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						dataPlaya = (ArrayList<String>) entrada.readObject();
+						opcion = 0;
+						
+						System.out.println("datos de playa");
+						
+						break;	
+						
+					case 15:
+						
+						peticion = opcion + "";
+						salida.writeObject(peticion);
+						salida.flush();
+						top5 = (ArrayList<String>) entrada.readObject();
+						opcion = 0;
+						
+						System.out.println("top 5 espacios");
+						
+						break;	
+						
+					case 16:
+	
+						peticion = opcion + "/////" + datos;
+						salida.writeObject(peticion);
+						salida.flush();
+						top5datos = (ArrayList<String>) entrada.readObject();
+						opcion = 0;
+						
+						System.out.println("municipio provincia top 5");
+						
+						break;	
+						
 					}	
 					
 				} while (seguir);
@@ -249,9 +288,27 @@ public class Cliente {
 	
 	}
 	
+	public static ArrayList<String> getDataPlaya() {
+		
+		return dataPlaya;
+	
+	}	
+	
 	public static String getMeteorPlayas() {
 		
 		return datosPlayas;
+	
+	}
+	
+	public static ArrayList<String> getTop5() {
+		
+		return top5;
+	
+	}
+	
+	public static ArrayList<String> getTop5datos() {
+		
+		return top5datos;
 	
 	}
 	

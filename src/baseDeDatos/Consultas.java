@@ -3,6 +3,7 @@ package baseDeDatos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.hibernate.Query;
 
@@ -690,6 +691,103 @@ public class Consultas {
 			System.out.println("Estacion " + ret.get(0).getNombre()+ " "+ ret.get(0).getCodEstacion());
 		}
 		return ret;
+	}
+	
+	public static ArrayList<String> getDatosPLayas(String playa) {
+
+		ArrayList<String> data = new ArrayList<String>();
+		
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select descripcion from EspaciosNaturales Where nombre = '" + playa + "'))";
+		Query q = (Query) session.createQuery(hql);
+		
+		String desc = (String) ((org.hibernate.Query) q).uniqueResult();
+		
+		data.add(desc);
+		
+		hql = "Select latitud from EspaciosNaturales Where nombre = '" + playa + "'))";
+		q = (Query) session.createQuery(hql);
+
+		Double lat = (Double) ((org.hibernate.Query) q).uniqueResult();
+		
+		String lati = lat.toString();
+		
+		data.add(lati);
+		
+		hql = "Select longitud from EspaciosNaturales Where nombre = '" + playa + "'))";
+		q = (Query) session.createQuery(hql);
+		
+		Double lon = (Double) ((org.hibernate.Query) q).uniqueResult();
+		
+		String longi = lon.toString();
+		
+		data.add(longi);
+		
+		return data;
+		
+	}
+	
+	public static String getDatoMeteorPLaya(String playa) {
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select icaestacion from Datos Where codEstacion = (Select codEstacion From Estaciones Where codMunicipio = (Select codMunicipio from EspaciosNaturales Where nombre LIKE '"
+				+ playa + "'))";
+		Query q = (Query) session.createQuery(hql);
+		
+		ArrayList<String> datosPlaya = new ArrayList<String>(q.list());
+		
+		String icaestacion = datosPlaya.get(0);
+
+		return icaestacion;
+	}
+	
+	public static ArrayList<String> getEspacioNaturalFromMuni() {
+		
+		Random random = new Random();
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select nombre from EspaciosNaturales";
+		Query q = (Query) session.createQuery(hql);
+		
+		ArrayList<String> espacios = new ArrayList<String>(q.list());
+		
+		while(espacios.size() > 5) {
+			
+			espacios.remove(random.nextInt(espacios.size() + 0));
+			
+		}
+		
+		return espacios;
+	}
+	
+	public static ArrayList<String> getMuniProvinciaFromEspacio(String Espacio) {
+		
+		ArrayList<String> muniProv = new ArrayList<String>();
+
+		SessionFactory sesion = HibernateUtil.getSessionFactory();
+		Session session = sesion.openSession();
+
+		String hql = "Select nombre from Municipiospueblos Where codMunicipio = (Select codMunicipio from EspaciosNaturales Where nombre Like '" + Espacio + "')";
+		Query q = (Query) session.createQuery(hql);
+		
+		String muni = (String) ((org.hibernate.Query) q).uniqueResult();
+		
+		muniProv.add(muni);
+		
+		/*hql = "Select nombre from Provincia Where CodProvincia = (Select CodProvincia from Municipiospueblos Where nombre Like '" + muni + "')";
+		q = (Query) session.createQuery(hql);
+		
+		String prov = (String) ((org.hibernate.Query) q).uniqueResult();
+		
+		muniProv.add(prov);*/
+		
+		return muniProv;
 	}
 
 }

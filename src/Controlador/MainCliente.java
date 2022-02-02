@@ -37,7 +37,17 @@ public class MainCliente extends JFrame{
 	
 	static String NombreMuni;
 	
+	static String dataMeteorPLaya = "";
+	
 	static ArrayList<String> nombresProvincias = new ArrayList<String>();
+	
+	static ArrayList<String> top5 = new ArrayList<String>();
+	
+	static ArrayList<String> top5data = new ArrayList<String>();
+	
+	static ArrayList<String> dataPlaya = new ArrayList<String>();
+	
+	static String nombrePlayaSelect = "";
 	
 	static ArrayList<String> Munis = new ArrayList<String>();
 	
@@ -484,6 +494,23 @@ public class MainCliente extends JFrame{
 			btnPlayas.setBounds(26, 210, 124, 35);
 			panelElegido.add(btnPlayas);
 			
+			JButton btntop = new JButton("Top 5");
+			btntop.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					Cliente.setDatos("");
+					Cliente.setOpcion(15);
+					Cliente.inicar();
+					top5 = Cliente.getTop5();
+					
+					panelPrincipal.add(switchPanel(7));
+					
+				}
+			});
+			
+			btntop.setBounds(26, 260, 124, 35);
+			panelElegido.add(btntop);
+			
 			break;
 			
 		case 4:
@@ -622,14 +649,21 @@ public class MainCliente extends JFrame{
 			    	  
 			          if (e.getClickCount() == 2) {
 			        	  
-			        	  String data;
+			        	  
 			        	  
 			        	  Cliente.setDatos(list1.getSelectedValue().toString());
 			        	  Cliente.setOpcion(13);
 			        	  Cliente.inicar();
-			        	  data = Cliente.getMeteorPlayas();
+			        	  dataMeteorPLaya = Cliente.getMeteorPlayas();
 			        	  
-			        	  JOptionPane.showMessageDialog(panelElegido, data);
+			        	  Cliente.setDatos(list1.getSelectedValue().toString());
+			        	  Cliente.setOpcion(14);
+			        	  Cliente.inicar();
+			        	  dataPlaya = Cliente.getDataPlaya();
+			        	  
+			        	  nombrePlayaSelect = list1.getSelectedValue().toString();
+			        	  
+			        	  panelPrincipal.add(switchPanel(6));
 			        	  
 			          }
 			      
@@ -662,6 +696,165 @@ public class MainCliente extends JFrame{
 			lblNombreMunicipio.setFont(new Font("Tahoma", Font.BOLD, 13));
 			lblNombreMunicipio.setBounds(291, 73, 107, 42);
 			panelElegido.add(lblNombreMunicipio);
+			
+			break;
+			
+		case 6:
+			
+			panelElegido.setBounds(this.getBounds());
+			panelElegido.setLayout(null);
+			
+			JLabel lblTituloPlaya = new JLabel(nombrePlayaSelect);
+			lblTituloPlaya.setFont(new Font("Tahoma", Font.BOLD, 22));
+			lblTituloPlaya.setBounds(31, 11, 357, 37);
+			panelElegido.add(lblTituloPlaya);
+			
+			JScrollPane scrollPane2 = new JScrollPane();
+			scrollPane2.setBounds(10, 59, 194, 191);
+			panelElegido.add(scrollPane2);
+			
+			JTextPane textDescPLaya = new JTextPane();
+			scrollPane2.setViewportView(textDescPLaya);
+			
+			textDescPLaya.setText(dataPlaya.get(0).toString());
+			
+			JTextField txtLati = new JTextField();
+			txtLati.setBounds(280, 59, 108, 28);
+			panelElegido.add(txtLati);
+			txtLati.setColumns(10);
+			
+			txtLati.setText(dataPlaya.get(1).toString());
+			
+			JTextField txtLongi = new JTextField();
+			txtLongi.setBounds(280, 115, 108, 28);
+			panelElegido.add(txtLongi);
+			txtLongi.setColumns(10);
+			
+			txtLongi.setText(dataPlaya.get(2).toString());
+			
+			JLabel lblNewLabel_12 = new JLabel("Latitud:");
+			lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 12));
+			lblNewLabel_12.setBounds(223, 34, 97, 14);
+			panelElegido.add(lblNewLabel_12);
+			
+			JLabel lblNewLabel_1_1 = new JLabel("Longitud:");
+			lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+			lblNewLabel_1_1.setBounds(223, 98, 97, 14);
+			panelElegido.add(lblNewLabel_1_1);
+			
+			JLabel lblNewLabel122 = new JLabel("Información Meteorológica");
+			lblNewLabel122.setFont(new Font("Tahoma", Font.BOLD, 12));
+			lblNewLabel122.setBounds(223, 163, 201, 14);
+			panelElegido.add(lblNewLabel122);
+			
+			JButton btnVolverListaPlayas = new JButton("Volver");
+			btnVolverListaPlayas.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					panelPrincipal.add(switchPanel(5));
+					
+				}
+			});
+			btnVolverListaPlayas.setBounds(317, 227, 89, 34);
+			panelElegido.add(btnVolverListaPlayas);
+			
+			JLabel lblDatosMeteo = new JLabel(dataMeteorPLaya);
+			lblDatosMeteo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			lblDatosMeteo.setBounds(245, 185, 129, 42);
+			panelElegido.add(lblDatosMeteo);
+			
+			break;
+			
+		case 7:
+			
+			DefaultListModel<String> dlm3 = new DefaultListModel<String>();
+			
+			dlm3.clear();
+			
+			for(int i = 0; i < top5.size();i++) {
+				
+				dlm3.addElement(top5.get(i));
+				
+			}
+			
+			if(dlm3.getSize() == 0) {
+				
+				dlm3.addElement("No hay top");
+				
+			}
+			
+			panelElegido.setBounds(this.getBounds());
+			panelElegido.setLayout(null);
+			
+			JLabel lbltop = new JLabel("TOP 5 ESPACIOS NATURALES");
+			lbltop.setFont(new Font("Tahoma", Font.BOLD, 22));
+			lbltop.setBounds(37, 11, 350, 46);
+			panelElegido.add(lbltop);
+			
+			JTextField txtMunicipio = new JTextField();
+			txtMunicipio.setBounds(322, 94, 86, 20);
+			panelElegido.add(txtMunicipio);
+			txtMunicipio.setColumns(10);
+			
+			JTextField txtProvincia = new JTextField();
+			txtProvincia.setBounds(322, 161, 86, 20);
+			panelElegido.add(txtProvincia);
+			txtProvincia.setColumns(10);
+			
+			JScrollPane scrollPanetop = new JScrollPane();
+			scrollPanetop.setBounds(20, 68, 250, 161);
+			panelElegido.add(scrollPanetop);
+			
+			JList<String> listtop = new JList<String>(dlm3);
+			scrollPanetop.setViewportView(listtop);
+			listtop.addMouseListener(new java.awt.event.MouseAdapter() {
+			      public void mouseClicked(java.awt.event.MouseEvent e) {
+			    	  
+			          if (e.getClickCount() == 1) {
+			        	  
+			        	  if(!listtop.getSelectedValue().toString().equals("No hay top")) {
+			        	  
+			        	  	Cliente.setDatos(listtop.getSelectedValue().toString());
+							Cliente.setOpcion(16);
+							Cliente.inicar();
+							top5data = Cliente.getTop5datos();
+							
+							if(!(top5data.size() == 0)) {
+								
+								txtMunicipio.setText(top5data.get(0).toString());
+								
+								//txtProvincia.setText(top5data.get(1).toString());
+								
+							}
+			        	  
+			        	  }
+			        	  
+			          }
+			      
+			      }
+			      
+			});  
+			
+			JLabel lblMunicipio = new JLabel("Municipio:");
+			lblMunicipio.setFont(new Font("Tahoma", Font.BOLD, 13));
+			lblMunicipio.setBounds(283, 68, 86, 15);
+			panelElegido.add(lblMunicipio);
+			
+			JLabel lblMunicipio_1 = new JLabel("Provincia:");
+			lblMunicipio_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+			lblMunicipio_1.setBounds(280, 135, 86, 15);
+			panelElegido.add(lblMunicipio_1);
+			
+			JButton btnVolvertop = new JButton("Volver");
+			btnVolvertop.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					panelPrincipal.add(switchPanel(3));
+					
+				}
+			});
+			btnVolvertop.setBounds(298, 206, 110, 44);
+			panelElegido.add(btnVolvertop);
 			
 			break;
 			
