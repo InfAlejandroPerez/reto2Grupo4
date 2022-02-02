@@ -87,6 +87,10 @@ public class LectorJsonData {
 					i = i + 20;
 				}
 			} else if (readedData[i].equalsIgnoreCase("HourGMT")) {
+				hora = new SimpleDateFormat("HH:mm").parse(readedData[i+2]);
+				if (hora == null) {
+					hora = new SimpleDateFormat("HH:mm").parse("12:00");
+				}
 				// hora = readedData[i];
 			} else if (readedData[i].equalsIgnoreCase("comgm3")) {
 				comgm3 = readedData[i + 2];
@@ -112,13 +116,13 @@ public class LectorJsonData {
 				
 				baseDeDatos.Inserts.insertDatos(d);
 				
-				salirFor = 1;
+				salirFor = salirFor+1;
 				
 				//i=readedData.length;
 
 			}
 			
-			if (salirFor == 1) {
+			if (salirFor == 4) {
 				
 				salirFor = 0;
 				
