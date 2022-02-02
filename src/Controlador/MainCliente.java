@@ -823,7 +823,7 @@ public class MainCliente extends JFrame{
 								
 								txtMunicipio.setText(top5data.get(0).toString());
 								
-								//txtProvincia.setText(top5data.get(1).toString());
+								txtProvincia.setText(top5data.get(1).toString());
 								
 							}
 			        	  

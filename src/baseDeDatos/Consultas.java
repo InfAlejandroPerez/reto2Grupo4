@@ -780,12 +780,14 @@ public class Consultas {
 		
 		muniProv.add(muni);
 		
-		/*hql = "Select nombre from Provincia Where CodProvincia = (Select CodProvincia from Municipiospueblos Where nombre Like '" + muni + "')";
+		hql = "Select provincia from Municipiospueblos Where codMunicipio = (Select codMunicipio from EspaciosNaturales Where nombre Like '" + Espacio + "')";
 		q = (Query) session.createQuery(hql);
 		
-		String prov = (String) ((org.hibernate.Query) q).uniqueResult();
+		Provincia p = (Provincia) q.uniqueResult();
 		
-		muniProv.add(prov);*/
+		String prov = p.getNombre().toString();
+		
+		muniProv.add(prov);
 		
 		return muniProv;
 	}
